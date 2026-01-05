@@ -8,7 +8,10 @@ import {
   DocumentTextIcon,
   LightBulbIcon,
   ArrowsPointingOutIcon,
+  BookOpenIcon,
 } from '@heroicons/react/24/outline';
+import ResearchBasis, { researchData } from '../shared/ResearchBasis';
+import ExportButton from '../shared/ExportButton';
 
 interface Props {
   sessionId: string;
@@ -89,23 +92,18 @@ const Elaborative: React.FC<Props> = ({ sessionId }) => {
         animate={{ opacity: 1, y: 0 }}
         className="mb-8"
       >
-        <div className="flex items-center space-x-3 mb-4">
-          <div className="p-3 bg-cyan-100 rounded-xl">
-            <BeakerIcon className="h-8 w-8 text-cyan-600" />
+        <div className="flex items-center space-x-4 mb-4">
+          <div className="p-3 bg-scholarly-slate/10 rounded-lg">
+            <BeakerIcon className="h-7 w-7 text-scholarly-slate" />
           </div>
           <div>
-            <h1 className="text-3xl font-bold text-brand-navy">"Why?" Questions</h1>
-            <p className="text-gray-600">Create questions that help students think deeper</p>
+            <h1 className="font-serif text-3xl font-semibold text-brand-navy">"Why?" Questions</h1>
+            <p className="text-brand-text mt-1">Create questions that help students think deeper</p>
           </div>
         </div>
 
-        <div className="bg-cyan-50 rounded-xl p-4 border border-cyan-100">
-          <p className="text-sm text-cyan-800">
-            <strong>Why this works:</strong> When you ask students "Why does this work?" or "How does this
-            connect to what you already know?"—they learn better. These questions force students to think
-            instead of just memorizing, which helps them remember and understand more deeply.
-          </p>
-        </div>
+        {/* Research Basis */}
+        <ResearchBasis {...researchData.elaborativeInterrogation} color="slate" />
       </motion.div>
 
       {/* Tabs */}
@@ -299,9 +297,12 @@ const Elaborative: React.FC<Props> = ({ sessionId }) => {
         >
           {results && activeTab === 'prompts' && Array.isArray(results) && (
             <>
-              <h2 className="text-xl font-semibold text-brand-navy mb-4">
-                Elaborative Prompts
-              </h2>
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-semibold text-brand-navy">
+                  Elaborative Prompts
+                </h2>
+                <ExportButton data={results} filename="elaborative-prompts" title="Export" />
+              </div>
               <div className="space-y-4">
                 {results.map((prompt: any, i: number) => (
                   <div key={i} className="p-4 bg-cyan-50 rounded-xl">
@@ -353,9 +354,12 @@ const Elaborative: React.FC<Props> = ({ sessionId }) => {
 
           {results && activeTab === 'causal' && (
             <>
-              <h2 className="text-xl font-semibold text-brand-navy mb-4">
-                Causal Chain: {results.phenomenon}
-              </h2>
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-semibold text-brand-navy">
+                  Causal Chain: {results.phenomenon}
+                </h2>
+                <ExportButton data={results} filename="causal-scaffold" title="Export" />
+              </div>
               <div className="space-y-4">
                 {results.causalChain?.map((link: any, i: number) => (
                   <div key={i} className="relative">

@@ -10,6 +10,7 @@ import {
   EyeIcon,
   HandRaisedIcon,
 } from '@heroicons/react/24/outline';
+import ResearchBasis, { researchData } from '../shared/ResearchBasis';
 
 interface Props {
   sessionId: string;
@@ -88,23 +89,18 @@ const InclusiveDesign: React.FC<Props> = ({ sessionId }) => {
         animate={{ opacity: 1, y: 0 }}
         className="mb-8"
       >
-        <div className="flex items-center space-x-3 mb-4">
-          <div className="p-3 bg-teal-100 rounded-xl">
-            <GlobeAltIcon className="h-8 w-8 text-teal-600" />
+        <div className="flex items-center space-x-4 mb-4">
+          <div className="p-3 bg-scholarly-sage/10 rounded-lg">
+            <GlobeAltIcon className="h-7 w-7 text-scholarly-sage" />
           </div>
           <div>
-            <h1 className="text-3xl font-bold text-brand-navy">Inclusive Design</h1>
-            <p className="text-gray-600">Create materials that work for all learners</p>
+            <h1 className="font-serif text-3xl font-semibold text-brand-navy">Inclusive Design</h1>
+            <p className="text-brand-text mt-1">Create materials that work for all learners</p>
           </div>
         </div>
 
-        <div className="bg-teal-50 rounded-xl p-4 border border-teal-100">
-          <p className="text-sm text-teal-800">
-            <strong>Research Basis:</strong> Universal Design for Learning (CAST, 2018) shows that
-            designing for diverse learners from the start benefits everyone. Inclusive practices
-            improve outcomes across student populations, not just marginalized groups.
-          </p>
-        </div>
+        {/* Research Basis */}
+        <ResearchBasis {...researchData.inclusiveDesign} color="sage" />
       </motion.div>
 
       {/* Tabs */}

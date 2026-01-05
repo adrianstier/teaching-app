@@ -1,0 +1,238 @@
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  ArrowDownTrayIcon,
+  DocumentDuplicateIcon,
+  DocumentTextIcon,
+  CodeBracketIcon,
+  CheckIcon,
+} from '@heroicons/react/24/outline';
+import { toast } from 'react-hot-toast';
+
+interface ExportButtonProps {
+  data: any;
+  filename: string;
+  title?: string;
+}
+
+const ExportButton: React.FC<ExportButtonProps> = ({
+  data,
+  filename,
+  title = 'Export'
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyToClipboard = async () => {
+    try {
+      const text = typeof data === 'string' ? data : JSON.stringify(data, null, 2);
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      toast.success('Copied to clipboard');
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      toast.error('Failed to copy');
+    }
+  };
+
+  const handleExportJSON = () => {
+    const json = JSON.stringify(data, null, 2);
+    const blob = new Blob([json], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${filename}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    toast.success('JSON exported');
+    setIsOpen(false);
+  };
+
+  const handleExportMarkdown = () => {
+    const md = convertToMarkdown(data, filename);
+    const blob = new Blob([md], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${filename}.md`;
+    a.click();
+    URL.revokeObjectURL(url);
+    toast.success('Markdown exported');
+    setIsOpen(false);
+  };
+
+  const handleExportText = () => {
+    const text = convertToPlainText(data, filename);
+    const blob = new Blob([text], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${filename}.txt`;
+    a.click();
+    URL.revokeObjectURL(url);
+    toast.success('Text exported');
+    setIsOpen(false);
+  };
+
+  return (
+    <div className="relative">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center space-x-2 px-3 py-2 bg-brand-bg text-brand-text rounded-lg text-sm font-medium hover:bg-brand-border transition-colors border border-brand-border-subtle"
+      >
+        <ArrowDownTrayIcon className="h-4 w-4" />
+        <span>{title}</span>
+      </button>
+
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            <div
+              className="fixed inset-0 z-40"
+              onClick={() => setIsOpen(false)}
+            />
+            <motion.div
+              initial={{ opacity: 0, y: -8, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -8, scale: 0.96 }}
+              transition={{ duration: 0.15 }}
+              className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-brand-border py-1 z-50"
+            >
+              <button
+                onClick={handleCopyToClipboard}
+                className="w-full flex items-center space-x-3 px-4 py-2.5 text-sm text-brand-text hover:bg-brand-bg transition-colors"
+              >
+                {copied ? (
+                  <CheckIcon className="h-4 w-4 text-scholarly-sage" />
+                ) : (
+                  <DocumentDuplicateIcon className="h-4 w-4" />
+                )}
+                <span>{copied ? 'Copied!' : 'Copy to clipboard'}</span>
+              </button>
+              <div className="h-px bg-brand-border-subtle mx-2 my-1" />
+              <button
+                onClick={handleExportJSON}
+                className="w-full flex items-center space-x-3 px-4 py-2.5 text-sm text-brand-text hover:bg-brand-bg transition-colors"
+              >
+                <CodeBracketIcon className="h-4 w-4" />
+                <span>Export as JSON</span>
+              </button>
+              <button
+                onClick={handleExportMarkdown}
+                className="w-full flex items-center space-x-3 px-4 py-2.5 text-sm text-brand-text hover:bg-brand-bg transition-colors"
+              >
+                <DocumentTextIcon className="h-4 w-4" />
+                <span>Export as Markdown</span>
+              </button>
+              <button
+                onClick={handleExportText}
+                className="w-full flex items-center space-x-3 px-4 py-2.5 text-sm text-brand-text hover:bg-brand-bg transition-colors"
+              >
+                <DocumentTextIcon className="h-4 w-4" />
+                <span>Export as Text</span>
+              </button>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+// Helper functions to convert data to different formats
+function convertToMarkdown(data: any, title: string): string {
+  let md = `# ${title}\n\n`;
+  md += `*Generated by Teaching Assistant on ${new Date().toLocaleDateString()}*\n\n`;
+
+  if (Array.isArray(data)) {
+    data.forEach((item, index) => {
+      md += `## Item ${index + 1}\n\n`;
+      md += formatObjectAsMarkdown(item);
+      md += '\n---\n\n';
+    });
+  } else if (typeof data === 'object') {
+    md += formatObjectAsMarkdown(data);
+  } else {
+    md += String(data);
+  }
+
+  return md;
+}
+
+function formatObjectAsMarkdown(obj: any, depth = 0): string {
+  let md = '';
+  const indent = '  '.repeat(depth);
+
+  for (const [key, value] of Object.entries(obj)) {
+    const formattedKey = key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+
+    if (Array.isArray(value)) {
+      md += `${indent}**${formattedKey}:**\n`;
+      value.forEach((item, i) => {
+        if (typeof item === 'object') {
+          md += `${indent}- Item ${i + 1}:\n`;
+          md += formatObjectAsMarkdown(item, depth + 1);
+        } else {
+          md += `${indent}- ${item}\n`;
+        }
+      });
+      md += '\n';
+    } else if (typeof value === 'object' && value !== null) {
+      md += `${indent}**${formattedKey}:**\n`;
+      md += formatObjectAsMarkdown(value, depth + 1);
+    } else {
+      md += `${indent}**${formattedKey}:** ${value}\n`;
+    }
+  }
+
+  return md;
+}
+
+function convertToPlainText(data: any, title: string): string {
+  let text = `${title}\n${'='.repeat(title.length)}\n\n`;
+  text += `Generated by Teaching Assistant on ${new Date().toLocaleDateString()}\n\n`;
+
+  if (Array.isArray(data)) {
+    data.forEach((item, index) => {
+      text += `--- Item ${index + 1} ---\n`;
+      text += formatObjectAsText(item);
+      text += '\n';
+    });
+  } else if (typeof data === 'object') {
+    text += formatObjectAsText(data);
+  } else {
+    text += String(data);
+  }
+
+  return text;
+}
+
+function formatObjectAsText(obj: any, depth = 0): string {
+  let text = '';
+  const indent = '  '.repeat(depth);
+
+  for (const [key, value] of Object.entries(obj)) {
+    const formattedKey = key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+
+    if (Array.isArray(value)) {
+      text += `${indent}${formattedKey}:\n`;
+      value.forEach((item, i) => {
+        if (typeof item === 'object') {
+          text += `${indent}  - Item ${i + 1}:\n`;
+          text += formatObjectAsText(item, depth + 2);
+        } else {
+          text += `${indent}  - ${item}\n`;
+        }
+      });
+    } else if (typeof value === 'object' && value !== null) {
+      text += `${indent}${formattedKey}:\n`;
+      text += formatObjectAsText(value, depth + 1);
+    } else {
+      text += `${indent}${formattedKey}: ${value}\n`;
+    }
+  }
+
+  return text;
+}
+
+export default ExportButton;

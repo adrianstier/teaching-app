@@ -8,7 +8,10 @@ import {
   HandRaisedIcon,
   DocumentTextIcon,
   LightBulbIcon,
+  BookOpenIcon,
 } from '@heroicons/react/24/outline';
+import ResearchBasis, { researchData } from '../shared/ResearchBasis';
+import ExportButton from '../shared/ExportButton';
 
 interface Props {
   sessionId: string;
@@ -112,23 +115,18 @@ const FormativeAssessment: React.FC<Props> = ({ sessionId }) => {
         animate={{ opacity: 1, y: 0 }}
         className="mb-8"
       >
-        <div className="flex items-center space-x-3 mb-4">
-          <div className="p-3 bg-purple-100 rounded-xl">
-            <ChatBubbleLeftRightIcon className="h-8 w-8 text-purple-600" />
+        <div className="flex items-center space-x-4 mb-4">
+          <div className="p-3 bg-scholarly-wine/10 rounded-lg">
+            <ChatBubbleLeftRightIcon className="h-7 w-7 text-scholarly-wine" />
           </div>
           <div>
-            <h1 className="text-3xl font-bold text-brand-navy">Quick Polls & Check-ins</h1>
-            <p className="text-gray-600">Find out if students understand before moving on</p>
+            <h1 className="font-serif text-3xl font-semibold text-brand-navy">Quick Polls & Check-ins</h1>
+            <p className="text-brand-text mt-1">Find out if students understand before moving on</p>
           </div>
         </div>
 
-        <div className="bg-purple-50 rounded-xl p-4 border border-purple-100">
-          <p className="text-sm text-purple-800">
-            <strong>Why this works:</strong> A quick poll during class shows you whether students understand—before
-            you move on to the next topic. Without checking, you might be teaching to confused faces. Exit
-            tickets at the end of class tell you what to review next time.
-          </p>
-        </div>
+        {/* Research Basis */}
+        <ResearchBasis {...researchData.formativeAssessment} color="wine" />
       </motion.div>
 
       {/* Tabs */}
@@ -141,13 +139,13 @@ const FormativeAssessment: React.FC<Props> = ({ sessionId }) => {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id as any)}
-            className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-colors ${
+            className={`flex items-center space-x-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
               activeTab === tab.id
-                ? 'bg-purple-600 text-white'
-                : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
+                ? 'bg-brand-navy text-white shadow-sm'
+                : 'bg-white text-brand-text hover:bg-brand-bg border border-brand-border-subtle'
             }`}
           >
-            <tab.icon className="h-5 w-5" />
+            <tab.icon className="h-4 w-4" />
             <span>{tab.name}</span>
           </button>
         ))}
@@ -159,51 +157,51 @@ const FormativeAssessment: React.FC<Props> = ({ sessionId }) => {
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="bg-white rounded-2xl shadow-card p-6 border border-gray-100"
+          className="bg-white rounded-xl shadow-card p-6 border border-brand-border-subtle"
         >
           {activeTab === 'polls' && (
             <>
-              <h2 className="text-xl font-semibold text-brand-navy mb-4">
+              <h2 className="font-serif text-lg font-semibold text-brand-navy mb-3">
                 Create Live Poll
               </h2>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-brand-text mb-4">
                 Generate conceptual polling questions that reveal student thinking
                 and common misconceptions in real-time.
               </p>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-brand-navy mb-1">
                     Topic/Concept
                   </label>
                   <input
                     type="text"
                     value={topic}
                     onChange={(e) => setTopic(e.target.value)}
-                    placeholder="e.g., Newton's Third Law"
-                    className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    placeholder="e.g., Constitutional interpretation, Supply and demand, Narrative structure"
+                    className="w-full p-3 text-sm border border-brand-border rounded-lg focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold transition-all bg-brand-bg/50"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-brand-navy mb-1">
                     Learning Objective (optional)
                   </label>
                   <input
                     type="text"
                     value={learningObjective}
                     onChange={(e) => setLearningObjective(e.target.value)}
-                    placeholder="e.g., Students will be able to apply Newton's Third Law..."
-                    className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    placeholder="e.g., Students will analyze stakeholder perspectives..."
+                    className="w-full p-3 text-sm border border-brand-border rounded-lg focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold transition-all bg-brand-bg/50"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-brand-navy mb-2">
                     Poll Type
                   </label>
                   <div className="grid grid-cols-2 gap-2">
                     {['Conceptual', 'Prediction', 'Application', 'Misconception Probe'].map((type) => (
-                      <label key={type} className="flex items-center space-x-2 p-3 border border-gray-200 rounded-lg hover:bg-purple-50 cursor-pointer">
-                        <input type="radio" name="pollType" defaultChecked={type === 'Conceptual'} className="text-purple-600" />
-                        <span className="text-sm">{type}</span>
+                      <label key={type} className="flex items-center space-x-2 p-3 border border-brand-border rounded-lg hover:bg-brand-bg cursor-pointer transition-colors group">
+                        <input type="radio" name="pollType" defaultChecked={type === 'Conceptual'} className="text-brand-navy focus:ring-brand-gold" />
+                        <span className="text-sm text-brand-text group-hover:text-brand-navy transition-colors">{type}</span>
                       </label>
                     ))}
                   </div>
@@ -212,7 +210,7 @@ const FormativeAssessment: React.FC<Props> = ({ sessionId }) => {
               <button
                 onClick={generatePoll}
                 disabled={loading}
-                className="mt-6 w-full py-3 bg-purple-600 text-white rounded-xl font-medium hover:bg-purple-700 transition-colors disabled:opacity-50"
+                className="mt-6 w-full py-3 bg-brand-navy text-white rounded-lg font-medium hover:bg-brand-navy-light transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? 'Generating...' : 'Generate Poll'}
               </button>
@@ -221,16 +219,16 @@ const FormativeAssessment: React.FC<Props> = ({ sessionId }) => {
 
           {activeTab === 'tickets' && (
             <>
-              <h2 className="text-xl font-semibold text-brand-navy mb-4">
+              <h2 className="font-serif text-lg font-semibold text-brand-navy mb-3">
                 Create Exit Ticket
               </h2>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-brand-text mb-4">
                 Generate end-of-session prompts that help you understand what students
                 learned and what needs reinforcement.
               </p>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-brand-navy mb-1">
                     Session Topic
                   </label>
                   <input
@@ -238,14 +236,14 @@ const FormativeAssessment: React.FC<Props> = ({ sessionId }) => {
                     value={topic}
                     onChange={(e) => setTopic(e.target.value)}
                     placeholder="Today's main topic"
-                    className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    className="w-full p-3 text-sm border border-brand-border rounded-lg focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold transition-all bg-brand-bg/50"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-brand-navy mb-2">
                     Ticket Format
                   </label>
-                  <select className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                  <select className="w-full p-3 text-sm border border-brand-border rounded-lg focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold transition-all bg-brand-bg/50">
                     <option value="comprehensive">Comprehensive (3 prompts)</option>
                     <option value="muddiest-point">Muddiest Point</option>
                     <option value="one-minute-paper">One-Minute Paper</option>
@@ -256,7 +254,7 @@ const FormativeAssessment: React.FC<Props> = ({ sessionId }) => {
               <button
                 onClick={generateExitTicket}
                 disabled={loading}
-                className="mt-6 w-full py-3 bg-purple-600 text-white rounded-xl font-medium hover:bg-purple-700 transition-colors disabled:opacity-50"
+                className="mt-6 w-full py-3 bg-brand-navy text-white rounded-lg font-medium hover:bg-brand-navy-light transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? 'Generating...' : 'Generate Exit Ticket'}
               </button>
@@ -265,20 +263,20 @@ const FormativeAssessment: React.FC<Props> = ({ sessionId }) => {
 
           {activeTab === 'analysis' && (
             <>
-              <h2 className="text-xl font-semibold text-brand-navy mb-4">
+              <h2 className="font-serif text-lg font-semibold text-brand-navy mb-3">
                 Analyze Responses
               </h2>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-brand-text mb-4">
                 Paste student responses to get AI-powered analysis of common patterns,
                 misconceptions, and suggested interventions.
               </p>
               <textarea
                 placeholder="Paste student responses here (one per line)..."
-                className="w-full h-64 p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
+                className="w-full h-64 p-4 text-sm border border-brand-border rounded-lg focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold transition-all resize-none bg-brand-bg/50"
               />
               <button
                 disabled={loading}
-                className="mt-4 w-full py-3 bg-purple-600 text-white rounded-xl font-medium hover:bg-purple-700 transition-colors disabled:opacity-50"
+                className="mt-4 w-full py-3 bg-brand-navy text-white rounded-lg font-medium hover:bg-brand-navy-light transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Analyze Responses
               </button>
@@ -290,19 +288,22 @@ const FormativeAssessment: React.FC<Props> = ({ sessionId }) => {
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="bg-white rounded-2xl shadow-card p-6 border border-gray-100"
+          className="bg-white rounded-xl shadow-card p-6 border border-brand-border-subtle"
         >
           {pollResult && activeTab === 'polls' && (
             <>
-              <h2 className="text-xl font-semibold text-brand-navy mb-4">
-                Generated Poll
-              </h2>
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="font-serif text-lg font-semibold text-brand-navy">
+                  Generated Poll
+                </h2>
+                <ExportButton data={pollResult} filename="poll-questions" title="Export" />
+              </div>
               <div className="space-y-4">
-                <div className="p-4 bg-purple-50 rounded-xl">
-                  <p className="font-medium text-brand-navy text-lg">
+                <div className="p-4 bg-scholarly-wine/10 rounded-lg border border-scholarly-wine/20">
+                  <p className="font-medium text-brand-navy">
                     {pollResult.question}
                   </p>
-                  <p className="text-sm text-purple-700 mt-2">
+                  <p className="text-sm text-scholarly-wine mt-2">
                     Purpose: {pollResult.pedagogicalPurpose}
                   </p>
                 </div>
@@ -312,22 +313,22 @@ const FormativeAssessment: React.FC<Props> = ({ sessionId }) => {
                       key={option.id}
                       className={`p-3 rounded-lg border ${
                         option.isCorrect
-                          ? 'border-green-200 bg-green-50'
-                          : 'border-gray-200 bg-gray-50'
+                          ? 'border-scholarly-sage/30 bg-scholarly-sage/10'
+                          : 'border-brand-border-subtle bg-brand-bg/50'
                       }`}
                     >
                       <div className="flex items-start space-x-2">
-                        <span className="font-medium text-gray-700">
+                        <span className="font-medium text-brand-navy text-sm">
                           {String.fromCharCode(65 + index)}.
                         </span>
                         <div className="flex-1">
-                          <p className="text-gray-800">{option.text}</p>
-                          <p className="text-sm text-gray-600 mt-1 italic">
+                          <p className="text-brand-text text-sm">{option.text}</p>
+                          <p className="text-sm text-brand-text-light mt-1 italic">
                             {option.explanation}
                           </p>
                         </div>
                         {option.isCorrect && (
-                          <span className="text-xs font-medium text-green-600 bg-green-100 px-2 py-1 rounded">
+                          <span className="text-xs font-medium text-scholarly-sage bg-scholarly-sage/10 px-2 py-1 rounded">
                             Correct
                           </span>
                         )}
@@ -336,9 +337,9 @@ const FormativeAssessment: React.FC<Props> = ({ sessionId }) => {
                   ))}
                 </div>
                 {pollResult.followUpQuestions.length > 0 && (
-                  <div className="mt-4 p-4 bg-gray-50 rounded-xl">
-                    <h4 className="font-medium text-gray-700 mb-2">Follow-up Questions:</h4>
-                    <ul className="space-y-1 text-sm text-gray-600">
+                  <div className="mt-4 p-4 bg-brand-bg/50 rounded-lg border border-brand-border-subtle">
+                    <h4 className="font-medium text-brand-navy mb-2 text-sm">Follow-up Questions:</h4>
+                    <ul className="space-y-1 text-sm text-brand-text">
                       {pollResult.followUpQuestions.map((q, i) => (
                         <li key={i}>• {q}</li>
                       ))}
@@ -351,27 +352,30 @@ const FormativeAssessment: React.FC<Props> = ({ sessionId }) => {
 
           {ticketResult && activeTab === 'tickets' && (
             <>
-              <h2 className="text-xl font-semibold text-brand-navy mb-4">
-                Exit Ticket
-              </h2>
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="font-serif text-lg font-semibold text-brand-navy">
+                  Exit Ticket
+                </h2>
+                <ExportButton data={ticketResult} filename="exit-ticket" title="Export" />
+              </div>
               <div className="space-y-4">
                 {ticketResult.prompts.map((prompt, index) => (
-                  <div key={index} className="p-4 bg-gray-50 rounded-xl">
-                    <span className="inline-block px-2 py-1 text-xs font-medium bg-purple-100 text-purple-700 rounded mb-2">
+                  <div key={index} className="p-4 bg-brand-bg/50 rounded-lg border border-brand-border-subtle">
+                    <span className="inline-block px-2 py-0.5 text-xs font-medium bg-scholarly-wine/10 text-scholarly-wine rounded mb-2">
                       {prompt.type}
                     </span>
-                    <p className="font-medium text-brand-navy">{prompt.prompt}</p>
-                    <p className="text-sm text-gray-600 mt-2">
+                    <p className="font-medium text-brand-navy text-sm">{prompt.prompt}</p>
+                    <p className="text-sm text-brand-text-light mt-2">
                       Purpose: {prompt.purpose}
                     </p>
                   </div>
                 ))}
                 {ticketResult.analysisGuidelines.length > 0 && (
-                  <div className="p-4 bg-purple-50 rounded-xl">
-                    <h4 className="font-medium text-purple-700 mb-2">
+                  <div className="p-4 bg-scholarly-wine/10 rounded-lg border border-scholarly-wine/20">
+                    <h4 className="font-medium text-scholarly-wine mb-2 text-sm">
                       How to Analyze Responses:
                     </h4>
-                    <ul className="space-y-1 text-sm text-gray-700">
+                    <ul className="space-y-1 text-sm text-brand-text">
                       {ticketResult.analysisGuidelines.map((g, i) => (
                         <li key={i}>• {g}</li>
                       ))}
@@ -383,14 +387,14 @@ const FormativeAssessment: React.FC<Props> = ({ sessionId }) => {
           )}
 
           {!pollResult && !ticketResult && (
-            <div className="h-full flex flex-col items-center justify-center text-center py-12">
-              <div className="p-4 bg-gray-100 rounded-full mb-4">
-                <DocumentTextIcon className="h-12 w-12 text-gray-400" />
+            <div className="h-full flex flex-col items-center justify-center text-center py-16">
+              <div className="p-4 bg-brand-bg rounded-full mb-4">
+                <DocumentTextIcon className="h-10 w-10 text-brand-text-light" />
               </div>
-              <h3 className="text-lg font-medium text-gray-700 mb-2">
+              <h3 className="font-medium text-brand-navy mb-2">
                 No content generated yet
               </h3>
-              <p className="text-sm text-gray-500 max-w-sm">
+              <p className="text-sm text-brand-text-light max-w-xs">
                 Create polls or exit tickets to gather real-time feedback from your students.
               </p>
             </div>
@@ -403,12 +407,15 @@ const FormativeAssessment: React.FC<Props> = ({ sessionId }) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="mt-8 bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-6 border border-purple-100"
+        className="mt-8 bg-gradient-to-r from-scholarly-wine/5 to-scholarly-wine/10 rounded-xl p-6 border border-scholarly-wine/20"
       >
-        <h3 className="font-semibold text-brand-navy mb-3">Tips for Using Polls Effectively</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700">
+        <div className="flex items-center space-x-2 mb-4">
+          <BookOpenIcon className="h-5 w-5 text-scholarly-wine" />
+          <h3 className="font-medium text-brand-navy">Tips for Using Polls Effectively</h3>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-brand-text">
           <div>
-            <h4 className="font-medium text-purple-700 mb-2">During Class:</h4>
+            <h4 className="font-medium text-scholarly-wine mb-2">During Class:</h4>
             <ul className="space-y-1">
               <li>• Poll every 15-20 minutes to check understanding</li>
               <li>• Have students discuss with a neighbor before re-answering</li>
@@ -416,7 +423,7 @@ const FormativeAssessment: React.FC<Props> = ({ sessionId }) => {
             </ul>
           </div>
           <div>
-            <h4 className="font-medium text-purple-700 mb-2">What to Do with Results:</h4>
+            <h4 className="font-medium text-scholarly-wine mb-2">What to Do with Results:</h4>
             <ul className="space-y-1">
               <li>• Most got it wrong? Explain it a different way</li>
               <li>• About half right? Have them discuss, then poll again</li>

@@ -8,7 +8,10 @@ import {
   DocumentTextIcon,
   AcademicCapIcon,
   ArrowPathIcon,
+  BookOpenIcon,
 } from '@heroicons/react/24/outline';
+import ResearchBasis, { researchData } from '../shared/ResearchBasis';
+import ExportButton from '../shared/ExportButton';
 
 interface Props {
   sessionId: string;
@@ -86,23 +89,18 @@ const MisconceptionTracker: React.FC<Props> = ({ sessionId }) => {
         animate={{ opacity: 1, y: 0 }}
         className="mb-8"
       >
-        <div className="flex items-center space-x-3 mb-4">
-          <div className="p-3 bg-red-100 rounded-xl">
-            <ExclamationTriangleIcon className="h-8 w-8 text-red-600" />
+        <div className="flex items-center space-x-4 mb-4">
+          <div className="p-3 bg-scholarly-terracotta/10 rounded-lg">
+            <ExclamationTriangleIcon className="h-7 w-7 text-scholarly-terracotta" />
           </div>
           <div>
-            <h1 className="text-3xl font-bold text-brand-navy">Misconception Tracker</h1>
-            <p className="text-gray-600">Identify, diagnose, and address student misconceptions</p>
+            <h1 className="font-serif text-3xl font-semibold text-brand-navy">Misconception Tracker</h1>
+            <p className="text-brand-text mt-1">Identify, diagnose, and address student misconceptions</p>
           </div>
         </div>
 
-        <div className="bg-red-50 rounded-xl p-4 border border-red-100">
-          <p className="text-sm text-red-800">
-            <strong>Research Basis:</strong> Conceptual change theory (Posner et al., 1982) shows misconceptions
-            are resistant to change and require explicit confrontation. Simply presenting correct information
-            is often insufficient—students need to experience cognitive conflict.
-          </p>
-        </div>
+        {/* Research Basis */}
+        <ResearchBasis {...researchData.misconceptions} color="terracotta" />
       </motion.div>
 
       {/* Tabs */}
@@ -153,7 +151,7 @@ const MisconceptionTracker: React.FC<Props> = ({ sessionId }) => {
                     type="text"
                     value={topic}
                     onChange={(e) => setTopic(e.target.value)}
-                    placeholder="e.g., Evolution by natural selection"
+                    placeholder="e.g., Statistical significance, Constitutional law, Medication dosing"
                     className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500"
                   />
                 </div>
@@ -165,7 +163,7 @@ const MisconceptionTracker: React.FC<Props> = ({ sessionId }) => {
                     type="text"
                     value={domain}
                     onChange={(e) => setDomain(e.target.value)}
-                    placeholder="e.g., Biology"
+                    placeholder="e.g., Statistics, Law, Healthcare, Literature"
                     className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500"
                   />
                 </div>
@@ -198,7 +196,7 @@ const MisconceptionTracker: React.FC<Props> = ({ sessionId }) => {
                     type="text"
                     value={topic}
                     onChange={(e) => setTopic(e.target.value)}
-                    placeholder="e.g., Force and motion"
+                    placeholder="e.g., Market equilibrium, Ethical reasoning, Historical causation"
                     className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500"
                   />
                 </div>
@@ -271,9 +269,12 @@ const MisconceptionTracker: React.FC<Props> = ({ sessionId }) => {
         >
           {results && activeTab === 'database' && results.misconceptions && (
             <>
-              <h2 className="text-xl font-semibold text-brand-navy mb-4">
-                Misconceptions: {results.topic}
-              </h2>
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-semibold text-brand-navy">
+                  Misconceptions: {results.topic}
+                </h2>
+                <ExportButton data={results} filename="misconceptions" title="Export" />
+              </div>
               <div className="space-y-4">
                 {results.misconceptions.map((m: any, i: number) => (
                   <div key={i} className="p-4 bg-gray-50 rounded-xl border-l-4 border-red-500">
@@ -318,9 +319,12 @@ const MisconceptionTracker: React.FC<Props> = ({ sessionId }) => {
 
           {results && activeTab === 'diagnostic' && results.questions && (
             <>
-              <h2 className="text-xl font-semibold text-brand-navy mb-4">
-                Diagnostic Questions
-              </h2>
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-semibold text-brand-navy">
+                  Diagnostic Questions
+                </h2>
+                <ExportButton data={results} filename="diagnostic-questions" title="Export" />
+              </div>
               <div className="space-y-4">
                 {results.questions.map((q: any, i: number) => (
                   <div key={i} className="p-4 bg-gray-50 rounded-xl">

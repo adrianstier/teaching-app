@@ -11,6 +11,7 @@ import SyllabusAnalyzer from './components/SyllabusAnalyzer';
 import LearningOutcomes from './components/LearningOutcomes';
 import ExerciseGenerator from './components/ExerciseGenerator';
 import ActiveLearning from './components/ActiveLearning';
+import Footer from './components/Footer';
 
 // New pedagogical feature components (lazy loaded)
 const SpacedRepetition = lazy(() => import('./components/features/SpacedRepetition'));
@@ -93,6 +94,7 @@ function App() {
               </Routes>
             </Suspense>
           </main>
+          <Footer />
           <Toaster
             position="top-right"
             toastOptions={{

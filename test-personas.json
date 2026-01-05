@@ -1,0 +1,3102 @@
+[
+  {
+    "id": "persona-001",
+    "identity": {
+      "role": "Associate Professor",
+      "discipline": "Molecular Biology",
+      "institution": "Large R1 Public University",
+      "yearsTeaching": 12,
+      "typicalClassSize": 180
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Safari",
+      "accessibilityNeeds": null,
+      "timePressure": "high",
+      "sessionContext": "Between grant deadlines"
+    },
+    "teachingGoals": ["Reduce cognitive overload in dense content lectures", "Create better formative assessments"],
+    "testingFocus": {
+      "primaryFeatures": ["Cognitive Load Analyzer", "Formative Assessment"],
+      "userJourneys": ["Upload existing slides", "Generate quiz questions"],
+      "abandonTriggers": ["More than 3 clicks to core feature", "Jargon without explanation"],
+      "recommendTriggers": ["Saves 30+ minutes on assessment creation", "Outputs feel pedagogically sound"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "cautiously optimistic",
+      "aiAttitude": "skeptical but curious",
+      "evidenceThreshold": "high",
+      "concerns": ["Will this dumb down my content?", "Is the research actually current?"]
+    }
+  },
+  {
+    "id": "persona-002",
+    "identity": {
+      "role": "Adjunct Lecturer",
+      "discipline": "English Composition",
+      "institution": "Community College",
+      "yearsTeaching": 4,
+      "typicalClassSize": 28
+    },
+    "techContext": {
+      "proficiency": "basic",
+      "primaryDevice": "Windows Laptop (older)",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "extreme",
+      "sessionContext": "Teaching 5 sections across 2 campuses"
+    },
+    "teachingGoals": ["Find time-efficient ways to give feedback", "Help struggling writers without burnout"],
+    "testingFocus": {
+      "primaryFeatures": ["Formative Assessment", "Growth Mindset Feedback"],
+      "userJourneys": ["Quick assessment generation", "Batch feedback creation"],
+      "abandonTriggers": ["Slow load times", "Features requiring paid upgrade"],
+      "recommendTriggers": ["Dramatically reduces grading time", "Students respond positively"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "weary from broken promises",
+      "aiAttitude": "worried about academic integrity",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Can I afford this?", "Will admin think I'm cutting corners?"]
+    }
+  },
+  {
+    "id": "persona-003",
+    "identity": {
+      "role": "Full Professor",
+      "discipline": "Philosophy",
+      "institution": "Private Liberal Arts College",
+      "yearsTeaching": 28,
+      "typicalClassSize": 18
+    },
+    "techContext": {
+      "proficiency": "low",
+      "primaryDevice": "iMac",
+      "browser": "Firefox",
+      "accessibilityNeeds": "Large text preferred",
+      "timePressure": "low",
+      "sessionContext": "Sabbatical course redesign"
+    },
+    "teachingGoals": ["Deepen Socratic discussion quality", "Help students transfer philosophical reasoning"],
+    "testingFocus": {
+      "primaryFeatures": ["Transfer Learning", "Case-Based Learning"],
+      "userJourneys": ["Explore what tool offers", "Generate discussion scenarios"],
+      "abandonTriggers": ["Confusing navigation", "Tool assumes STEM context"],
+      "recommendTriggers": ["Respects humanities pedagogy", "Genuinely novel case studies"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "deeply skeptical",
+      "aiAttitude": "philosophically concerned",
+      "evidenceThreshold": "very high",
+      "concerns": ["Can AI understand dialectical thinking?", "Is this just efficiency theater?"]
+    }
+  },
+  {
+    "id": "persona-004",
+    "identity": {
+      "role": "Graduate Teaching Assistant",
+      "discipline": "Computer Science",
+      "institution": "Large R1 Public University",
+      "yearsTeaching": 1,
+      "typicalClassSize": 35
+    },
+    "techContext": {
+      "proficiency": "expert",
+      "primaryDevice": "Linux Laptop",
+      "browser": "Firefox Developer Edition",
+      "accessibilityNeeds": null,
+      "timePressure": "high",
+      "sessionContext": "Balancing dissertation and teaching"
+    },
+    "teachingGoals": ["Learn evidence-based teaching quickly", "Not repeat my bad TAs' mistakes"],
+    "testingFocus": {
+      "primaryFeatures": ["Desirable Difficulties", "Spaced Repetition"],
+      "userJourneys": ["Rapid onboarding", "Generate practice problems"],
+      "abandonTriggers": ["Patronizing explanations", "No API/export options"],
+      "recommendTriggers": ["Actually learned something about teaching", "Clean code-friendly exports"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "open but discerning",
+      "aiAttitude": "enthusiastic but quality-focused",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Is this rigorous or edutainment?", "Will my advisor approve?"]
+    }
+  },
+  {
+    "id": "persona-005",
+    "identity": {
+      "role": "Instructional Designer",
+      "discipline": "Cross-disciplinary",
+      "institution": "Regional State University",
+      "yearsTeaching": 0,
+      "typicalClassSize": null
+    },
+    "techContext": {
+      "proficiency": "advanced",
+      "primaryDevice": "Windows Desktop",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Evaluating tools for faculty training"
+    },
+    "teachingGoals": ["Find tools that faculty will actually use", "Scale evidence-based practices"],
+    "testingFocus": {
+      "primaryFeatures": ["All features for evaluation", "Onboarding flow"],
+      "userJourneys": ["Full feature exploration", "Faculty adoption simulation"],
+      "abandonTriggers": ["No admin/reporting features", "Poor accessibility compliance"],
+      "recommendTriggers": ["Faculty adoption seems likely", "Aligns with QM standards"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "professionally skeptical",
+      "aiAttitude": "cautiously interested",
+      "evidenceThreshold": "high",
+      "concerns": ["Can we get institutional buy-in?", "FERPA compliance?"]
+    }
+  },
+  {
+    "id": "persona-006",
+    "identity": {
+      "role": "Assistant Professor",
+      "discipline": "Nursing",
+      "institution": "Health Sciences University",
+      "yearsTeaching": 3,
+      "typicalClassSize": 60
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "iPad Pro",
+      "browser": "Safari",
+      "accessibilityNeeds": null,
+      "timePressure": "high",
+      "sessionContext": "Clinical rotation week"
+    },
+    "teachingGoals": ["Bridge theory-practice gap", "Identify student misconceptions before clinical"],
+    "testingFocus": {
+      "primaryFeatures": ["Misconception Tracker", "Case-Based Learning"],
+      "userJourneys": ["Mobile-friendly workflow", "Clinical scenario generation"],
+      "abandonTriggers": ["Poor tablet experience", "Generic non-clinical examples"],
+      "recommendTriggers": ["Realistic clinical scenarios", "Catches dangerous misconceptions"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "pragmatic adopter",
+      "aiAttitude": "concerned about patient safety context",
+      "evidenceThreshold": "high",
+      "concerns": ["Will AI scenarios be clinically accurate?", "Liability implications?"]
+    }
+  },
+  {
+    "id": "persona-007",
+    "identity": {
+      "role": "Adjunct Professor",
+      "discipline": "Accounting",
+      "institution": "Private Business School",
+      "yearsTeaching": 15,
+      "typicalClassSize": 45
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "Windows Laptop",
+      "browser": "Edge",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Industry professional teaching part-time"
+    },
+    "teachingGoals": ["Make dry material engaging", "Prepare students for CPA exam style questions"],
+    "testingFocus": {
+      "primaryFeatures": ["Elaborative Interrogation", "Formative Assessment"],
+      "userJourneys": ["Quick question generation", "Exam prep materials"],
+      "abandonTriggers": ["Too theoretical/academic", "No professional certification context"],
+      "recommendTriggers": ["Saves exam prep time", "Questions match professional standards"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "ROI-focused",
+      "aiAttitude": "if it works, use it",
+      "evidenceThreshold": "low-moderate",
+      "concerns": ["Does this map to real accounting practice?", "Worth the learning curve?"]
+    }
+  },
+  {
+    "id": "persona-008",
+    "identity": {
+      "role": "Postdoctoral Teaching Fellow",
+      "discipline": "History",
+      "institution": "Ivy League University",
+      "yearsTeaching": 2,
+      "typicalClassSize": 22
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "MacBook Air",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "extreme",
+      "sessionContext": "Job market year"
+    },
+    "teachingGoals": ["Build teaching portfolio quickly", "Demonstrate innovative pedagogy for job apps"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Collaborative Learning"],
+      "userJourneys": ["Generate impressive materials fast", "Document pedagogical approach"],
+      "abandonTriggers": ["No export for portfolio", "Generic outputs"],
+      "recommendTriggers": ["Materials impress hiring committees", "Clear pedagogical rationale"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "strategically interested",
+      "aiAttitude": "worried about authenticity perception",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Will search committees see AI use negatively?", "Is this my teaching or the tool's?"]
+    }
+  },
+  {
+    "id": "persona-009",
+    "identity": {
+      "role": "Senior Lecturer",
+      "discipline": "Mathematics",
+      "institution": "Large Public University",
+      "yearsTeaching": 20,
+      "typicalClassSize": 250
+    },
+    "techContext": {
+      "proficiency": "advanced",
+      "primaryDevice": "Windows Desktop",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Calculus sequence coordinator"
+    },
+    "teachingGoals": ["Reduce DFW rates in gateway courses", "Implement spaced practice at scale"],
+    "testingFocus": {
+      "primaryFeatures": ["Spaced Repetition", "Desirable Difficulties"],
+      "userJourneys": ["Bulk content creation", "Integration with LMS"],
+      "abandonTriggers": ["No LaTeX support", "Can't handle mathematical notation"],
+      "recommendTriggers": ["Measurable DFW improvement", "Scales to coordinator role"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "data-driven adopter",
+      "aiAttitude": "show me the evidence",
+      "evidenceThreshold": "very high",
+      "concerns": ["Does this actually improve outcomes?", "Can it handle proof-based content?"]
+    }
+  },
+  {
+    "id": "persona-010",
+    "identity": {
+      "role": "Clinical Professor",
+      "discipline": "Law",
+      "institution": "Top 20 Law School",
+      "yearsTeaching": 18,
+      "typicalClassSize": 16
+    },
+    "techContext": {
+      "proficiency": "basic",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Safari",
+      "accessibilityNeeds": null,
+      "timePressure": "high",
+      "sessionContext": "Active caseload alongside teaching"
+    },
+    "teachingGoals": ["Develop clinical reasoning skills", "Prepare students for ambiguous real cases"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Metacognition"],
+      "userJourneys": ["Generate complex legal scenarios", "Reflection prompts"],
+      "abandonTriggers": ["Oversimplified scenarios", "No legal domain understanding"],
+      "recommendTriggers": ["Scenarios match legal complexity", "Develops professional judgment"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "traditionalist but open",
+      "aiAttitude": "skeptical of AI in legal reasoning",
+      "evidenceThreshold": "high",
+      "concerns": ["Can AI capture legal nuance?", "Ethical implications for legal education?"]
+    }
+  },
+  {
+    "id": "persona-011",
+    "identity": {
+      "role": "Associate Professor",
+      "discipline": "Psychology",
+      "institution": "Mid-size Private University",
+      "yearsTeaching": 9,
+      "typicalClassSize": 85
+    },
+    "techContext": {
+      "proficiency": "advanced",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Research-active semester"
+    },
+    "teachingGoals": ["Apply learning science I research to my own teaching", "Create better retrieval practice"],
+    "testingFocus": {
+      "primaryFeatures": ["Spaced Repetition", "Metacognition"],
+      "userJourneys": ["Evaluate tool's research basis", "Generate retrieval activities"],
+      "abandonTriggers": ["Outdated or misrepresented research", "Oversimplified learning models"],
+      "recommendTriggers": ["Research citations are accurate", "Sophisticated understanding of memory"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "expert evaluator",
+      "aiAttitude": "interested in AI + learning science intersection",
+      "evidenceThreshold": "very high",
+      "concerns": ["Are the citations real?", "Does this reflect current literature?"]
+    }
+  },
+  {
+    "id": "persona-012",
+    "identity": {
+      "role": "Adjunct Instructor",
+      "discipline": "Studio Art",
+      "institution": "Art Institute",
+      "yearsTeaching": 7,
+      "typicalClassSize": 15
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "iMac",
+      "browser": "Safari",
+      "accessibilityNeeds": "Color blindness (deuteranopia)",
+      "timePressure": "low",
+      "sessionContext": "Working artist with teaching side gig"
+    },
+    "teachingGoals": ["Develop student critique skills", "Help students articulate artistic choices"],
+    "testingFocus": {
+      "primaryFeatures": ["Metacognition", "Elaborative Interrogation"],
+      "userJourneys": ["Explore applicability to arts", "Generate reflection prompts"],
+      "abandonTriggers": ["Only works for STEM/content courses", "Inaccessible color schemes"],
+      "recommendTriggers": ["Genuinely useful for critique development", "Good accessibility"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "skeptical of tech in art education",
+      "aiAttitude": "philosophically opposed but curious",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Can this work for tacit knowledge?", "Will it homogenize artistic thinking?"]
+    }
+  },
+  {
+    "id": "persona-013",
+    "identity": {
+      "role": "Assistant Professor",
+      "discipline": "Mechanical Engineering",
+      "institution": "Technical University",
+      "yearsTeaching": 4,
+      "typicalClassSize": 120
+    },
+    "techContext": {
+      "proficiency": "expert",
+      "primaryDevice": "Windows Workstation",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "high",
+      "sessionContext": "Pre-tenure crunch"
+    },
+    "teachingGoals": ["Flip classroom effectively", "Create scaffolded problem sets"],
+    "testingFocus": {
+      "primaryFeatures": ["Cognitive Load Analyzer", "Desirable Difficulties"],
+      "userJourneys": ["Analyze existing lecture content", "Generate problem sequences"],
+      "abandonTriggers": ["Can't handle technical diagrams", "No engineering examples"],
+      "recommendTriggers": ["Improves student problem-solving", "Reduces office hour queues"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "efficiency-focused",
+      "aiAttitude": "use it if it saves time",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Will this work for hands-on labs?", "Can it handle equations?"]
+    }
+  },
+  {
+    "id": "persona-014",
+    "identity": {
+      "role": "Teaching Professor",
+      "discipline": "Sociology",
+      "institution": "Large Public University",
+      "yearsTeaching": 14,
+      "typicalClassSize": 200
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "Chromebook",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "High teaching load, no research expectations"
+    },
+    "teachingGoals": ["Make large lectures feel personal", "Increase student participation"],
+    "testingFocus": {
+      "primaryFeatures": ["Collaborative Learning", "Formative Assessment"],
+      "userJourneys": ["Design think-pair-share activities", "Quick polls and checks"],
+      "abandonTriggers": ["Only works for small classes", "Requires premium features"],
+      "recommendTriggers": ["Scales to large lectures", "Increases engagement metrics"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "experienced adopter",
+      "aiAttitude": "cautiously optimistic",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Does this work at scale?", "Will students actually engage?"]
+    }
+  },
+  {
+    "id": "persona-015",
+    "identity": {
+      "role": "Doctoral Student Instructor",
+      "discipline": "Public Health",
+      "institution": "School of Public Health",
+      "yearsTeaching": 1,
+      "typicalClassSize": 30
+    },
+    "techContext": {
+      "proficiency": "advanced",
+      "primaryDevice": "MacBook Air",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "extreme",
+      "sessionContext": "First solo course while dissertating"
+    },
+    "teachingGoals": ["Learn to teach quickly", "Not embarrass myself"],
+    "testingFocus": {
+      "primaryFeatures": ["All features - learning mode", "Case-Based Learning"],
+      "userJourneys": ["Onboarding tutorial", "Generate epidemiology cases"],
+      "abandonTriggers": ["Too much assumed teaching knowledge", "No quick-start option"],
+      "recommendTriggers": ["Teaches me while I use it", "Boosts my confidence"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "desperate for help",
+      "aiAttitude": "will try anything",
+      "evidenceThreshold": "low",
+      "concerns": ["Will students know I'm new?", "Is this what good teachers do?"]
+    }
+  },
+  {
+    "id": "persona-016",
+    "identity": {
+      "role": "Professor Emeritus",
+      "discipline": "Classics",
+      "institution": "Elite Private University",
+      "yearsTeaching": 40,
+      "typicalClassSize": 12
+    },
+    "techContext": {
+      "proficiency": "low",
+      "primaryDevice": "iPad",
+      "browser": "Safari",
+      "accessibilityNeeds": "Vision impairment, uses zoom",
+      "timePressure": "none",
+      "sessionContext": "Teaching one seminar for joy"
+    },
+    "teachingGoals": ["Experiment with new approaches after decades", "Leave teaching legacy materials"],
+    "testingFocus": {
+      "primaryFeatures": ["Elaborative Interrogation", "Transfer Learning"],
+      "userJourneys": ["Gentle exploration", "Generate Socratic questions"],
+      "abandonTriggers": ["Tiny text", "Assumes digital fluency"],
+      "recommendTriggers": ["Respects traditional pedagogy", "Enhances rather than replaces"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "nostalgic skeptic",
+      "aiAttitude": "deeply suspicious",
+      "evidenceThreshold": "very high",
+      "concerns": ["What's wrong with how I've always taught?", "Will this diminish the craft?"]
+    }
+  },
+  {
+    "id": "persona-017",
+    "identity": {
+      "role": "Instructional Designer",
+      "discipline": "Online Program Development",
+      "institution": "For-profit Online University",
+      "yearsTeaching": 0,
+      "typicalClassSize": null
+    },
+    "techContext": {
+      "proficiency": "expert",
+      "primaryDevice": "Windows Desktop",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "high",
+      "sessionContext": "Designing 10 courses this quarter"
+    },
+    "teachingGoals": ["Rapidly create quality course shells", "Ensure consistent pedagogy across courses"],
+    "testingFocus": {
+      "primaryFeatures": ["All features for templating", "Cognitive Load Analyzer"],
+      "userJourneys": ["Bulk generation", "Export to LMS"],
+      "abandonTriggers": ["No batch operations", "Poor LMS integration"],
+      "recommendTriggers": ["10x productivity improvement", "Consistent quality output"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "professional evaluator",
+      "aiAttitude": "enthusiastic adopter",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Can SMEs use this?", "Institutional compliance?"]
+    }
+  },
+  {
+    "id": "persona-018",
+    "identity": {
+      "role": "Adjunct Lecturer",
+      "discipline": "Music Theory",
+      "institution": "Conservatory",
+      "yearsTeaching": 11,
+      "typicalClassSize": 20
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Firefox",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Performing musician with teaching income"
+    },
+    "teachingGoals": ["Help students hear what they analyze", "Connect theory to performance"],
+    "testingFocus": {
+      "primaryFeatures": ["Transfer Learning", "Elaborative Interrogation"],
+      "userJourneys": ["Generate analysis-to-performance bridges", "Listening reflection prompts"],
+      "abandonTriggers": ["No audio/music context", "Only text-based"],
+      "recommendTriggers": ["Understands music pedagogy", "Creates meaningful ear-training links"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "curious but domain-specific concerns",
+      "aiAttitude": "skeptical about AI understanding music",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Can AI understand musicality?", "Will this replace human mentorship?"]
+    }
+  },
+  {
+    "id": "persona-019",
+    "identity": {
+      "role": "Associate Professor",
+      "discipline": "Political Science",
+      "institution": "State University",
+      "yearsTeaching": 8,
+      "typicalClassSize": 75
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "Windows Laptop",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "high",
+      "sessionContext": "Election year - high student interest/anxiety"
+    },
+    "teachingGoals": ["Navigate politically charged discussions", "Teach critical analysis without bias"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Inclusive Design"],
+      "userJourneys": ["Generate balanced case studies", "Create inclusive discussion frameworks"],
+      "abandonTriggers": ["Perceived political bias in outputs", "Controversial content avoidance"],
+      "recommendTriggers": ["Helps navigate difficult topics", "Students feel heard across perspectives"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "cautiously interested",
+      "aiAttitude": "worried about bias",
+      "evidenceThreshold": "high",
+      "concerns": ["Will AI be politically neutral?", "How does it handle controversy?"]
+    }
+  },
+  {
+    "id": "persona-020",
+    "identity": {
+      "role": "Graduate Teaching Assistant",
+      "discipline": "Chemistry",
+      "institution": "Research University",
+      "yearsTeaching": 2,
+      "typicalClassSize": 24
+    },
+    "techContext": {
+      "proficiency": "advanced",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "extreme",
+      "sessionContext": "Lab sections plus dissertation experiments"
+    },
+    "teachingGoals": ["Make lab prep more efficient", "Help students understand why not just how"],
+    "testingFocus": {
+      "primaryFeatures": ["Elaborative Interrogation", "Misconception Tracker"],
+      "userJourneys": ["Pre-lab question generation", "Identify common chem misconceptions"],
+      "abandonTriggers": ["No chemistry-specific content", "Generic science examples"],
+      "recommendTriggers": ["Understands chemistry concepts", "Identifies real student errors"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "pragmatic",
+      "aiAttitude": "interested if domain-aware",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Can it handle molecular representations?", "Will it get chemistry right?"]
+    }
+  },
+  {
+    "id": "persona-021",
+    "identity": {
+      "role": "Assistant Professor",
+      "discipline": "Economics",
+      "institution": "Business School",
+      "yearsTeaching": 5,
+      "typicalClassSize": 90
+    },
+    "techContext": {
+      "proficiency": "advanced",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "high",
+      "sessionContext": "Publishing pressure plus teaching"
+    },
+    "teachingGoals": ["Make abstract models tangible", "Improve quantitative reasoning"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Cognitive Load Analyzer"],
+      "userJourneys": ["Generate real-world economic scenarios", "Sequence complex concepts"],
+      "abandonTriggers": ["No quantitative support", "Oversimplified economics"],
+      "recommendTriggers": ["Cases feel realistic", "Students grasp models faster"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "data-oriented evaluator",
+      "aiAttitude": "interested in efficiency gains",
+      "evidenceThreshold": "high",
+      "concerns": ["Can it handle mathematical economics?", "Will outputs be rigorous?"]
+    }
+  },
+  {
+    "id": "persona-022",
+    "identity": {
+      "role": "Adjunct Faculty",
+      "discipline": "Communications",
+      "institution": "State College",
+      "yearsTeaching": 6,
+      "typicalClassSize": 35
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "Windows Laptop",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "extreme",
+      "sessionContext": "Three jobs to pay bills"
+    },
+    "teachingGoals": ["Develop media literacy quickly", "Create engaging current event discussions"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Collaborative Learning"],
+      "userJourneys": ["Quick topical content generation", "Discussion facilitation tools"],
+      "abandonTriggers": ["Outdated examples", "No current events integration"],
+      "recommendTriggers": ["Keeps content fresh effortlessly", "Students more engaged"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "time-strapped pragmatist",
+      "aiAttitude": "will use if fast",
+      "evidenceThreshold": "low",
+      "concerns": ["Is this faster than doing it myself?", "Will students notice AI?"]
+    }
+  },
+  {
+    "id": "persona-023",
+    "identity": {
+      "role": "Full Professor",
+      "discipline": "Physics",
+      "institution": "R1 Research University",
+      "yearsTeaching": 22,
+      "typicalClassSize": 150
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "Linux Desktop",
+      "browser": "Firefox",
+      "accessibilityNeeds": null,
+      "timePressure": "low",
+      "sessionContext": "Tenured, optimizing teaching"
+    },
+    "teachingGoals": ["Address persistent conceptual difficulties", "Implement research-based reforms"],
+    "testingFocus": {
+      "primaryFeatures": ["Misconception Tracker", "Desirable Difficulties"],
+      "userJourneys": ["Identify physics misconceptions", "Design conceptual conflict activities"],
+      "abandonTriggers": ["Doesn't know physics education research", "Generic science content"],
+      "recommendTriggers": ["References PER literature", "Addresses real conceptual barriers"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "reform-minded researcher",
+      "aiAttitude": "interested if grounded in PER",
+      "evidenceThreshold": "very high",
+      "concerns": ["Does this know the FCI?", "Will it suggest proven interventions?"]
+    }
+  },
+  {
+    "id": "persona-024",
+    "identity": {
+      "role": "Lecturer",
+      "discipline": "Statistics",
+      "institution": "Community College",
+      "yearsTeaching": 8,
+      "typicalClassSize": 32
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "Windows Desktop",
+      "browser": "Edge",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Serving first-gen and returning students"
+    },
+    "teachingGoals": ["Reduce math anxiety", "Make statistics relevant to lives"],
+    "testingFocus": {
+      "primaryFeatures": ["Growth Mindset Feedback", "Case-Based Learning"],
+      "userJourneys": ["Generate relatable stats examples", "Create supportive feedback"],
+      "abandonTriggers": ["Assumes strong math background", "Abstract examples"],
+      "recommendTriggers": ["Students feel less anxious", "Real-world relevance clear"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "student-centered evaluator",
+      "aiAttitude": "cautious about equity implications",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Will this work for my population?", "Does it support struggling students?"]
+    }
+  },
+  {
+    "id": "persona-025",
+    "identity": {
+      "role": "Instructional Designer",
+      "discipline": "Faculty Development",
+      "institution": "Center for Teaching Excellence",
+      "yearsTeaching": 0,
+      "typicalClassSize": null
+    },
+    "techContext": {
+      "proficiency": "expert",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Supporting faculty across disciplines"
+    },
+    "teachingGoals": ["Help faculty adopt evidence-based practices", "Scale pedagogical training"],
+    "testingFocus": {
+      "primaryFeatures": ["All features for training", "Research basis accuracy"],
+      "userJourneys": ["Faculty workshop integration", "Self-service faculty learning"],
+      "abandonTriggers": ["Inaccurate research claims", "Not discipline-agnostic enough"],
+      "recommendTriggers": ["Faculty self-adopt successfully", "Reduces CTL consultation load"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "expert gatekeeper",
+      "aiAttitude": "cautiously supportive",
+      "evidenceThreshold": "very high",
+      "concerns": ["Is the pedagogy sound?", "Will faculty trust it?"]
+    }
+  },
+  {
+    "id": "persona-026",
+    "identity": {
+      "role": "Associate Professor",
+      "discipline": "Social Work",
+      "institution": "Urban University",
+      "yearsTeaching": 10,
+      "typicalClassSize": 25
+    },
+    "techContext": {
+      "proficiency": "basic",
+      "primaryDevice": "Windows Laptop",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "high",
+      "sessionContext": "Field placement coordination"
+    },
+    "teachingGoals": ["Prepare students for complex client situations", "Develop reflective practitioners"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Metacognition"],
+      "userJourneys": ["Generate ethical dilemma scenarios", "Reflection protocols"],
+      "abandonTriggers": ["Cases lack cultural sensitivity", "Oversimplified social issues"],
+      "recommendTriggers": ["Nuanced, realistic scenarios", "Supports reflective practice"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "relationship-focused skeptic",
+      "aiAttitude": "worried about dehumanization",
+      "evidenceThreshold": "high",
+      "concerns": ["Can AI understand human complexity?", "Will this undermine relational practice?"]
+    }
+  },
+  {
+    "id": "persona-027",
+    "identity": {
+      "role": "Graduate Teaching Fellow",
+      "discipline": "Anthropology",
+      "institution": "Research University",
+      "yearsTeaching": 1,
+      "typicalClassSize": 40
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "MacBook Air",
+      "browser": "Safari",
+      "accessibilityNeeds": null,
+      "timePressure": "extreme",
+      "sessionContext": "Fieldwork prep while teaching"
+    },
+    "teachingGoals": ["Develop cultural relativism", "Teach ethnographic thinking"],
+    "testingFocus": {
+      "primaryFeatures": ["Elaborative Interrogation", "Transfer Learning"],
+      "userJourneys": ["Generate cross-cultural comparison prompts", "Perspective-taking exercises"],
+      "abandonTriggers": ["Western-centric assumptions", "Stereotypical cultural examples"],
+      "recommendTriggers": ["Culturally sophisticated content", "Develops anthropological lens"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "critically aware",
+      "aiAttitude": "worried about cultural bias",
+      "evidenceThreshold": "high",
+      "concerns": ["Whose knowledge is this based on?", "Does it reproduce colonial perspectives?"]
+    }
+  },
+  {
+    "id": "persona-028",
+    "identity": {
+      "role": "Senior Instructor",
+      "discipline": "Foreign Languages (Spanish)",
+      "institution": "State University",
+      "yearsTeaching": 16,
+      "typicalClassSize": 24
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Multiple sections of intro Spanish"
+    },
+    "teachingGoals": ["Increase target language use", "Create authentic communication tasks"],
+    "testingFocus": {
+      "primaryFeatures": ["Spaced Repetition", "Collaborative Learning"],
+      "userJourneys": ["Vocabulary practice design", "Pair/group communication activities"],
+      "abandonTriggers": ["English-only interface logic", "No communicative focus"],
+      "recommendTriggers": ["Supports communicative approach", "Authentic context generation"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "experienced with language tech",
+      "aiAttitude": "interested in AI for language",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Does it understand SLA research?", "Can it generate in target language?"]
+    }
+  },
+  {
+    "id": "persona-029",
+    "identity": {
+      "role": "Adjunct Professor",
+      "discipline": "Criminal Justice",
+      "institution": "Regional University",
+      "yearsTeaching": 12,
+      "typicalClassSize": 45
+    },
+    "techContext": {
+      "proficiency": "basic",
+      "primaryDevice": "Windows Laptop",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Retired law enforcement teaching part-time"
+    },
+    "teachingGoals": ["Bridge theory and practice", "Develop ethical decision-making"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Misconception Tracker"],
+      "userJourneys": ["Generate realistic scenarios", "Address media-driven misconceptions"],
+      "abandonTriggers": ["Anti-law enforcement bias", "Unrealistic scenarios"],
+      "recommendTriggers": ["Balanced, realistic content", "Addresses real-world complexity"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "practical evaluator",
+      "aiAttitude": "suspicious of tech bias",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Will this push an agenda?", "Does it understand policing reality?"]
+    }
+  },
+  {
+    "id": "persona-030",
+    "identity": {
+      "role": "Assistant Professor",
+      "discipline": "Biomedical Engineering",
+      "institution": "Engineering School",
+      "yearsTeaching": 3,
+      "typicalClassSize": 50
+    },
+    "techContext": {
+      "proficiency": "expert",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "extreme",
+      "sessionContext": "Lab startup plus teaching"
+    },
+    "teachingGoals": ["Integrate biology and engineering thinking", "Prepare for industry problem-solving"],
+    "testingFocus": {
+      "primaryFeatures": ["Transfer Learning", "Case-Based Learning"],
+      "userJourneys": ["Cross-disciplinary case generation", "Industry-relevant problems"],
+      "abandonTriggers": ["Only handles single disciplines", "No technical depth"],
+      "recommendTriggers": ["True interdisciplinary content", "Industry-validated scenarios"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "innovation-oriented",
+      "aiAttitude": "enthusiastic early adopter",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Can it handle BME complexity?", "Will industry find outputs relevant?"]
+    }
+  },
+  {
+    "id": "persona-031",
+    "identity": {
+      "role": "Associate Professor",
+      "discipline": "Environmental Science",
+      "institution": "Land Grant University",
+      "yearsTeaching": 11,
+      "typicalClassSize": 65
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Field research season"
+    },
+    "teachingGoals": ["Connect classroom to fieldwork", "Address climate anxiety productively"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Growth Mindset Feedback"],
+      "userJourneys": ["Generate local environmental cases", "Support eco-anxiety constructively"],
+      "abandonTriggers": ["Climate denial undertones", "Disconnected from real ecosystems"],
+      "recommendTriggers": ["Scientifically accurate", "Empowers rather than overwhelms students"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "practical scientist",
+      "aiAttitude": "concerned about AI environmental impact",
+      "evidenceThreshold": "high",
+      "concerns": ["Is using AI tools hypocritical?", "Will content be up-to-date?"]
+    }
+  },
+  {
+    "id": "persona-032",
+    "identity": {
+      "role": "Adjunct Instructor",
+      "discipline": "Graphic Design",
+      "institution": "Art & Design School",
+      "yearsTeaching": 5,
+      "typicalClassSize": 18
+    },
+    "techContext": {
+      "proficiency": "expert",
+      "primaryDevice": "iMac Pro",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Industry designer teaching studio courses"
+    },
+    "teachingGoals": ["Develop design thinking process", "Prepare for client critiques"],
+    "testingFocus": {
+      "primaryFeatures": ["Metacognition", "Case-Based Learning"],
+      "userJourneys": ["Design process reflection tools", "Client scenario generation"],
+      "abandonTriggers": ["Ugly interface", "No creative process understanding"],
+      "recommendTriggers": ["Supports design thinking", "Realistic client scenarios"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "design-critical evaluator",
+      "aiAttitude": "conflicted about AI in creative fields",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Is the tool itself well-designed?", "Will AI replace my students?"]
+    }
+  },
+  {
+    "id": "persona-033",
+    "identity": {
+      "role": "Professor",
+      "discipline": "Theology",
+      "institution": "Denominational Seminary",
+      "yearsTeaching": 25,
+      "typicalClassSize": 15
+    },
+    "techContext": {
+      "proficiency": "basic",
+      "primaryDevice": "Windows Desktop",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "low",
+      "sessionContext": "Preparing future clergy"
+    },
+    "teachingGoals": ["Develop pastoral judgment", "Integrate scholarship with practice"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Elaborative Interrogation"],
+      "userJourneys": ["Generate pastoral scenarios", "Theological reflection prompts"],
+      "abandonTriggers": ["Secular assumptions only", "Dismissive of faith perspectives"],
+      "recommendTriggers": ["Respects religious frameworks", "Develops pastoral wisdom"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "traditional but open",
+      "aiAttitude": "theological concerns about AI",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Can AI engage with transcendent questions?", "Does this support formation?"]
+    }
+  },
+  {
+    "id": "persona-034",
+    "identity": {
+      "role": "Graduate Teaching Assistant",
+      "discipline": "Linguistics",
+      "institution": "Research University",
+      "yearsTeaching": 2,
+      "typicalClassSize": 30
+    },
+    "techContext": {
+      "proficiency": "advanced",
+      "primaryDevice": "MacBook Air",
+      "browser": "Firefox",
+      "accessibilityNeeds": null,
+      "timePressure": "high",
+      "sessionContext": "Dissertation writing while TAing"
+    },
+    "teachingGoals": ["Make syntax trees less intimidating", "Develop linguistic intuition"],
+    "testingFocus": {
+      "primaryFeatures": ["Cognitive Load Analyzer", "Desirable Difficulties"],
+      "userJourneys": ["Scaffold complex notation", "Practice problem generation"],
+      "abandonTriggers": ["Doesn't understand linguistics", "Generic language examples"],
+      "recommendTriggers": ["Linguistically sophisticated", "Good notation support"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "academically curious",
+      "aiAttitude": "interested in NLP connection",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Does it understand linguistic theory?", "Can it generate tree structures?"]
+    }
+  },
+  {
+    "id": "persona-035",
+    "identity": {
+      "role": "Instructional Designer",
+      "discipline": "Healthcare Simulation",
+      "institution": "Medical School",
+      "yearsTeaching": 0,
+      "typicalClassSize": null
+    },
+    "techContext": {
+      "proficiency": "expert",
+      "primaryDevice": "Windows Desktop",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Developing simulation scenarios"
+    },
+    "teachingGoals": ["Create realistic patient scenarios", "Prepare for high-stakes situations"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Misconception Tracker"],
+      "userJourneys": ["Medical scenario generation", "Identify clinical reasoning errors"],
+      "abandonTriggers": ["Medically inaccurate", "No clinical context"],
+      "recommendTriggers": ["Clinically realistic", "Identifies real reasoning gaps"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "simulation expert",
+      "aiAttitude": "cautious about medical AI",
+      "evidenceThreshold": "very high",
+      "concerns": ["Will scenarios be safe to use?", "Medical accuracy paramount"]
+    }
+  },
+  {
+    "id": "persona-036",
+    "identity": {
+      "role": "Associate Professor",
+      "discipline": "Marketing",
+      "institution": "Business School",
+      "yearsTeaching": 9,
+      "typicalClassSize": 55
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "high",
+      "sessionContext": "Consulting alongside teaching"
+    },
+    "teachingGoals": ["Keep content current with industry", "Develop strategic thinking"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Transfer Learning"],
+      "userJourneys": ["Current marketing case generation", "Cross-industry application"],
+      "abandonTriggers": ["Outdated examples", "Academic theory without practice"],
+      "recommendTriggers": ["Industry-current cases", "Strategic depth"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "marketing-savvy evaluator",
+      "aiAttitude": "professionally uses AI already",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Is this as good as real cases?", "Will students learn to think, not just copy?"]
+    }
+  },
+  {
+    "id": "persona-037",
+    "identity": {
+      "role": "Adjunct Lecturer",
+      "discipline": "Architecture",
+      "institution": "Design School",
+      "yearsTeaching": 8,
+      "typicalClassSize": 14
+    },
+    "techContext": {
+      "proficiency": "advanced",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Safari",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Practicing architect with studio teaching"
+    },
+    "teachingGoals": ["Develop design critique skills", "Balance creativity with constraints"],
+    "testingFocus": {
+      "primaryFeatures": ["Metacognition", "Case-Based Learning"],
+      "userJourneys": ["Design reflection frameworks", "Site/client scenario generation"],
+      "abandonTriggers": ["No spatial thinking support", "Generic problem-solving approach"],
+      "recommendTriggers": ["Understands design studio pedagogy", "Rich contextual scenarios"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "design-focused critic",
+      "aiAttitude": "watching AI design tools closely",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Can this support embodied learning?", "Will it homogenize design?"]
+    }
+  },
+  {
+    "id": "persona-038",
+    "identity": {
+      "role": "Senior Lecturer",
+      "discipline": "Pharmacy",
+      "institution": "Health Sciences College",
+      "yearsTeaching": 13,
+      "typicalClassSize": 100
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "Windows Laptop",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "high",
+      "sessionContext": "Pharmacotherapy sequence coordination"
+    },
+    "teachingGoals": ["Integrate drug knowledge application", "Prepare for clinical rotations"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Spaced Repetition"],
+      "userJourneys": ["Patient case generation", "Drug interaction practice"],
+      "abandonTriggers": ["Drug information outdated", "No clinical context"],
+      "recommendTriggers": ["Clinically current cases", "Supports NAPLEX prep"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "outcomes-focused",
+      "aiAttitude": "concerned about drug safety",
+      "evidenceThreshold": "very high",
+      "concerns": ["Is drug information accurate?", "Could AI errors harm patients?"]
+    }
+  },
+  {
+    "id": "persona-039",
+    "identity": {
+      "role": "Graduate Teaching Assistant",
+      "discipline": "Data Science",
+      "institution": "iSchool",
+      "yearsTeaching": 1,
+      "typicalClassSize": 45
+    },
+    "techContext": {
+      "proficiency": "expert",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "extreme",
+      "sessionContext": "Industry job search while teaching"
+    },
+    "teachingGoals": ["Connect theory to industry practice", "Develop ethical data reasoning"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Inclusive Design"],
+      "userJourneys": ["Ethical data scenarios", "Industry-relevant projects"],
+      "abandonTriggers": ["No code integration", "Ignores ethics dimension"],
+      "recommendTriggers": ["Real data challenges", "Builds ethical awareness"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "tech-native evaluator",
+      "aiAttitude": "professional AI user",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Is this better than what I could build?", "Does it address AI ethics?"]
+    }
+  },
+  {
+    "id": "persona-040",
+    "identity": {
+      "role": "Full Professor",
+      "discipline": "Art History",
+      "institution": "Research University",
+      "yearsTeaching": 30,
+      "typicalClassSize": 80
+    },
+    "techContext": {
+      "proficiency": "low",
+      "primaryDevice": "iPad Pro",
+      "browser": "Safari",
+      "accessibilityNeeds": null,
+      "timePressure": "low",
+      "sessionContext": "Pre-retirement, trying new approaches"
+    },
+    "teachingGoals": ["Develop visual analysis skills", "Connect art to social context"],
+    "testingFocus": {
+      "primaryFeatures": ["Elaborative Interrogation", "Transfer Learning"],
+      "userJourneys": ["Visual analysis question generation", "Cross-cultural comparison"],
+      "abandonTriggers": ["Text-only thinking", "Western canon assumptions"],
+      "recommendTriggers": ["Supports visual thinking", "Culturally inclusive examples"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "end-of-career experimenter",
+      "aiAttitude": "curious but skeptical",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Can AI understand art?", "Will this enhance or replace looking?"]
+    }
+  },
+  {
+    "id": "persona-041",
+    "identity": {
+      "role": "Assistant Professor",
+      "discipline": "Veterinary Medicine",
+      "institution": "Vet School",
+      "yearsTeaching": 4,
+      "typicalClassSize": 120
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "high",
+      "sessionContext": "Clinical service plus teaching"
+    },
+    "teachingGoals": ["Develop clinical reasoning across species", "Prepare for boards"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Misconception Tracker"],
+      "userJourneys": ["Multi-species case generation", "Identify reasoning errors"],
+      "abandonTriggers": ["Human-medicine focus only", "Inaccurate veterinary info"],
+      "recommendTriggers": ["Species-appropriate cases", "Clinically accurate"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "clinical pragmatist",
+      "aiAttitude": "interested if vet-aware",
+      "evidenceThreshold": "high",
+      "concerns": ["Does it know veterinary medicine?", "Accuracy across species?"]
+    }
+  },
+  {
+    "id": "persona-042",
+    "identity": {
+      "role": "Adjunct Faculty",
+      "discipline": "Journalism",
+      "institution": "Communications School",
+      "yearsTeaching": 10,
+      "typicalClassSize": 22
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "MacBook Air",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "extreme",
+      "sessionContext": "Active journalist teaching part-time"
+    },
+    "teachingGoals": ["Develop source evaluation skills", "Navigate AI in newsroom"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Metacognition"],
+      "userJourneys": ["Ethical journalism scenarios", "Source credibility exercises"],
+      "abandonTriggers": ["Promotes AI-written content uncritically", "Ignores media ethics"],
+      "recommendTriggers": ["Nuanced AI discussion", "Supports critical thinking about sources"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "media-critical",
+      "aiAttitude": "deeply concerned about AI in journalism",
+      "evidenceThreshold": "high",
+      "concerns": ["Will this undermine journalism ethics?", "How to teach AI responsibly?"]
+    }
+  },
+  {
+    "id": "persona-043",
+    "identity": {
+      "role": "Associate Professor",
+      "discipline": "Geology",
+      "institution": "Research University",
+      "yearsTeaching": 12,
+      "typicalClassSize": 45
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "Windows Laptop",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Between field seasons"
+    },
+    "teachingGoals": ["Connect lab to field observations", "Develop 3D spatial reasoning"],
+    "testingFocus": {
+      "primaryFeatures": ["Transfer Learning", "Desirable Difficulties"],
+      "userJourneys": ["Lab-to-field transfer activities", "Spatial reasoning scaffolding"],
+      "abandonTriggers": ["No visual/spatial support", "Generic science approach"],
+      "recommendTriggers": ["Supports spatial thinking", "Field-relevant applications"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "field scientist perspective",
+      "aiAttitude": "skeptical but curious",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Can this replace fieldwork value?", "Will it understand geology?"]
+    }
+  },
+  {
+    "id": "persona-044",
+    "identity": {
+      "role": "Instructional Designer",
+      "discipline": "Accessibility Services",
+      "institution": "Student Services Center",
+      "yearsTeaching": 0,
+      "typicalClassSize": null
+    },
+    "techContext": {
+      "proficiency": "expert",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Chrome",
+      "accessibilityNeeds": "Screen reader user (VoiceOver)",
+      "timePressure": "moderate",
+      "sessionContext": "Evaluating tools for accessibility"
+    },
+    "teachingGoals": ["Ensure tools work for all students", "Champion universal design"],
+    "testingFocus": {
+      "primaryFeatures": ["Inclusive Design", "All features for accessibility"],
+      "userJourneys": ["Full screen reader testing", "Keyboard navigation"],
+      "abandonTriggers": ["Poor WCAG compliance", "Inaccessible interactions"],
+      "recommendTriggers": ["Excellent accessibility", "Promotes UDL principles"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "accessibility advocate",
+      "aiAttitude": "cautious about AI accessibility",
+      "evidenceThreshold": "very high",
+      "concerns": ["Is this truly accessible?", "Will AI perpetuate barriers?"]
+    }
+  },
+  {
+    "id": "persona-045",
+    "identity": {
+      "role": "Lecturer",
+      "discipline": "Kinesiology",
+      "institution": "College of Health",
+      "yearsTeaching": 7,
+      "typicalClassSize": 60
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "iPad",
+      "browser": "Safari",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Teaching motor learning courses"
+    },
+    "teachingGoals": ["Connect movement theory to practice", "Develop coaching skills"],
+    "testingFocus": {
+      "primaryFeatures": ["Transfer Learning", "Case-Based Learning"],
+      "userJourneys": ["Sport/movement scenarios", "Coaching reflection activities"],
+      "abandonTriggers": ["No embodied learning context", "Purely cognitive approach"],
+      "recommendTriggers": ["Understands motor learning", "Connects to physical practice"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "movement-focused skeptic",
+      "aiAttitude": "curious about sport applications",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Can this address embodied knowledge?", "Theory-practice connection?"]
+    }
+  },
+  {
+    "id": "persona-046",
+    "identity": {
+      "role": "Full Professor",
+      "discipline": "Electrical Engineering",
+      "institution": "Engineering College",
+      "yearsTeaching": 24,
+      "typicalClassSize": 80
+    },
+    "techContext": {
+      "proficiency": "advanced",
+      "primaryDevice": "Linux Workstation",
+      "browser": "Firefox",
+      "accessibilityNeeds": null,
+      "timePressure": "low",
+      "sessionContext": "Established researcher optimizing teaching"
+    },
+    "teachingGoals": ["Improve conceptual understanding", "Reduce circuit analysis anxiety"],
+    "testingFocus": {
+      "primaryFeatures": ["Cognitive Load Analyzer", "Misconception Tracker"],
+      "userJourneys": ["Circuit concept scaffolding", "Identify EE misconceptions"],
+      "abandonTriggers": ["No circuit/diagram support", "Generic problem-solving"],
+      "recommendTriggers": ["Understands EE concepts", "Identifies real student struggles"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "evidence-demanding veteran",
+      "aiAttitude": "technically sophisticated skeptic",
+      "evidenceThreshold": "very high",
+      "concerns": ["Can it handle technical domains?", "Will it improve learning outcomes?"]
+    }
+  },
+  {
+    "id": "persona-047",
+    "identity": {
+      "role": "Graduate Teaching Fellow",
+      "discipline": "English Literature",
+      "institution": "Research University",
+      "yearsTeaching": 2,
+      "typicalClassSize": 25
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "MacBook Air",
+      "browser": "Safari",
+      "accessibilityNeeds": null,
+      "timePressure": "extreme",
+      "sessionContext": "Comp exams plus teaching"
+    },
+    "teachingGoals": ["Develop close reading skills", "Foster literary argumentation"],
+    "testingFocus": {
+      "primaryFeatures": ["Elaborative Interrogation", "Metacognition"],
+      "userJourneys": ["Close reading question generation", "Argument reflection"],
+      "abandonTriggers": ["Reductive literary analysis", "No nuance in interpretation"],
+      "recommendTriggers": ["Sophisticated textual engagement", "Supports multiple interpretations"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "humanities skeptic",
+      "aiAttitude": "worried about literary AI",
+      "evidenceThreshold": "high",
+      "concerns": ["Can AI do literary analysis?", "Will this flatten interpretation?"]
+    }
+  },
+  {
+    "id": "persona-048",
+    "identity": {
+      "role": "Adjunct Professor",
+      "discipline": "Urban Planning",
+      "institution": "Policy School",
+      "yearsTeaching": 9,
+      "typicalClassSize": 30
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "Windows Laptop",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Planning consultant teaching studio"
+    },
+    "teachingGoals": ["Develop community engagement skills", "Navigate political complexity"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Inclusive Design"],
+      "userJourneys": ["Community scenario generation", "Stakeholder analysis"],
+      "abandonTriggers": ["Ignores equity/justice", "Oversimplified planning scenarios"],
+      "recommendTriggers": ["Addresses planning equity", "Complex realistic scenarios"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "practice-focused evaluator",
+      "aiAttitude": "concerned about tech solutionism",
+      "evidenceThreshold": "high",
+      "concerns": ["Does this understand planning politics?", "Will it address equity?"]
+    }
+  },
+  {
+    "id": "persona-049",
+    "identity": {
+      "role": "Senior Lecturer",
+      "discipline": "Education",
+      "institution": "School of Education",
+      "yearsTeaching": 15,
+      "typicalClassSize": 28
+    },
+    "techContext": {
+      "proficiency": "advanced",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Preparing future teachers"
+    },
+    "teachingGoals": ["Model evidence-based practice", "Develop pedagogical reasoning"],
+    "testingFocus": {
+      "primaryFeatures": ["All features - meta-evaluation", "Case-Based Learning"],
+      "userJourneys": ["Use tool to teach about the tool", "K-12 classroom scenarios"],
+      "abandonTriggers": ["Contradicts what we teach", "Poor pedagogical modeling"],
+      "recommendTriggers": ["Exemplifies good pedagogy", "Useful for teacher prep"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "pedagogical expert evaluator",
+      "aiAttitude": "thoughtfully critical",
+      "evidenceThreshold": "very high",
+      "concerns": ["Does this practice what it preaches?", "Can I use this to teach teaching?"]
+    }
+  },
+  {
+    "id": "persona-050",
+    "identity": {
+      "role": "Assistant Professor",
+      "discipline": "Computer Engineering",
+      "institution": "Technical University",
+      "yearsTeaching": 3,
+      "typicalClassSize": 65
+    },
+    "techContext": {
+      "proficiency": "expert",
+      "primaryDevice": "Linux Laptop",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "extreme",
+      "sessionContext": "Startup on the side"
+    },
+    "teachingGoals": ["Bridge hardware-software gap", "Prepare for industry"],
+    "testingFocus": {
+      "primaryFeatures": ["Desirable Difficulties", "Transfer Learning"],
+      "userJourneys": ["Cross-layer problem generation", "Industry-relevant challenges"],
+      "abandonTriggers": ["No technical depth", "Software-only focus"],
+      "recommendTriggers": ["Understands systems", "Industry-validated problems"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "build vs buy mentality",
+      "aiAttitude": "AI researcher perspective",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Could I build this better?", "Does it understand low-level systems?"]
+    }
+  },
+  {
+    "id": "persona-051",
+    "identity": {
+      "role": "Associate Professor",
+      "discipline": "Neuroscience",
+      "institution": "Medical School",
+      "yearsTeaching": 8,
+      "typicalClassSize": 140
+    },
+    "techContext": {
+      "proficiency": "advanced",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "high",
+      "sessionContext": "Running lab plus teaching"
+    },
+    "teachingGoals": ["Connect basic science to clinical relevance", "Manage content density"],
+    "testingFocus": {
+      "primaryFeatures": ["Cognitive Load Analyzer", "Transfer Learning"],
+      "userJourneys": ["Analyze lecture complexity", "Basic-to-clinical bridging"],
+      "abandonTriggers": ["Can't handle scientific complexity", "Oversimplifies mechanisms"],
+      "recommendTriggers": ["Manages neuroscience complexity", "Clear clinical connections"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "research-minded evaluator",
+      "aiAttitude": "interested in AI for science education",
+      "evidenceThreshold": "very high",
+      "concerns": ["Is the science accurate?", "Can it handle brain complexity?"]
+    }
+  },
+  {
+    "id": "persona-052",
+    "identity": {
+      "role": "Adjunct Instructor",
+      "discipline": "Dance",
+      "institution": "Performing Arts Conservatory",
+      "yearsTeaching": 14,
+      "typicalClassSize": 18
+    },
+    "techContext": {
+      "proficiency": "basic",
+      "primaryDevice": "iPhone",
+      "browser": "Safari",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Performing artist teaching technique"
+    },
+    "teachingGoals": ["Develop movement analysis skills", "Connect somatic and intellectual learning"],
+    "testingFocus": {
+      "primaryFeatures": ["Metacognition", "Elaborative Interrogation"],
+      "userJourneys": ["Mobile-first experience", "Movement reflection prompts"],
+      "abandonTriggers": ["Requires desktop", "No embodied learning understanding"],
+      "recommendTriggers": ["Mobile friendly", "Supports somatic pedagogy"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "body-first skeptic",
+      "aiAttitude": "doesn't think about AI much",
+      "evidenceThreshold": "low",
+      "concerns": ["Why would I need this?", "Can technology serve movement?"]
+    }
+  },
+  {
+    "id": "persona-053",
+    "identity": {
+      "role": "Professor",
+      "discipline": "International Relations",
+      "institution": "School of Foreign Service",
+      "yearsTeaching": 20,
+      "typicalClassSize": 40
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "Windows Laptop",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Think tank work alongside teaching"
+    },
+    "teachingGoals": ["Develop diplomatic reasoning", "Navigate multi-perspective analysis"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Collaborative Learning"],
+      "userJourneys": ["International crisis simulations", "Multi-party negotiations"],
+      "abandonTriggers": ["US-centric perspective only", "Simplistic geopolitics"],
+      "recommendTriggers": ["Genuinely global perspectives", "Complex diplomatic scenarios"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "globally-minded evaluator",
+      "aiAttitude": "concerned about Western AI bias",
+      "evidenceThreshold": "high",
+      "concerns": ["Whose worldview does AI represent?", "Can it handle IR complexity?"]
+    }
+  },
+  {
+    "id": "persona-054",
+    "identity": {
+      "role": "Instructional Designer",
+      "discipline": "Corporate Training",
+      "institution": "Continuing Education Division",
+      "yearsTeaching": 0,
+      "typicalClassSize": null
+    },
+    "techContext": {
+      "proficiency": "expert",
+      "primaryDevice": "Windows Desktop",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "high",
+      "sessionContext": "Building executive education programs"
+    },
+    "teachingGoals": ["Create engaging professional development", "Measure business impact"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Formative Assessment"],
+      "userJourneys": ["Executive scenario generation", "Quick assessment creation"],
+      "abandonTriggers": ["Too academic", "No business metrics"],
+      "recommendTriggers": ["Business-relevant content", "Engagement metrics"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "ROI-focused professional",
+      "aiAttitude": "pragmatic adopter",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Can executives use this?", "Will it improve business outcomes?"]
+    }
+  },
+  {
+    "id": "persona-055",
+    "identity": {
+      "role": "Associate Professor",
+      "discipline": "Religious Studies",
+      "institution": "Liberal Arts College",
+      "yearsTeaching": 11,
+      "typicalClassSize": 25
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "MacBook Air",
+      "browser": "Firefox",
+      "accessibilityNeeds": null,
+      "timePressure": "low",
+      "sessionContext": "Sabbatical course redesign"
+    },
+    "teachingGoals": ["Develop religious literacy", "Foster respectful interreligious dialogue"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Elaborative Interrogation"],
+      "userJourneys": ["Interreligious scenario generation", "Reflection prompts"],
+      "abandonTriggers": ["Disrespectful of traditions", "Secular-only assumptions"],
+      "recommendTriggers": ["Respectful of religious diversity", "Promotes genuine understanding"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "humanities-centered",
+      "aiAttitude": "concerned about AI and sacred topics",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Can AI engage respectfully with religion?", "Will it handle controversy well?"]
+    }
+  },
+  {
+    "id": "persona-056",
+    "identity": {
+      "role": "Graduate Teaching Assistant",
+      "discipline": "Biochemistry",
+      "institution": "Research University",
+      "yearsTeaching": 1,
+      "typicalClassSize": 28
+    },
+    "techContext": {
+      "proficiency": "advanced",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "extreme",
+      "sessionContext": "Qualifying exams plus lab work plus teaching"
+    },
+    "teachingGoals": ["Make pathways meaningful not memorized", "Connect to research relevance"],
+    "testingFocus": {
+      "primaryFeatures": ["Spaced Repetition", "Elaborative Interrogation"],
+      "userJourneys": ["Pathway practice design", "Why questions for mechanisms"],
+      "abandonTriggers": ["Generic flashcard approach", "No biochemistry depth"],
+      "recommendTriggers": ["Understands metabolism", "Connects to research applications"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "efficiency-seeking",
+      "aiAttitude": "willing to try tools",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Will this save me time?", "Does it know biochemistry?"]
+    }
+  },
+  {
+    "id": "persona-057",
+    "identity": {
+      "role": "Senior Lecturer",
+      "discipline": "Business Ethics",
+      "institution": "Business School",
+      "yearsTeaching": 17,
+      "typicalClassSize": 70
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Safari",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Ethics across MBA curriculum"
+    },
+    "teachingGoals": ["Develop ethical reasoning in future leaders", "Navigate ethical complexity"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Metacognition"],
+      "userJourneys": ["Business ethics dilemmas", "Moral reasoning reflection"],
+      "abandonTriggers": ["Black-and-white ethics", "Ignores stakeholder complexity"],
+      "recommendTriggers": ["Genuinely complex dilemmas", "Multiple ethical frameworks"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "values-focused evaluator",
+      "aiAttitude": "interested in AI ethics questions",
+      "evidenceThreshold": "high",
+      "concerns": ["Can AI model ethical reasoning?", "What are AI's ethical assumptions?"]
+    }
+  },
+  {
+    "id": "persona-058",
+    "identity": {
+      "role": "Adjunct Professor",
+      "discipline": "Film Studies",
+      "institution": "Arts College",
+      "yearsTeaching": 8,
+      "typicalClassSize": 28
+    },
+    "techContext": {
+      "proficiency": "advanced",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Independent filmmaker teaching part-time"
+    },
+    "teachingGoals": ["Develop visual literacy", "Connect theory to practice"],
+    "testingFocus": {
+      "primaryFeatures": ["Elaborative Interrogation", "Transfer Learning"],
+      "userJourneys": ["Film analysis questions", "Theory-to-production bridges"],
+      "abandonTriggers": ["Text-only approach", "No cinematic understanding"],
+      "recommendTriggers": ["Supports visual analysis", "Understands film language"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "media-savvy critic",
+      "aiAttitude": "interested in AI filmmaking questions",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Can AI understand visual language?", "How to address AI in film?"]
+    }
+  },
+  {
+    "id": "persona-059",
+    "identity": {
+      "role": "Assistant Professor",
+      "discipline": "Physical Therapy",
+      "institution": "Health Sciences School",
+      "yearsTeaching": 4,
+      "typicalClassSize": 40
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "iPad Pro",
+      "browser": "Safari",
+      "accessibilityNeeds": null,
+      "timePressure": "high",
+      "sessionContext": "Clinical practice plus teaching"
+    },
+    "teachingGoals": ["Develop clinical reasoning", "Prepare for board exams"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Spaced Repetition"],
+      "userJourneys": ["Patient case generation", "Board exam practice"],
+      "abandonTriggers": ["Inaccurate clinical information", "No PT-specific context"],
+      "recommendTriggers": ["Clinically accurate cases", "Board-aligned content"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "outcomes-focused clinician",
+      "aiAttitude": "cautious about clinical AI",
+      "evidenceThreshold": "high",
+      "concerns": ["Is PT information accurate?", "Will this help board pass rates?"]
+    }
+  },
+  {
+    "id": "persona-060",
+    "identity": {
+      "role": "Full Professor",
+      "discipline": "Comparative Literature",
+      "institution": "Research University",
+      "yearsTeaching": 26,
+      "typicalClassSize": 18
+    },
+    "techContext": {
+      "proficiency": "low",
+      "primaryDevice": "iMac",
+      "browser": "Safari",
+      "accessibilityNeeds": "Prefers high contrast",
+      "timePressure": "none",
+      "sessionContext": "Pre-retirement, open to experiments"
+    },
+    "teachingGoals": ["Deepen comparative analysis", "Connect literature to world"],
+    "testingFocus": {
+      "primaryFeatures": ["Elaborative Interrogation", "Transfer Learning"],
+      "userJourneys": ["Cross-cultural text comparison", "Literature-world connections"],
+      "abandonTriggers": ["English-only literature", "Surface-level analysis"],
+      "recommendTriggers": ["Multilingual awareness", "Deep comparative engagement"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "traditionalist experimenter",
+      "aiAttitude": "philosophically curious",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Can AI engage with literature?", "Will this enhance or diminish reading?"]
+    }
+  },
+  {
+    "id": "persona-061",
+    "identity": {
+      "role": "Associate Professor",
+      "discipline": "Occupational Therapy",
+      "institution": "Health Sciences College",
+      "yearsTeaching": 9,
+      "typicalClassSize": 35
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "Windows Laptop",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "high",
+      "sessionContext": "Fieldwork coordination"
+    },
+    "teachingGoals": ["Develop client-centered reasoning", "Prepare for NBCOT"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Metacognition"],
+      "userJourneys": ["Client scenario generation", "Clinical reasoning reflection"],
+      "abandonTriggers": ["Medical model only", "No OT-specific perspective"],
+      "recommendTriggers": ["Occupation-focused cases", "Reflects OT philosophy"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "profession-focused evaluator",
+      "aiAttitude": "concerned about client-centered approach",
+      "evidenceThreshold": "high",
+      "concerns": ["Does it understand OT perspective?", "Can it be truly client-centered?"]
+    }
+  },
+  {
+    "id": "persona-062",
+    "identity": {
+      "role": "Adjunct Lecturer",
+      "discipline": "Creative Writing",
+      "institution": "MFA Program",
+      "yearsTeaching": 6,
+      "typicalClassSize": 12
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "MacBook Air",
+      "browser": "Safari",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Published author teaching workshop"
+    },
+    "teachingGoals": ["Develop authentic voice", "Give constructive workshop feedback"],
+    "testingFocus": {
+      "primaryFeatures": ["Growth Mindset Feedback", "Metacognition"],
+      "userJourneys": ["Craft-focused feedback generation", "Writer reflection prompts"],
+      "abandonTriggers": ["Generic writing advice", "Formulaic approach"],
+      "recommendTriggers": ["Nuanced craft feedback", "Supports authentic development"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "craft-focused skeptic",
+      "aiAttitude": "deeply concerned about AI writing",
+      "evidenceThreshold": "high",
+      "concerns": ["Can AI understand creative voice?", "Will students use AI to write?"]
+    }
+  },
+  {
+    "id": "persona-063",
+    "identity": {
+      "role": "Professor",
+      "discipline": "Materials Science",
+      "institution": "Engineering School",
+      "yearsTeaching": 22,
+      "typicalClassSize": 50
+    },
+    "techContext": {
+      "proficiency": "advanced",
+      "primaryDevice": "Linux Workstation",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "low",
+      "sessionContext": "Funded lab, teaching senior elective"
+    },
+    "teachingGoals": ["Connect micro to macro properties", "Develop materials selection skills"],
+    "testingFocus": {
+      "primaryFeatures": ["Transfer Learning", "Case-Based Learning"],
+      "userJourneys": ["Materials selection scenarios", "Property-structure bridging"],
+      "abandonTriggers": ["No materials science depth", "Generic engineering approach"],
+      "recommendTriggers": ["Understands structure-property relationships", "Industry-relevant selection"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "domain expert evaluator",
+      "aiAttitude": "technically sophisticated skeptic",
+      "evidenceThreshold": "very high",
+      "concerns": ["Does it know materials?", "Can it handle phase diagrams?"]
+    }
+  },
+  {
+    "id": "persona-064",
+    "identity": {
+      "role": "Instructional Designer",
+      "discipline": "Library Services",
+      "institution": "University Library",
+      "yearsTeaching": 0,
+      "typicalClassSize": null
+    },
+    "techContext": {
+      "proficiency": "advanced",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Supporting information literacy instruction"
+    },
+    "teachingGoals": ["Develop information literacy", "Support research skills across disciplines"],
+    "testingFocus": {
+      "primaryFeatures": ["Elaborative Interrogation", "Metacognition"],
+      "userJourneys": ["Source evaluation activities", "Research process reflection"],
+      "abandonTriggers": ["No citation/source support", "Ignores information literacy"],
+      "recommendTriggers": ["Supports critical evaluation", "Integrates with research process"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "information-focused evaluator",
+      "aiAttitude": "concerned about AI and information accuracy",
+      "evidenceThreshold": "high",
+      "concerns": ["How does this relate to AI hallucination?", "Does it support information literacy?"]
+    }
+  },
+  {
+    "id": "persona-065",
+    "identity": {
+      "role": "Associate Professor",
+      "discipline": "Epidemiology",
+      "institution": "School of Public Health",
+      "yearsTeaching": 10,
+      "typicalClassSize": 45
+    },
+    "techContext": {
+      "proficiency": "advanced",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "high",
+      "sessionContext": "Active research projects plus teaching"
+    },
+    "teachingGoals": ["Develop causal reasoning", "Navigate study design trade-offs"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Desirable Difficulties"],
+      "userJourneys": ["Outbreak investigation scenarios", "Study design challenges"],
+      "abandonTriggers": ["Epidemiologically naive", "Ignores confounding"],
+      "recommendTriggers": ["Sophisticated epi reasoning", "Real-world complexity"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "methods-focused scientist",
+      "aiAttitude": "interested if rigorous",
+      "evidenceThreshold": "very high",
+      "concerns": ["Does it understand causal inference?", "Can it handle methodological nuance?"]
+    }
+  },
+  {
+    "id": "persona-066",
+    "identity": {
+      "role": "Graduate Teaching Fellow",
+      "discipline": "Philosophy of Science",
+      "institution": "Research University",
+      "yearsTeaching": 2,
+      "typicalClassSize": 28
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "Linux Laptop",
+      "browser": "Firefox",
+      "accessibilityNeeds": null,
+      "timePressure": "extreme",
+      "sessionContext": "Dissertation writing while teaching"
+    },
+    "teachingGoals": ["Develop scientific reasoning awareness", "Connect philosophy to practice"],
+    "testingFocus": {
+      "primaryFeatures": ["Elaborative Interrogation", "Metacognition"],
+      "userJourneys": ["Philosophy of science questions", "Reasoning reflection"],
+      "abandonTriggers": ["Naive realism", "No philosophical sophistication"],
+      "recommendTriggers": ["Philosophically nuanced", "Connects to scientific practice"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "analytically critical",
+      "aiAttitude": "philosophically interested in AI",
+      "evidenceThreshold": "high",
+      "concerns": ["Can AI reason philosophically?", "What are AI's epistemic assumptions?"]
+    }
+  },
+  {
+    "id": "persona-067",
+    "identity": {
+      "role": "Senior Instructor",
+      "discipline": "Dental Hygiene",
+      "institution": "Allied Health College",
+      "yearsTeaching": 12,
+      "typicalClassSize": 32
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "Windows Desktop",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Clinic supervision plus didactic teaching"
+    },
+    "teachingGoals": ["Develop clinical judgment", "Prepare for board exams"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Spaced Repetition"],
+      "userJourneys": ["Patient case generation", "Board review practice"],
+      "abandonTriggers": ["No dental hygiene context", "Medically generic"],
+      "recommendTriggers": ["DH-specific cases", "Board-aligned content"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "practical educator",
+      "aiAttitude": "if it helps my students pass",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Is content DH-specific?", "Will it improve board scores?"]
+    }
+  },
+  {
+    "id": "persona-068",
+    "identity": {
+      "role": "Adjunct Professor",
+      "discipline": "Game Design",
+      "institution": "Digital Arts College",
+      "yearsTeaching": 7,
+      "typicalClassSize": 20
+    },
+    "techContext": {
+      "proficiency": "expert",
+      "primaryDevice": "Windows Gaming PC",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Industry designer teaching studio"
+    },
+    "teachingGoals": ["Develop design iteration skills", "Balance creativity with player psychology"],
+    "testingFocus": {
+      "primaryFeatures": ["Metacognition", "Case-Based Learning"],
+      "userJourneys": ["Design reflection frameworks", "Player psychology scenarios"],
+      "abandonTriggers": ["Doesn't understand games", "No interactive design context"],
+      "recommendTriggers": ["Understands game design", "Supports iterative process"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "design-focused gamer",
+      "aiAttitude": "actively using AI in game dev",
+      "evidenceThreshold": "low-moderate",
+      "concerns": ["Is this designed well?", "Does it understand player experience?"]
+    }
+  },
+  {
+    "id": "persona-069",
+    "identity": {
+      "role": "Associate Professor",
+      "discipline": "Rhetoric",
+      "institution": "Large State University",
+      "yearsTeaching": 13,
+      "typicalClassSize": 35
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Safari",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Writing program administration"
+    },
+    "teachingGoals": ["Develop rhetorical awareness", "Analyze argument and persuasion"],
+    "testingFocus": {
+      "primaryFeatures": ["Elaborative Interrogation", "Case-Based Learning"],
+      "userJourneys": ["Rhetorical analysis prompts", "Persuasion case studies"],
+      "abandonTriggers": ["No rhetorical awareness", "Ignores audience and context"],
+      "recommendTriggers": ["Rhetorically sophisticated", "Develops analytical skills"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "language-focused critic",
+      "aiAttitude": "interested in AI rhetoric",
+      "evidenceThreshold": "high",
+      "concerns": ["Can AI understand persuasion?", "How does AI affect rhetoric?"]
+    }
+  },
+  {
+    "id": "persona-070",
+    "identity": {
+      "role": "Assistant Professor",
+      "discipline": "Aerospace Engineering",
+      "institution": "Technical University",
+      "yearsTeaching": 4,
+      "typicalClassSize": 40
+    },
+    "techContext": {
+      "proficiency": "expert",
+      "primaryDevice": "Linux Workstation",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "extreme",
+      "sessionContext": "Research lab startup plus teaching"
+    },
+    "teachingGoals": ["Develop systems thinking", "Connect theory to flight applications"],
+    "testingFocus": {
+      "primaryFeatures": ["Transfer Learning", "Desirable Difficulties"],
+      "userJourneys": ["Aircraft design scenarios", "Systems integration problems"],
+      "abandonTriggers": ["No aerospace context", "Can't handle complex systems"],
+      "recommendTriggers": ["Understands aerospace systems", "Industry-relevant challenges"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "precision-focused engineer",
+      "aiAttitude": "interested in AI for engineering",
+      "evidenceThreshold": "high",
+      "concerns": ["Can it handle aerospace complexity?", "Safety-critical considerations?"]
+    }
+  },
+  {
+    "id": "persona-071",
+    "identity": {
+      "role": "Professor",
+      "discipline": "Gender Studies",
+      "institution": "Research University",
+      "yearsTeaching": 19,
+      "typicalClassSize": 30
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Firefox",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Department chair duties"
+    },
+    "teachingGoals": ["Develop critical consciousness", "Navigate intersectional analysis"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Metacognition"],
+      "userJourneys": ["Intersectional case studies", "Critical reflection prompts"],
+      "abandonTriggers": ["Reproduces stereotypes", "Binary frameworks only"],
+      "recommendTriggers": ["Intersectional sophistication", "Critical perspective"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "critically engaged",
+      "aiAttitude": "concerned about AI bias reproduction",
+      "evidenceThreshold": "high",
+      "concerns": ["Whose perspectives are embedded?", "Does it challenge or reproduce power?"]
+    }
+  },
+  {
+    "id": "persona-072",
+    "identity": {
+      "role": "Adjunct Instructor",
+      "discipline": "Culinary Arts",
+      "institution": "Culinary Institute",
+      "yearsTeaching": 9,
+      "typicalClassSize": 16
+    },
+    "techContext": {
+      "proficiency": "basic",
+      "primaryDevice": "iPad",
+      "browser": "Safari",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Executive chef teaching techniques"
+    },
+    "teachingGoals": ["Develop palate and technique", "Prepare for industry realities"],
+    "testingFocus": {
+      "primaryFeatures": ["Metacognition", "Transfer Learning"],
+      "userJourneys": ["Technique reflection", "Kitchen scenario problem-solving"],
+      "abandonTriggers": ["No culinary context", "Can't handle sensory learning"],
+      "recommendTriggers": ["Supports culinary education", "Industry-relevant scenarios"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "hands-on skeptic",
+      "aiAttitude": "doesn't see the point",
+      "evidenceThreshold": "low",
+      "concerns": ["How can tech help cooking?", "My students need to taste, not read"]
+    }
+  },
+  {
+    "id": "persona-073",
+    "identity": {
+      "role": "Associate Professor",
+      "discipline": "Speech-Language Pathology",
+      "institution": "Communication Sciences School",
+      "yearsTeaching": 11,
+      "typicalClassSize": 30
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "high",
+      "sessionContext": "Clinic director plus teaching"
+    },
+    "teachingGoals": ["Develop clinical reasoning", "Prepare for ASHA certification"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Misconception Tracker"],
+      "userJourneys": ["Client case generation", "Identify reasoning errors"],
+      "abandonTriggers": ["No SLP-specific context", "Medical model only"],
+      "recommendTriggers": ["SLP-appropriate cases", "Communication-focused"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "profession-focused evaluator",
+      "aiAttitude": "interested in AI for communication disorders",
+      "evidenceThreshold": "high",
+      "concerns": ["Does it understand communication disorders?", "Clinical accuracy?"]
+    }
+  },
+  {
+    "id": "persona-074",
+    "identity": {
+      "role": "Instructional Designer",
+      "discipline": "Military Education",
+      "institution": "Military Academy",
+      "yearsTeaching": 0,
+      "typicalClassSize": null
+    },
+    "techContext": {
+      "proficiency": "advanced",
+      "primaryDevice": "Windows Desktop",
+      "browser": "Edge",
+      "accessibilityNeeds": null,
+      "timePressure": "high",
+      "sessionContext": "Developing officer training"
+    },
+    "teachingGoals": ["Develop decision-making under pressure", "Leadership ethics"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Desirable Difficulties"],
+      "userJourneys": ["Leadership scenarios", "Ethical decision-making"],
+      "abandonTriggers": ["Civilian-only context", "No understanding of military culture"],
+      "recommendTriggers": ["Respects military context", "Develops leadership judgment"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "mission-focused evaluator",
+      "aiAttitude": "interested in AI for training",
+      "evidenceThreshold": "high",
+      "concerns": ["Security considerations?", "Does it understand military context?"]
+    }
+  },
+  {
+    "id": "persona-075",
+    "identity": {
+      "role": "Graduate Teaching Assistant",
+      "discipline": "Cognitive Science",
+      "institution": "Research University",
+      "yearsTeaching": 2,
+      "typicalClassSize": 40
+    },
+    "techContext": {
+      "proficiency": "expert",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "extreme",
+      "sessionContext": "Dissertation research plus teaching"
+    },
+    "teachingGoals": ["Connect multiple disciplines", "Develop computational thinking"],
+    "testingFocus": {
+      "primaryFeatures": ["Transfer Learning", "Elaborative Interrogation"],
+      "userJourneys": ["Cross-disciplinary integration", "Computational cognition problems"],
+      "abandonTriggers": ["Single-discipline focus", "No cognitive modeling"],
+      "recommendTriggers": ["Truly interdisciplinary", "Computationally sophisticated"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "interdisciplinary evaluator",
+      "aiAttitude": "professionally studies AI",
+      "evidenceThreshold": "very high",
+      "concerns": ["Is this cognitively realistic?", "Does it reflect current cogsci?"]
+    }
+  },
+  {
+    "id": "persona-076",
+    "identity": {
+      "role": "Senior Lecturer",
+      "discipline": "Hospitality Management",
+      "institution": "Business School",
+      "yearsTeaching": 14,
+      "typicalClassSize": 50
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "Windows Laptop",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Industry connections active"
+    },
+    "teachingGoals": ["Develop service excellence mindset", "Prepare for management roles"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Collaborative Learning"],
+      "userJourneys": ["Hotel/restaurant scenarios", "Team service challenges"],
+      "abandonTriggers": ["Generic business only", "No hospitality understanding"],
+      "recommendTriggers": ["Hospitality-specific cases", "Service excellence focus"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "industry-connected pragmatist",
+      "aiAttitude": "seeing AI impact hospitality already",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Does it understand hospitality?", "Will AI replace my students?"]
+    }
+  },
+  {
+    "id": "persona-077",
+    "identity": {
+      "role": "Adjunct Professor",
+      "discipline": "Public Policy",
+      "institution": "Policy School",
+      "yearsTeaching": 8,
+      "typicalClassSize": 35
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "MacBook Air",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Government consultant teaching"
+    },
+    "teachingGoals": ["Develop policy analysis skills", "Navigate political feasibility"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Transfer Learning"],
+      "userJourneys": ["Policy analysis scenarios", "Implementation challenges"],
+      "abandonTriggers": ["Politically naive", "Ignores implementation reality"],
+      "recommendTriggers": ["Politically sophisticated", "Real-world policy complexity"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "practice-focused evaluator",
+      "aiAttitude": "concerned about AI in government",
+      "evidenceThreshold": "high",
+      "concerns": ["Can AI understand policy complexity?", "Political bias?"]
+    }
+  },
+  {
+    "id": "persona-078",
+    "identity": {
+      "role": "Associate Professor",
+      "discipline": "Microbiology",
+      "institution": "Research University",
+      "yearsTeaching": 10,
+      "typicalClassSize": 100
+    },
+    "techContext": {
+      "proficiency": "advanced",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "high",
+      "sessionContext": "Active lab plus gateway course"
+    },
+    "teachingGoals": ["Make invisible world tangible", "Connect to public health relevance"],
+    "testingFocus": {
+      "primaryFeatures": ["Misconception Tracker", "Case-Based Learning"],
+      "userJourneys": ["Microbial misconceptions", "Outbreak/infection scenarios"],
+      "abandonTriggers": ["Microbiologically inaccurate", "No public health connection"],
+      "recommendTriggers": ["Scientifically accurate", "Real-world relevance clear"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "science educator",
+      "aiAttitude": "interested if accurate",
+      "evidenceThreshold": "very high",
+      "concerns": ["Is the microbiology correct?", "Will it spread misinformation?"]
+    }
+  },
+  {
+    "id": "persona-079",
+    "identity": {
+      "role": "Graduate Teaching Fellow",
+      "discipline": "Medieval History",
+      "institution": "Research University",
+      "yearsTeaching": 2,
+      "typicalClassSize": 30
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "MacBook Air",
+      "browser": "Firefox",
+      "accessibilityNeeds": null,
+      "timePressure": "extreme",
+      "sessionContext": "Archive research plus teaching"
+    },
+    "teachingGoals": ["Develop historical thinking", "Make medieval relevant"],
+    "testingFocus": {
+      "primaryFeatures": ["Elaborative Interrogation", "Case-Based Learning"],
+      "userJourneys": ["Primary source analysis", "Historical scenario generation"],
+      "abandonTriggers": ["Anachronistic assumptions", "Pop history stereotypes"],
+      "recommendTriggers": ["Historically sophisticated", "Avoids anachronism"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "archivally-minded",
+      "aiAttitude": "worried about AI historical accuracy",
+      "evidenceThreshold": "high",
+      "concerns": ["Will it get medieval history right?", "Pop culture contamination?"]
+    }
+  },
+  {
+    "id": "persona-080",
+    "identity": {
+      "role": "Assistant Professor",
+      "discipline": "Information Systems",
+      "institution": "Business School",
+      "yearsTeaching": 5,
+      "typicalClassSize": 55
+    },
+    "techContext": {
+      "proficiency": "expert",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "high",
+      "sessionContext": "Publishing pressure plus teaching"
+    },
+    "teachingGoals": ["Bridge business and technology", "Develop systems thinking"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Transfer Learning"],
+      "userJourneys": ["IT strategy scenarios", "Technology implementation cases"],
+      "abandonTriggers": ["Pure tech or pure business", "Outdated technology examples"],
+      "recommendTriggers": ["True business-IT integration", "Current technology context"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "IS perspective evaluator",
+      "aiAttitude": "professionally studies AI adoption",
+      "evidenceThreshold": "high",
+      "concerns": ["Is this good IS practice?", "Does it model AI adoption well?"]
+    }
+  },
+  {
+    "id": "persona-081",
+    "identity": {
+      "role": "Professor",
+      "discipline": "Organic Chemistry",
+      "institution": "Research University",
+      "yearsTeaching": 23,
+      "typicalClassSize": 200
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "Windows Desktop",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Tenured, focused on teaching innovation"
+    },
+    "teachingGoals": ["Demystify mechanisms", "Reduce orgo anxiety"],
+    "testingFocus": {
+      "primaryFeatures": ["Misconception Tracker", "Desirable Difficulties"],
+      "userJourneys": ["Mechanism misconceptions", "Progressive problem sequences"],
+      "abandonTriggers": ["Can't draw structures", "No mechanism understanding"],
+      "recommendTriggers": ["Supports orgo pedagogy", "Addresses real student struggles"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "veteran innovator",
+      "aiAttitude": "cautiously optimistic",
+      "evidenceThreshold": "very high",
+      "concerns": ["Can it handle mechanism arrows?", "Will it improve pass rates?"]
+    }
+  },
+  {
+    "id": "persona-082",
+    "identity": {
+      "role": "Adjunct Lecturer",
+      "discipline": "Interior Design",
+      "institution": "Design School",
+      "yearsTeaching": 6,
+      "typicalClassSize": 16
+    },
+    "techContext": {
+      "proficiency": "advanced",
+      "primaryDevice": "iMac",
+      "browser": "Safari",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Practicing designer teaching studio"
+    },
+    "teachingGoals": ["Develop spatial reasoning", "Balance aesthetics with function"],
+    "testingFocus": {
+      "primaryFeatures": ["Metacognition", "Case-Based Learning"],
+      "userJourneys": ["Design process reflection", "Client scenario generation"],
+      "abandonTriggers": ["No spatial context", "Generic design approach"],
+      "recommendTriggers": ["Supports interior design thinking", "Realistic client scenarios"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "design-focused evaluator",
+      "aiAttitude": "watching AI design tools",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Can it support spatial thinking?", "Will AI make design generic?"]
+    }
+  },
+  {
+    "id": "persona-083",
+    "identity": {
+      "role": "Associate Professor",
+      "discipline": "Athletic Training",
+      "institution": "Health Sciences College",
+      "yearsTeaching": 12,
+      "typicalClassSize": 28
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "iPad Pro",
+      "browser": "Safari",
+      "accessibilityNeeds": null,
+      "timePressure": "high",
+      "sessionContext": "Clinical coordination plus teaching"
+    },
+    "teachingGoals": ["Develop clinical decision-making", "Prepare for BOC exam"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Spaced Repetition"],
+      "userJourneys": ["Athletic injury scenarios", "Board exam preparation"],
+      "abandonTriggers": ["No AT-specific context", "Generic medical content"],
+      "recommendTriggers": ["Sport-specific cases", "BOC-aligned content"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "clinical pragmatist",
+      "aiAttitude": "interested if profession-aware",
+      "evidenceThreshold": "high",
+      "concerns": ["Does it know athletic training?", "Will it improve board pass rates?"]
+    }
+  },
+  {
+    "id": "persona-084",
+    "identity": {
+      "role": "Instructional Designer",
+      "discipline": "STEM Education",
+      "institution": "Science Center/Museum",
+      "yearsTeaching": 0,
+      "typicalClassSize": null
+    },
+    "techContext": {
+      "proficiency": "expert",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Developing public science programs"
+    },
+    "teachingGoals": ["Make science engaging for public", "Bridge informal and formal learning"],
+    "testingFocus": {
+      "primaryFeatures": ["Elaborative Interrogation", "Misconception Tracker"],
+      "userJourneys": ["Public science engagement", "Misconception identification"],
+      "abandonTriggers": ["Academic-only framing", "No public audience awareness"],
+      "recommendTriggers": ["Supports informal learning", "Engages general public"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "public engagement focused",
+      "aiAttitude": "interested in AI for science communication",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Can this work for non-students?", "Will it engage the public?"]
+    }
+  },
+  {
+    "id": "persona-085",
+    "identity": {
+      "role": "Senior Instructor",
+      "discipline": "Technical Writing",
+      "institution": "Engineering College",
+      "yearsTeaching": 15,
+      "typicalClassSize": 25
+    },
+    "techContext": {
+      "proficiency": "advanced",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Service course coordination"
+    },
+    "teachingGoals": ["Develop clear technical communication", "Prepare for professional writing"],
+    "testingFocus": {
+      "primaryFeatures": ["Formative Assessment", "Growth Mindset Feedback"],
+      "userJourneys": ["Writing feedback generation", "Revision guidance"],
+      "abandonTriggers": ["Generic writing advice", "No technical context"],
+      "recommendTriggers": ["Technical writing-specific", "Actionable feedback"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "writing pedagogy expert",
+      "aiAttitude": "deeply engaged with AI writing questions",
+      "evidenceThreshold": "high",
+      "concerns": ["How should AI change technical writing pedagogy?", "Will students just use AI?"]
+    }
+  },
+  {
+    "id": "persona-086",
+    "identity": {
+      "role": "Graduate Teaching Fellow",
+      "discipline": "Astronomy",
+      "institution": "Research University",
+      "yearsTeaching": 2,
+      "typicalClassSize": 100
+    },
+    "techContext": {
+      "proficiency": "advanced",
+      "primaryDevice": "Linux Laptop",
+      "browser": "Firefox",
+      "accessibilityNeeds": null,
+      "timePressure": "extreme",
+      "sessionContext": "Observing runs plus teaching"
+    },
+    "teachingGoals": ["Create cosmic perspective", "Connect scale to everyday experience"],
+    "testingFocus": {
+      "primaryFeatures": ["Misconception Tracker", "Transfer Learning"],
+      "userJourneys": ["Scale misconceptions", "Cosmic connection activities"],
+      "abandonTriggers": ["Astronomically inaccurate", "No sense of scale"],
+      "recommendTriggers": ["Scientifically accurate", "Creates wonder appropriately"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "outreach-minded scientist",
+      "aiAttitude": "interested but accuracy-focused",
+      "evidenceThreshold": "high",
+      "concerns": ["Is the astronomy correct?", "Will it inspire or misinform?"]
+    }
+  },
+  {
+    "id": "persona-087",
+    "identity": {
+      "role": "Adjunct Professor",
+      "discipline": "Fashion Design",
+      "institution": "Art & Design School",
+      "yearsTeaching": 10,
+      "typicalClassSize": 18
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Industry designer teaching"
+    },
+    "teachingGoals": ["Develop design vision", "Navigate industry realities"],
+    "testingFocus": {
+      "primaryFeatures": ["Metacognition", "Case-Based Learning"],
+      "userJourneys": ["Design process reflection", "Industry scenarios"],
+      "abandonTriggers": ["No fashion understanding", "Generic design thinking"],
+      "recommendTriggers": ["Fashion-specific insights", "Industry-relevant scenarios"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "industry-connected evaluator",
+      "aiAttitude": "watching AI in fashion closely",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Can this help with creative vision?", "How is AI changing fashion?"]
+    }
+  },
+  {
+    "id": "persona-088",
+    "identity": {
+      "role": "Associate Professor",
+      "discipline": "Biostatistics",
+      "institution": "School of Public Health",
+      "yearsTeaching": 9,
+      "typicalClassSize": 40
+    },
+    "techContext": {
+      "proficiency": "expert",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "high",
+      "sessionContext": "Grant-funded research plus teaching"
+    },
+    "teachingGoals": ["Develop statistical intuition", "Connect to real health data"],
+    "testingFocus": {
+      "primaryFeatures": ["Desirable Difficulties", "Case-Based Learning"],
+      "userJourneys": ["Statistical reasoning challenges", "Health data scenarios"],
+      "abandonTriggers": ["Statistically naive", "No health context"],
+      "recommendTriggers": ["Sophisticated statistical thinking", "Real health applications"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "methodologically rigorous",
+      "aiAttitude": "interested in AI for stats education",
+      "evidenceThreshold": "very high",
+      "concerns": ["Is the statistics correct?", "Can it teach probabilistic thinking?"]
+    }
+  },
+  {
+    "id": "persona-089",
+    "identity": {
+      "role": "Professor",
+      "discipline": "Archaeology",
+      "institution": "Research University",
+      "yearsTeaching": 21,
+      "typicalClassSize": 35
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Safari",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Between dig seasons"
+    },
+    "teachingGoals": ["Develop archaeological thinking", "Connect material to culture"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Elaborative Interrogation"],
+      "userJourneys": ["Site analysis scenarios", "Material culture interpretation"],
+      "abandonTriggers": ["Indiana Jones stereotypes", "Treasure-hunting framing"],
+      "recommendTriggers": ["Respects archaeological method", "Cultural sensitivity"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "field scientist perspective",
+      "aiAttitude": "concerned about looting implications",
+      "evidenceThreshold": "high",
+      "concerns": ["Does it respect archaeological ethics?", "Will it promote treasure hunting?"]
+    }
+  },
+  {
+    "id": "persona-090",
+    "identity": {
+      "role": "Assistant Professor",
+      "discipline": "Cybersecurity",
+      "institution": "Technical University",
+      "yearsTeaching": 4,
+      "typicalClassSize": 45
+    },
+    "techContext": {
+      "proficiency": "expert",
+      "primaryDevice": "Linux Laptop",
+      "browser": "Firefox",
+      "accessibilityNeeds": null,
+      "timePressure": "high",
+      "sessionContext": "Research lab plus teaching"
+    },
+    "teachingGoals": ["Develop adversarial thinking", "Prepare for industry certifications"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Desirable Difficulties"],
+      "userJourneys": ["Security scenario generation", "Certification preparation"],
+      "abandonTriggers": ["Security inaccuracies", "Outdated threats"],
+      "recommendTriggers": ["Current threat landscape", "Industry-relevant scenarios"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "security-minded evaluator",
+      "aiAttitude": "professionally concerned about AI security",
+      "evidenceThreshold": "very high",
+      "concerns": ["Is this tool secure?", "Does it understand security correctly?"]
+    }
+  },
+  {
+    "id": "persona-091",
+    "identity": {
+      "role": "Senior Lecturer",
+      "discipline": "Supply Chain Management",
+      "institution": "Business School",
+      "yearsTeaching": 16,
+      "typicalClassSize": 60
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "Windows Laptop",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Industry consulting alongside teaching"
+    },
+    "teachingGoals": ["Develop systems thinking", "Navigate global complexity"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Transfer Learning"],
+      "userJourneys": ["Supply chain disruption scenarios", "Global logistics challenges"],
+      "abandonTriggers": ["Oversimplified supply chains", "No global perspective"],
+      "recommendTriggers": ["Realistic supply chain complexity", "Current industry challenges"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "industry-connected pragmatist",
+      "aiAttitude": "using AI in supply chain already",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Does it understand supply chain complexity?", "Current industry relevance?"]
+    }
+  },
+  {
+    "id": "persona-092",
+    "identity": {
+      "role": "Adjunct Instructor",
+      "discipline": "Yoga & Mindfulness",
+      "institution": "Health & Wellness Program",
+      "yearsTeaching": 8,
+      "typicalClassSize": 20
+    },
+    "techContext": {
+      "proficiency": "basic",
+      "primaryDevice": "iPhone",
+      "browser": "Safari",
+      "accessibilityNeeds": null,
+      "timePressure": "low",
+      "sessionContext": "Studio owner teaching certification"
+    },
+    "teachingGoals": ["Develop embodied awareness", "Teach teaching presence"],
+    "testingFocus": {
+      "primaryFeatures": ["Metacognition", "Transfer Learning"],
+      "userJourneys": ["Contemplative reflection", "Teaching presence development"],
+      "abandonTriggers": ["Only cognitive learning", "No embodiment understanding"],
+      "recommendTriggers": ["Supports contemplative pedagogy", "Respects embodied learning"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "embodiment-first skeptic",
+      "aiAttitude": "sees AI as opposite of presence",
+      "evidenceThreshold": "low",
+      "concerns": ["Can tech serve presence?", "Will this pull students out of body?"]
+    }
+  },
+  {
+    "id": "persona-093",
+    "identity": {
+      "role": "Associate Professor",
+      "discipline": "Immunology",
+      "institution": "Medical School",
+      "yearsTeaching": 11,
+      "typicalClassSize": 140
+    },
+    "techContext": {
+      "proficiency": "advanced",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "high",
+      "sessionContext": "Running lab plus teaching"
+    },
+    "teachingGoals": ["Navigate immune system complexity", "Connect to clinical relevance"],
+    "testingFocus": {
+      "primaryFeatures": ["Cognitive Load Analyzer", "Misconception Tracker"],
+      "userJourneys": ["Sequence complex immune concepts", "Identify immunology misconceptions"],
+      "abandonTriggers": ["Immunologically inaccurate", "No clinical connection"],
+      "recommendTriggers": ["Scientifically rigorous", "Clear clinical relevance"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "research-active scientist",
+      "aiAttitude": "interested if scientifically accurate",
+      "evidenceThreshold": "very high",
+      "concerns": ["Is the immunology correct?", "Can it handle immune complexity?"]
+    }
+  },
+  {
+    "id": "persona-094",
+    "identity": {
+      "role": "Instructional Designer",
+      "discipline": "Nursing Education",
+      "institution": "Hospital Training Center",
+      "yearsTeaching": 0,
+      "typicalClassSize": null
+    },
+    "techContext": {
+      "proficiency": "advanced",
+      "primaryDevice": "Windows Desktop",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "high",
+      "sessionContext": "Developing nurse competencies"
+    },
+    "teachingGoals": ["Ensure clinical competency", "Meet regulatory requirements"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Formative Assessment"],
+      "userJourneys": ["Clinical scenario development", "Competency assessment"],
+      "abandonTriggers": ["No regulatory alignment", "Clinically unsafe content"],
+      "recommendTriggers": ["Meets nursing standards", "Clinically accurate"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "regulatory-aware professional",
+      "aiAttitude": "cautious about clinical AI",
+      "evidenceThreshold": "very high",
+      "concerns": ["Will this meet accreditation?", "Is content clinically safe?"]
+    }
+  },
+  {
+    "id": "persona-095",
+    "identity": {
+      "role": "Graduate Teaching Fellow",
+      "discipline": "Environmental Policy",
+      "institution": "Policy School",
+      "yearsTeaching": 2,
+      "typicalClassSize": 30
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "MacBook Air",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "extreme",
+      "sessionContext": "Dissertation plus teaching"
+    },
+    "teachingGoals": ["Navigate science-policy interface", "Develop policy analysis skills"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Transfer Learning"],
+      "userJourneys": ["Environmental policy scenarios", "Science-policy translation"],
+      "abandonTriggers": ["Ignores political reality", "Scientifically inaccurate"],
+      "recommendTriggers": ["Bridges science and policy", "Politically realistic"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "interdisciplinary evaluator",
+      "aiAttitude": "concerned about AI and climate disinformation",
+      "evidenceThreshold": "high",
+      "concerns": ["Does it understand science-policy gap?", "Climate accuracy?"]
+    }
+  },
+  {
+    "id": "persona-096",
+    "identity": {
+      "role": "Professor",
+      "discipline": "Jazz Studies",
+      "institution": "Conservatory",
+      "yearsTeaching": 24,
+      "typicalClassSize": 12
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Safari",
+      "accessibilityNeeds": null,
+      "timePressure": "low",
+      "sessionContext": "Performing musician teaching"
+    },
+    "teachingGoals": ["Develop improvisational thinking", "Connect tradition to innovation"],
+    "testingFocus": {
+      "primaryFeatures": ["Metacognition", "Transfer Learning"],
+      "userJourneys": ["Improvisation reflection", "Historical connection activities"],
+      "abandonTriggers": ["No musical understanding", "Generic creativity approach"],
+      "recommendTriggers": ["Understands jazz pedagogy", "Supports musical thinking"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "artist-teacher perspective",
+      "aiAttitude": "skeptical about AI and creativity",
+      "evidenceThreshold": "moderate",
+      "concerns": ["Can AI understand improvisation?", "Will this help or homogenize?"]
+    }
+  },
+  {
+    "id": "persona-097",
+    "identity": {
+      "role": "Associate Professor",
+      "discipline": "Rehabilitation Sciences",
+      "institution": "Health Sciences School",
+      "yearsTeaching": 10,
+      "typicalClassSize": 36
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "Windows Laptop",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "high",
+      "sessionContext": "Research grant plus teaching"
+    },
+    "teachingGoals": ["Develop client-centered practice", "Integrate research and practice"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Metacognition"],
+      "userJourneys": ["Rehabilitation scenarios", "Evidence-based practice reflection"],
+      "abandonTriggers": ["Deficit-focused framing", "No rehabilitation context"],
+      "recommendTriggers": ["Strengths-based approach", "EBP integration"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "rehabilitation-focused evaluator",
+      "aiAttitude": "interested if client-centered",
+      "evidenceThreshold": "high",
+      "concerns": ["Does it understand disability perspectives?", "Client-centered approach?"]
+    }
+  },
+  {
+    "id": "persona-098",
+    "identity": {
+      "role": "Adjunct Professor",
+      "discipline": "Product Management",
+      "institution": "Business School",
+      "yearsTeaching": 5,
+      "typicalClassSize": 40
+    },
+    "techContext": {
+      "proficiency": "expert",
+      "primaryDevice": "MacBook Pro",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "high",
+      "sessionContext": "Tech PM teaching part-time"
+    },
+    "teachingGoals": ["Develop product thinking", "Prepare for industry roles"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Collaborative Learning"],
+      "userJourneys": ["Product decisions scenarios", "Sprint simulation"],
+      "abandonTriggers": ["Academic-only perspective", "No agile understanding"],
+      "recommendTriggers": ["Industry-realistic scenarios", "Modern PM practices"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "product-minded evaluator",
+      "aiAttitude": "actively uses AI in PM",
+      "evidenceThreshold": "low-moderate",
+      "concerns": ["Is this tool well-designed?", "Does it understand modern PM?"]
+    }
+  },
+  {
+    "id": "persona-099",
+    "identity": {
+      "role": "Senior Instructor",
+      "discipline": "Forensic Science",
+      "institution": "Criminal Justice Program",
+      "yearsTeaching": 14,
+      "typicalClassSize": 35
+    },
+    "techContext": {
+      "proficiency": "intermediate",
+      "primaryDevice": "Windows Desktop",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "moderate",
+      "sessionContext": "Former forensic examiner teaching"
+    },
+    "teachingGoals": ["Develop evidence-based reasoning", "Navigate CSI effect expectations"],
+    "testingFocus": {
+      "primaryFeatures": ["Case-Based Learning", "Misconception Tracker"],
+      "userJourneys": ["Forensic case scenarios", "Media misconceptions"],
+      "abandonTriggers": ["CSI-style inaccuracies", "Sensationalized content"],
+      "recommendTriggers": ["Scientifically accurate forensics", "Addresses TV misconceptions"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "practice-focused realist",
+      "aiAttitude": "concerned about AI and forensic accuracy",
+      "evidenceThreshold": "high",
+      "concerns": ["Is the forensics accurate?", "Will it reinforce TV myths?"]
+    }
+  },
+  {
+    "id": "persona-100",
+    "identity": {
+      "role": "Assistant Professor",
+      "discipline": "Quantum Computing",
+      "institution": "Computer Science Department",
+      "yearsTeaching": 3,
+      "typicalClassSize": 30
+    },
+    "techContext": {
+      "proficiency": "expert",
+      "primaryDevice": "Linux Workstation",
+      "browser": "Chrome",
+      "accessibilityNeeds": null,
+      "timePressure": "extreme",
+      "sessionContext": "Research startup plus teaching new course"
+    },
+    "teachingGoals": ["Build quantum intuition", "Bridge physics and CS perspectives"],
+    "testingFocus": {
+      "primaryFeatures": ["Cognitive Load Analyzer", "Desirable Difficulties"],
+      "userJourneys": ["Quantum concept scaffolding", "Interdisciplinary bridging"],
+      "abandonTriggers": ["Quantum mysticism", "Can't handle the math"],
+      "recommendTriggers": ["Scientifically rigorous", "Good conceptual scaffolding"]
+    },
+    "skepticismProfile": {
+      "edTechAttitude": "cutting-edge researcher",
+      "aiAttitude": "professionally interested in AI-quantum intersection",
+      "evidenceThreshold": "very high",
+      "concerns": ["Does it understand quantum mechanics?", "Can it avoid pseudoscience?"]
+    }
+  }
+]

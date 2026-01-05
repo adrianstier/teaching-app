@@ -5,8 +5,10 @@ import {
   DocumentPlusIcon,
   TrashIcon,
   ArrowDownTrayIcon,
-  SparklesIcon
+  SparklesIcon,
+  ArrowUpTrayIcon
 } from '@heroicons/react/24/outline';
+import { toast } from 'react-hot-toast';
 import { CheckCircleIcon } from '@heroicons/react/20/solid';
 
 interface Exercise {
@@ -143,6 +145,44 @@ const ExerciseGenerator: React.FC<{ sessionId: string }> = ({ sessionId }) => {
             <h2 className="text-xl font-semibold mb-4">Exercise Configuration</h2>
 
             <div className="space-y-4">
+              {/* Import Questions */}
+              <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center hover:border-brand-gold/50 transition-colors mb-4">
+                <input
+                  type="file"
+                  accept=".json,.csv,.txt"
+                  className="hidden"
+                  id="question-upload"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (file) {
+                      const reader = new FileReader();
+                      reader.onload = (event) => {
+                        try {
+                          const content = event.target?.result as string;
+                          if (file.name.endsWith('.json')) {
+                            const imported = JSON.parse(content);
+                            if (Array.isArray(imported)) {
+                              setExercises([...exercises, ...imported]);
+                              toast.success(`Imported ${imported.length} exercises`);
+                            }
+                          } else {
+                            toast.success(`File "${file.name}" loaded. Parsing coming soon.`);
+                          }
+                        } catch (err) {
+                          toast.error('Failed to parse file');
+                        }
+                      };
+                      reader.readAsText(file);
+                    }
+                  }}
+                />
+                <label htmlFor="question-upload" className="cursor-pointer">
+                  <ArrowUpTrayIcon className="h-6 w-6 text-gray-400 mx-auto mb-2" />
+                  <p className="text-sm font-medium text-gray-700">Import existing questions</p>
+                  <p className="text-xs text-gray-500 mt-1">JSON, CSV, or text file</p>
+                </label>
+              </div>
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Topic *
@@ -152,7 +192,7 @@ const ExerciseGenerator: React.FC<{ sessionId: string }> = ({ sessionId }) => {
                   value={config.topic}
                   onChange={(e) => setConfig({ ...config, topic: e.target.value })}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="e.g., Photosynthesis"
+                  placeholder="e.g., Constitutional law, Supply chain, Literary analysis"
                 />
               </div>
 

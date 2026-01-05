@@ -9,6 +9,8 @@ import {
   LightBulbIcon,
   PresentationChartLineIcon,
 } from '@heroicons/react/24/outline';
+import ResearchBasis, { researchData } from '../shared/ResearchBasis';
+import ExportButton from '../shared/ExportButton';
 
 interface Props {
   sessionId: string;
@@ -62,23 +64,18 @@ const CaseBasedLearning: React.FC<Props> = ({ sessionId }) => {
         animate={{ opacity: 1, y: 0 }}
         className="mb-8"
       >
-        <div className="flex items-center space-x-3 mb-4">
-          <div className="p-3 bg-amber-100 rounded-xl">
-            <BookOpenIcon className="h-8 w-8 text-amber-600" />
+        <div className="flex items-center space-x-4 mb-4">
+          <div className="p-3 bg-scholarly-terracotta/10 rounded-lg">
+            <BookOpenIcon className="h-7 w-7 text-scholarly-terracotta" />
           </div>
           <div>
-            <h1 className="text-3xl font-bold text-brand-navy">Case-Based Learning</h1>
-            <p className="text-gray-600">Generate authentic real-world scenarios for deep learning</p>
+            <h1 className="font-serif text-3xl font-semibold text-brand-navy">Case-Based Learning</h1>
+            <p className="text-brand-text mt-1">Generate authentic real-world scenarios for deep learning</p>
           </div>
         </div>
 
-        <div className="bg-amber-50 rounded-xl p-4 border border-amber-100">
-          <p className="text-sm text-amber-800">
-            <strong>Research Basis:</strong> Case-based learning develops professional reasoning skills
-            (Kolodner, 1992). Authentic contexts improve transfer and motivation while developing
-            critical thinking and decision-making abilities.
-          </p>
-        </div>
+        {/* Research Basis */}
+        <ResearchBasis {...researchData.caseBased} color="terracotta" />
       </motion.div>
 
       {/* Content */}
@@ -101,7 +98,7 @@ const CaseBasedLearning: React.FC<Props> = ({ sessionId }) => {
                 type="text"
                 value={topic}
                 onChange={(e) => setTopic(e.target.value)}
-                placeholder="e.g., Supply chain disruption"
+                placeholder="e.g., Ethical dilemma, Clinical decision-making, Historical interpretation"
                 className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-amber-500"
               />
             </div>
@@ -113,7 +110,7 @@ const CaseBasedLearning: React.FC<Props> = ({ sessionId }) => {
                 type="text"
                 value={domain}
                 onChange={(e) => setDomain(e.target.value)}
-                placeholder="e.g., Business Management"
+                placeholder="e.g., Philosophy, Nursing, History, Economics"
                 className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-amber-500"
               />
             </div>
@@ -159,7 +156,7 @@ const CaseBasedLearning: React.FC<Props> = ({ sessionId }) => {
               <textarea
                 value={objectives}
                 onChange={(e) => setObjectives(e.target.value)}
-                placeholder="Apply stakeholder analysis&#10;Evaluate decision trade-offs&#10;Develop evidence-based recommendations"
+                placeholder="Analyze multiple perspectives&#10;Evaluate ethical implications&#10;Apply theoretical frameworks&#10;Develop evidence-based conclusions"
                 className="w-full h-24 p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-amber-500 resize-none"
               />
             </div>
@@ -185,9 +182,12 @@ const CaseBasedLearning: React.FC<Props> = ({ sessionId }) => {
         >
           {caseStudy ? (
             <>
-              <h2 className="text-xl font-semibold text-brand-navy mb-4">
-                {caseStudy.title}
-              </h2>
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-semibold text-brand-navy">
+                  {caseStudy.title}
+                </h2>
+                <ExportButton data={caseStudy} filename="case-study" title="Export" />
+              </div>
 
               {/* Real World Context */}
               <div className="p-4 bg-amber-50 rounded-xl mb-4">

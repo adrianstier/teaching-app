@@ -8,7 +8,9 @@ import {
   ChatBubbleLeftEllipsisIcon,
   DocumentTextIcon,
   LightBulbIcon,
+  BookOpenIcon,
 } from '@heroicons/react/24/outline';
+import ResearchBasis, { researchData } from '../shared/ResearchBasis';
 
 interface Props {
   sessionId: string;
@@ -85,23 +87,18 @@ const GrowthMindset: React.FC<Props> = ({ sessionId }) => {
         animate={{ opacity: 1, y: 0 }}
         className="mb-8"
       >
-        <div className="flex items-center space-x-3 mb-4">
-          <div className="p-3 bg-pink-100 rounded-xl">
-            <RocketLaunchIcon className="h-8 w-8 text-pink-600" />
+        <div className="flex items-center space-x-4 mb-4">
+          <div className="p-3 bg-scholarly-wine/10 rounded-lg">
+            <RocketLaunchIcon className="h-7 w-7 text-scholarly-wine" />
           </div>
           <div>
-            <h1 className="text-3xl font-bold text-brand-navy">Growth Mindset</h1>
-            <p className="text-gray-600">Foster motivation and productive beliefs about learning</p>
+            <h1 className="font-serif text-3xl font-semibold text-brand-navy">Growth Mindset</h1>
+            <p className="text-brand-text mt-1">Foster motivation and productive beliefs about learning</p>
           </div>
         </div>
 
-        <div className="bg-pink-50 rounded-xl p-4 border border-pink-100">
-          <p className="text-sm text-pink-800">
-            <strong>Research Basis:</strong> Dweck's research shows that beliefs about intelligence affect motivation
-            and achievement. Students with a growth mindset (intelligence is malleable) outperform those
-            with fixed mindsets, especially when facing challenges.
-          </p>
-        </div>
+        {/* Research Basis */}
+        <ResearchBasis {...researchData.growthMindset} color="wine" />
       </motion.div>
 
       {/* Tabs */}

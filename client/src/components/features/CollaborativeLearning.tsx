@@ -8,7 +8,10 @@ import {
   DocumentTextIcon,
   ClipboardDocumentCheckIcon,
   ArrowPathRoundedSquareIcon,
+  BookOpenIcon,
 } from '@heroicons/react/24/outline';
+import ResearchBasis, { researchData } from '../shared/ResearchBasis';
+import ExportButton from '../shared/ExportButton';
 
 interface Props {
   sessionId: string;
@@ -84,23 +87,18 @@ const CollaborativeLearning: React.FC<Props> = ({ sessionId }) => {
         animate={{ opacity: 1, y: 0 }}
         className="mb-8"
       >
-        <div className="flex items-center space-x-3 mb-4">
-          <div className="p-3 bg-green-100 rounded-xl">
-            <UsersIcon className="h-8 w-8 text-green-600" />
+        <div className="flex items-center space-x-4 mb-4">
+          <div className="p-3 bg-scholarly-sage/10 rounded-lg">
+            <UsersIcon className="h-7 w-7 text-scholarly-sage" />
           </div>
           <div>
-            <h1 className="text-3xl font-bold text-brand-navy">Group Work</h1>
-            <p className="text-gray-600">Set up group activities that actually work</p>
+            <h1 className="font-serif text-3xl font-semibold text-brand-navy">Group Work</h1>
+            <p className="text-brand-text mt-1">Set up group activities that actually work</p>
           </div>
         </div>
 
-        <div className="bg-green-50 rounded-xl p-4 border border-green-100">
-          <p className="text-sm text-green-800">
-            <strong>Why this works:</strong> Group work helps students learn from each other—but only when
-            it's set up right. The key: make sure everyone has a role, everyone contributes, and there's
-            a clear task. Without structure, some students do all the work while others coast.
-          </p>
-        </div>
+        {/* Research Basis */}
+        <ResearchBasis {...researchData.collaborativeLearning} color="sage" />
       </motion.div>
 
       {/* Tabs */}
@@ -294,9 +292,12 @@ const CollaborativeLearning: React.FC<Props> = ({ sessionId }) => {
         >
           {results && activeTab === 'groups' && (
             <>
-              <h2 className="text-xl font-semibold text-brand-navy mb-4">
-                Group Formation Strategy
-              </h2>
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-semibold text-brand-navy">
+                  Group Formation Strategy
+                </h2>
+                <ExportButton data={results} filename="group-formation" title="Export" />
+              </div>
               <div className="space-y-4">
                 <div className="p-4 bg-green-50 rounded-xl">
                   <h3 className="font-medium text-green-800 mb-2">Recommendation</h3>
@@ -327,9 +328,12 @@ const CollaborativeLearning: React.FC<Props> = ({ sessionId }) => {
 
           {results && activeTab === 'activities' && (
             <>
-              <h2 className="text-xl font-semibold text-brand-navy mb-4">
-                {results.activityName || 'Collaborative Activity'}
-              </h2>
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-semibold text-brand-navy">
+                  {results.activityName || 'Collaborative Activity'}
+                </h2>
+                <ExportButton data={results} filename="collaborative-activity" title="Export" />
+              </div>
               <div className="space-y-4">
                 <div className="p-4 bg-green-50 rounded-xl">
                   <p className="text-sm text-green-800">{results.description}</p>

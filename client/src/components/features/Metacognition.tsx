@@ -8,7 +8,10 @@ import {
   ChartBarIcon,
   DocumentTextIcon,
   ClipboardDocumentCheckIcon,
+  BookOpenIcon,
 } from '@heroicons/react/24/outline';
+import ResearchBasis, { researchData } from '../shared/ResearchBasis';
+import ExportButton from '../shared/ExportButton';
 
 interface Props {
   sessionId: string;
@@ -86,24 +89,18 @@ const Metacognition: React.FC<Props> = ({ sessionId }) => {
         animate={{ opacity: 1, y: 0 }}
         className="mb-8"
       >
-        <div className="flex items-center space-x-3 mb-4">
-          <div className="p-3 bg-indigo-100 rounded-xl">
-            <QuestionMarkCircleIcon className="h-8 w-8 text-indigo-600" />
+        <div className="flex items-center space-x-4 mb-4">
+          <div className="p-3 bg-scholarly-slate/10 rounded-lg">
+            <QuestionMarkCircleIcon className="h-7 w-7 text-scholarly-slate" />
           </div>
           <div>
-            <h1 className="text-3xl font-bold text-brand-navy">Study Skills</h1>
-            <p className="text-gray-600">Help students learn how to learn effectively</p>
+            <h1 className="font-serif text-3xl font-semibold text-brand-navy">Study Skills</h1>
+            <p className="text-brand-text mt-1">Help students learn how to learn effectively</p>
           </div>
         </div>
 
-        <div className="bg-indigo-50 rounded-xl p-4 border border-indigo-100">
-          <p className="text-sm text-indigo-800">
-            <strong>Why this works:</strong> Many students don't know how to study well. They think they
-            understand material when they don't, and use ineffective strategies like re-reading.
-            Teaching students to check their own understanding—and giving them better strategies—helps
-            them become independent learners.
-          </p>
-        </div>
+        {/* Research Basis */}
+        <ResearchBasis {...researchData.metacognition} color="slate" />
       </motion.div>
 
       {/* Tabs */}
@@ -267,9 +264,12 @@ const Metacognition: React.FC<Props> = ({ sessionId }) => {
         >
           {results && activeTab === 'strategies' && (
             <>
-              <h2 className="text-xl font-semibold text-brand-navy mb-4">
-                Study Strategy Guide
-              </h2>
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-semibold text-brand-navy">
+                  Study Strategy Guide
+                </h2>
+                <ExportButton data={results} filename="study-strategies" title="Export" />
+              </div>
               <div className="space-y-4">
                 {results.effectiveStrategies && (
                   <div>
@@ -307,9 +307,12 @@ const Metacognition: React.FC<Props> = ({ sessionId }) => {
 
           {results && activeTab === 'prompts' && (
             <>
-              <h2 className="text-xl font-semibold text-brand-navy mb-4">
-                Self-Explanation Prompts
-              </h2>
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-semibold text-brand-navy">
+                  Self-Explanation Prompts
+                </h2>
+                <ExportButton data={results} filename="self-explanation-prompts" title="Export" />
+              </div>
               <div className="space-y-3">
                 {results.prompts?.map((prompt: any, i: number) => (
                   <div key={i} className="p-4 bg-gray-50 rounded-xl border border-gray-100">

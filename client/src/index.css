@@ -1,39 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  min-height: 100vh;
+/* CSS Custom Properties for Brand */
+:root {
+  --brand-navy: #0A1A2A;
+  --brand-navy-light: #1a2d3d;
+  --brand-gold: #C6A667;
+  --brand-gold-muted: #D4BC8A;
+  --brand-bg: #F1F3F5;
+  --brand-bg-warm: #F8F7F4;
+  --brand-text: #4B5563;
+  --brand-text-light: #6B7280;
+  --brand-cream: #FDFCFA;
+  --brand-border: #E5E7EB;
+  --brand-border-subtle: #F0F0EE;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--brand-bg);
+    color: var(--brand-text);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* Scholarly heading treatment */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Crimson Pro', Georgia, serif;
+    color: var(--brand-navy);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  h1 {
+    font-size: 2.75rem;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    font-size: 1.875rem;
+    line-height: 1.25;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    line-height: 1.35;
+  }
+
+  /* Body text with better readability */
+  p {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--brand-text);
+  }
+
+  code {
+    font-family: 'JetBrains Mono', 'SF Mono', Monaco, monospace;
+  }
 }
 
-/* Custom scrollbar */
+@layer components {
+  /* Elegant card style */
+  .card-scholarly {
+    background: white;
+    border-radius: 0.75rem;
+    border: 1px solid var(--brand-border-subtle);
+    box-shadow:
+      0 1px 2px rgba(10, 26, 42, 0.02),
+      0 4px 12px rgba(10, 26, 42, 0.03);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .card-scholarly:hover {
+    box-shadow:
+      0 2px 4px rgba(10, 26, 42, 0.03),
+      0 8px 24px rgba(10, 26, 42, 0.06);
+  }
+
+  /* Primary button with refined hover */
+  .btn-primary {
+    background-color: var(--brand-navy);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--brand-navy-light);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(10, 26, 42, 0.15);
+  }
+
+  /* Secondary button */
+  .btn-secondary {
+    background-color: transparent;
+    color: var(--brand-navy);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    border: 1.5px solid var(--brand-navy);
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--brand-navy);
+    color: white;
+  }
+
+  /* Gold accent treatment */
+  .accent-gold {
+    color: var(--brand-gold);
+  }
+
+  .accent-gold-bg {
+    background-color: var(--brand-gold);
+    color: white;
+  }
+
+  /* Research callout box */
+  .research-callout {
+    background: linear-gradient(135deg, rgba(198, 166, 103, 0.08) 0%, rgba(198, 166, 103, 0.03) 100%);
+    border-left: 3px solid var(--brand-gold);
+    border-radius: 0 0.5rem 0.5rem 0;
+    padding: 1rem 1.25rem;
+  }
+
+  /* Subtle divider */
+  .divider-subtle {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--brand-border), transparent);
+  }
+
+  /* Badge styling */
+  .badge-new {
+    background-color: var(--brand-gold);
+    color: white;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    padding: 0.125rem 0.5rem;
+    border-radius: 9999px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
+
+@layer utilities {
+  /* Scholarly text gradient */
+  .text-gradient-scholarly {
+    background: linear-gradient(135deg, var(--brand-navy) 0%, #2d4a5e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Smooth focus rings */
+  .focus-scholarly:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(198, 166, 103, 0.3);
+  }
+
+  /* Subtle animation for cards */
+  .animate-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .animate-lift:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* Custom scrollbar - refined */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 10px;
+  background: var(--brand-bg);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 10px;
+  background: #C4C8CC;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #A0A4A8;
+}
+
+/* Selection styling */
+::selection {
+  background-color: rgba(198, 166, 103, 0.25);
+  color: var(--brand-navy);
+}
+
+/* Link underline animation */
+.link-scholarly {
+  position: relative;
+  text-decoration: none;
+  color: var(--brand-navy);
+}
+
+.link-scholarly::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--brand-gold);
+  transition: width 0.2s ease;
+}
+
+.link-scholarly:hover::after {
+  width: 100%;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* User-controlled reduced motion */
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
 }

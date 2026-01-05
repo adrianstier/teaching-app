@@ -8,7 +8,9 @@ import {
   DocumentTextIcon,
   AcademicCapIcon,
   SparklesIcon,
+  BookOpenIcon,
 } from '@heroicons/react/24/outline';
+import ResearchBasis, { researchData } from '../shared/ResearchBasis';
 
 interface Props {
   sessionId: string;
@@ -86,23 +88,18 @@ const DesirableDifficulties: React.FC<Props> = ({ sessionId }) => {
         animate={{ opacity: 1, y: 0 }}
         className="mb-8"
       >
-        <div className="flex items-center space-x-3 mb-4">
-          <div className="p-3 bg-orange-100 rounded-xl">
-            <FireIcon className="h-8 w-8 text-orange-600" />
+        <div className="flex items-center space-x-4 mb-4">
+          <div className="p-3 bg-scholarly-terracotta/10 rounded-lg">
+            <FireIcon className="h-7 w-7 text-scholarly-terracotta" />
           </div>
           <div>
-            <h1 className="text-3xl font-bold text-brand-navy">Desirable Difficulties</h1>
-            <p className="text-gray-600">Create productive struggle that enhances long-term learning</p>
+            <h1 className="font-serif text-3xl font-semibold text-brand-navy">Desirable Difficulties</h1>
+            <p className="text-brand-text mt-1">Create productive struggle that enhances long-term learning</p>
           </div>
         </div>
 
-        <div className="bg-orange-50 rounded-xl p-4 border border-orange-100">
-          <p className="text-sm text-orange-800">
-            <strong>Research Basis:</strong> Bjork's research shows that conditions making learning
-            harder in the short term often enhance long-term retention and transfer.
-            The key is difficulties that require deeper processing, not just extra work.
-          </p>
-        </div>
+        {/* Research Basis */}
+        <ResearchBasis {...researchData.desirableDifficulties} color="terracotta" />
       </motion.div>
 
       {/* Tabs */}

@@ -8,7 +8,9 @@ import {
   DocumentTextIcon,
   PuzzlePieceIcon,
   AcademicCapIcon,
+  BookOpenIcon,
 } from '@heroicons/react/24/outline';
+import ResearchBasis, { researchData } from '../shared/ResearchBasis';
 
 interface Props {
   sessionId: string;
@@ -87,23 +89,18 @@ const TransferLearning: React.FC<Props> = ({ sessionId }) => {
         animate={{ opacity: 1, y: 0 }}
         className="mb-8"
       >
-        <div className="flex items-center space-x-3 mb-4">
-          <div className="p-3 bg-emerald-100 rounded-xl">
-            <ArrowsRightLeftIcon className="h-8 w-8 text-emerald-600" />
+        <div className="flex items-center space-x-4 mb-4">
+          <div className="p-3 bg-scholarly-sage/10 rounded-lg">
+            <ArrowsRightLeftIcon className="h-7 w-7 text-scholarly-sage" />
           </div>
           <div>
-            <h1 className="text-3xl font-bold text-brand-navy">Transfer Learning</h1>
-            <p className="text-gray-600">Help students apply knowledge to new contexts</p>
+            <h1 className="font-serif text-3xl font-semibold text-brand-navy">Transfer Learning</h1>
+            <p className="text-brand-text mt-1">Help students apply knowledge to new contexts</p>
           </div>
         </div>
 
-        <div className="bg-emerald-50 rounded-xl p-4 border border-emerald-100">
-          <p className="text-sm text-emerald-800">
-            <strong>Research Basis:</strong> Transfer is notoriously difficult to achieve. Perkins & Salomon
-            identified two types: "low road" (automatic transfer of well-practiced skills) and "high road"
-            (mindful abstraction and application). High road transfer requires explicit instruction.
-          </p>
-        </div>
+        {/* Research Basis */}
+        <ResearchBasis {...researchData.transferLearning} color="sage" />
       </motion.div>
 
       {/* Tabs */}

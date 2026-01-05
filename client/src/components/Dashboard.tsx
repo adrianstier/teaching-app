@@ -25,6 +25,10 @@ import {
   RocketLaunchIcon,
   EyeIcon,
   SparklesIcon,
+  XMarkIcon,
+  CheckIcon,
+  ArrowTrendingUpIcon,
+  AcademicCapIcon,
 } from '@heroicons/react/24/outline';
 
 const Dashboard: React.FC = () => {
@@ -34,7 +38,7 @@ const Dashboard: React.FC = () => {
       description: 'Set up your course for success before the semester starts',
       principle: 'Good course design makes teaching easier all semester. These tools help you organize your course so students can follow along and remember what they learn.',
       icon: CalendarIcon,
-      color: 'blue',
+      color: 'sage' as const,
       tools: [
         {
           path: '/syllabus-analyzer',
@@ -95,7 +99,7 @@ const Dashboard: React.FC = () => {
       description: 'Make class time more engaging and effective',
       principle: 'Students learn more when they\'re actively doing something, not just listening. These tools help you get students participating and thinking.',
       icon: PresentationChartLineIcon,
-      color: 'green',
+      color: 'terracotta' as const,
       tools: [
         {
           path: '/create',
@@ -156,7 +160,7 @@ const Dashboard: React.FC = () => {
       description: 'Check understanding and help students improve',
       principle: 'Tests aren\'t just for grades—they actually help students learn. Quick checks during class let you see what\'s working and what needs more time.',
       icon: ClipboardDocumentCheckIcon,
-      color: 'purple',
+      color: 'slate' as const,
       tools: [
         {
           path: '/exercise-generator',
@@ -209,7 +213,7 @@ const Dashboard: React.FC = () => {
       description: 'See what\'s working and get better over time',
       principle: 'Great teachers keep improving. These tools help you see patterns in how students are doing and find ways to help them succeed.',
       icon: ChartBarIcon,
-      color: 'orange',
+      color: 'wine' as const,
       tools: [
         {
           path: '/growth-mindset',
@@ -251,14 +255,42 @@ const Dashboard: React.FC = () => {
     },
   ];
 
-  const getColorClasses = (color: string) => {
-    const colors: Record<string, { bg: string; text: string; border: string; hover: string }> = {
-      blue: { bg: 'bg-blue-50', text: 'text-blue-700', border: 'border-blue-200', hover: 'hover:bg-blue-100' },
-      green: { bg: 'bg-green-50', text: 'text-green-700', border: 'border-green-200', hover: 'hover:bg-green-100' },
-      purple: { bg: 'bg-purple-50', text: 'text-purple-700', border: 'border-purple-200', hover: 'hover:bg-purple-100' },
-      orange: { bg: 'bg-orange-50', text: 'text-orange-700', border: 'border-orange-200', hover: 'hover:bg-orange-100' },
+  const getColorClasses = (color: 'sage' | 'terracotta' | 'slate' | 'wine') => {
+    const colors = {
+      sage: {
+        bg: 'bg-scholarly-sage/5',
+        bgSolid: 'bg-scholarly-sage/10',
+        text: 'text-scholarly-sage',
+        border: 'border-scholarly-sage/20',
+        hover: 'hover:bg-scholarly-sage/10',
+        gradient: 'from-scholarly-sage/5 to-scholarly-sage/10',
+      },
+      terracotta: {
+        bg: 'bg-scholarly-terracotta/5',
+        bgSolid: 'bg-scholarly-terracotta/10',
+        text: 'text-scholarly-terracotta',
+        border: 'border-scholarly-terracotta/20',
+        hover: 'hover:bg-scholarly-terracotta/10',
+        gradient: 'from-scholarly-terracotta/5 to-scholarly-terracotta/10',
+      },
+      slate: {
+        bg: 'bg-scholarly-slate/5',
+        bgSolid: 'bg-scholarly-slate/10',
+        text: 'text-scholarly-slate',
+        border: 'border-scholarly-slate/20',
+        hover: 'hover:bg-scholarly-slate/10',
+        gradient: 'from-scholarly-slate/5 to-scholarly-slate/10',
+      },
+      wine: {
+        bg: 'bg-scholarly-wine/5',
+        bgSolid: 'bg-scholarly-wine/10',
+        text: 'text-scholarly-wine',
+        border: 'border-scholarly-wine/20',
+        hover: 'hover:bg-scholarly-wine/10',
+        gradient: 'from-scholarly-wine/5 to-scholarly-wine/10',
+      },
     };
-    return colors[color] || colors.blue;
+    return colors[color];
   };
 
   const workflowSteps = [
@@ -268,143 +300,155 @@ const Dashboard: React.FC = () => {
     { step: 4, name: 'Improve', desc: 'Review analytics & refine approach', timing: 'Ongoing' },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 16 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
-    <div className="max-w-7xl mx-auto">
+    <motion.div
+      className="max-w-6xl mx-auto"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
       {/* Hero Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="text-center mb-16"
-      >
-        <h1 className="text-5xl font-bold text-brand-navy mb-6 leading-tight">
+      <motion.div variants={itemVariants} className="text-center mb-20 pt-8">
+        <p className="text-sm font-medium text-brand-gold tracking-wide uppercase mb-4">
+          Evidence-Based Course Design
+        </p>
+        <h1 className="font-serif text-5xl md:text-6xl font-semibold text-brand-navy mb-6 leading-tight tracking-tight">
           Teaching, Elevated.
         </h1>
-        <p className="text-xl text-brand-text mb-6 max-w-3xl mx-auto leading-relaxed">
-          Simple, practical tools that help your students learn better and remember longer.
-          No education degree required—just good teaching made easier.
+        <p className="text-lg text-brand-text mb-4 max-w-2xl mx-auto leading-relaxed">
+          Practical tools grounded in learning science that help your students learn more effectively and remember longer.
         </p>
-        <p className="text-base text-gray-500 mb-10 max-w-2xl mx-auto">
-          Research shows that small changes to how we teach can make a big difference in student outcomes.
-          These tools make it easy to apply what works.
+        <p className="text-sm text-brand-text-light mb-10 max-w-xl mx-auto">
+          Research demonstrates that small, intentional changes to course design can significantly improve student outcomes.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Link
             to="/create"
-            className="inline-flex items-center px-8 py-4 bg-brand-navy text-white font-semibold rounded-xl shadow-card hover:bg-opacity-90 transition-all"
+            className="inline-flex items-center px-6 py-3 bg-brand-navy text-white font-medium rounded-lg shadow-sm hover:bg-brand-navy-light transition-all duration-200"
           >
             <PlusCircleIcon className="h-5 w-5 mr-2" />
             Create Lecture Package
           </Link>
           <Link
             to="/syllabus-analyzer"
-            className="inline-flex items-center px-8 py-4 bg-white text-brand-navy font-semibold rounded-xl border-2 border-brand-navy hover:bg-brand-navy hover:text-white transition-all"
+            className="inline-flex items-center px-6 py-3 bg-white text-brand-navy font-medium rounded-lg border border-brand-border hover:border-brand-navy hover:bg-brand-bg transition-all duration-200"
           >
+            <DocumentMagnifyingGlassIcon className="h-5 w-5 mr-2" />
             Analyze Your Syllabus
           </Link>
         </div>
       </motion.div>
 
-      {/* Why These Tools Work */}
+      {/* Why These Tools Work - Refined without emojis */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.05 }}
-        className="bg-white rounded-2xl shadow-card p-8 mb-16 border border-gray-100"
+        variants={itemVariants}
+        className="bg-white rounded-xl shadow-card p-8 mb-16 border border-brand-border-subtle"
       >
-        <div className="text-center mb-8">
-          <h2 className="text-2xl font-bold text-brand-navy mb-3">
+        <div className="text-center mb-10">
+          <h2 className="font-serif text-2xl font-semibold text-brand-navy mb-3">
             Why These Tools Work
           </h2>
           <p className="text-brand-text max-w-2xl mx-auto">
-            Our instincts about learning are often wrong. Here's what research shows actually helps students.
+            Common intuitions about learning are often misleading. Here is what decades of research actually shows.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="text-center p-4">
-            <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
-              <span className="text-2xl">❌</span>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="text-center">
+            <div className="w-12 h-12 rounded-lg bg-scholarly-wine/10 flex items-center justify-center mx-auto mb-4">
+              <XMarkIcon className="h-6 w-6 text-scholarly-wine" />
             </div>
-            <h3 className="font-semibold text-brand-navy mb-2">What Feels Productive</h3>
-            <p className="text-sm text-gray-600">
+            <h3 className="font-medium text-brand-navy mb-2">What Feels Productive</h3>
+            <p className="text-sm text-brand-text leading-relaxed">
               Re-reading notes, highlighting, and cramming before exams feel like studying—but students forget most of it within weeks.
             </p>
           </div>
-          <div className="text-center p-4">
-            <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-              <span className="text-2xl">✓</span>
+          <div className="text-center">
+            <div className="w-12 h-12 rounded-lg bg-scholarly-sage/10 flex items-center justify-center mx-auto mb-4">
+              <CheckIcon className="h-6 w-6 text-scholarly-sage" />
             </div>
-            <h3 className="font-semibold text-brand-navy mb-2">What Actually Sticks</h3>
-            <p className="text-sm text-gray-600">
-              Testing yourself, spreading study over time, and mixing up practice feel harder—but students remember much more, much longer.
+            <h3 className="font-medium text-brand-navy mb-2">What Actually Sticks</h3>
+            <p className="text-sm text-brand-text leading-relaxed">
+              Testing yourself, spacing study over time, and mixing up practice feel harder—but students remember more, and for longer.
             </p>
           </div>
-          <div className="text-center p-4">
-            <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-              <span className="text-2xl">🎯</span>
+          <div className="text-center">
+            <div className="w-12 h-12 rounded-lg bg-brand-gold/10 flex items-center justify-center mx-auto mb-4">
+              <ArrowTrendingUpIcon className="h-6 w-6 text-brand-gold" />
             </div>
-            <h3 className="font-semibold text-brand-navy mb-2">Small Changes, Big Results</h3>
-            <p className="text-sm text-gray-600">
-              You don't need to overhaul your course. Small tweaks to how you present material and test students can make a real difference.
+            <h3 className="font-medium text-brand-navy mb-2">Small Changes, Real Results</h3>
+            <p className="text-sm text-brand-text leading-relaxed">
+              You do not need to overhaul your course. Strategic adjustments to how you present and assess material make a measurable difference.
             </p>
           </div>
         </div>
       </motion.div>
 
-      {/* Stats Bar */}
+      {/* Stats Bar - More refined */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1 }}
-        className="bg-gradient-to-r from-brand-navy to-indigo-800 rounded-2xl p-6 mb-16 text-white"
+        variants={itemVariants}
+        className="bg-brand-navy rounded-xl p-8 mb-16"
       >
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div>
-            <p className="text-3xl font-bold">21</p>
-            <p className="text-sm text-blue-200">Evidence-Based Tools</p>
+            <p className="text-3xl font-serif font-semibold text-white">21</p>
+            <p className="text-sm text-white/70 mt-1">Evidence-Based Tools</p>
           </div>
           <div>
-            <p className="text-3xl font-bold">15</p>
-            <p className="text-sm text-blue-200">New Teaching Features</p>
+            <p className="text-3xl font-serif font-semibold text-white">15</p>
+            <p className="text-sm text-white/70 mt-1">New Teaching Features</p>
           </div>
           <div>
-            <p className="text-3xl font-bold">50+</p>
-            <p className="text-sm text-blue-200">Research Citations</p>
+            <p className="text-3xl font-serif font-semibold text-white">50+</p>
+            <p className="text-sm text-white/70 mt-1">Research Citations</p>
           </div>
           <div>
-            <p className="text-3xl font-bold">4</p>
-            <p className="text-sm text-blue-200">Integrated Hubs</p>
+            <p className="text-3xl font-serif font-semibold text-white">4</p>
+            <p className="text-sm text-white/70 mt-1">Integrated Workflows</p>
           </div>
         </div>
       </motion.div>
 
       {/* Teaching Workflow */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.15 }}
-        className="bg-white rounded-2xl shadow-card p-8 mb-16 border border-gray-100"
+        variants={itemVariants}
+        className="bg-white rounded-xl shadow-card p-8 mb-16 border border-brand-border-subtle"
       >
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-brand-navy mb-3">
+        <div className="text-center mb-10">
+          <h2 className="font-serif text-2xl font-semibold text-brand-navy mb-3">
             Your Teaching Workflow
           </h2>
           <p className="text-brand-text">
             Tools organized around how you actually teach
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {workflowSteps.map((step, index) => (
             <div key={step.step} className="relative text-center">
-              <div className="w-16 h-16 rounded-full bg-brand-gold bg-opacity-10 border-2 border-brand-gold flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-brand-gold">{step.step}</span>
+              <div className="w-14 h-14 rounded-full border-2 border-brand-gold bg-brand-gold/5 flex items-center justify-center mx-auto mb-4">
+                <span className="text-xl font-serif font-semibold text-brand-gold">{step.step}</span>
               </div>
-              <h3 className="text-xl font-semibold text-brand-navy mb-2">{step.name}</h3>
+              <h3 className="text-lg font-medium text-brand-navy mb-2">{step.name}</h3>
               <p className="text-sm text-brand-text mb-2">{step.desc}</p>
-              <span className="text-xs font-medium text-brand-gold uppercase tracking-wide">
+              <span className="text-xs font-medium text-brand-gold uppercase tracking-wider">
                 {step.timing}
               </span>
               {index < workflowSteps.length - 1 && (
-                <div className="hidden md:block absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-brand-gold to-transparent -ml-8"></div>
+                <div className="hidden md:block absolute top-7 left-[calc(50%+2rem)] w-[calc(100%-4rem)] h-px bg-gradient-to-r from-brand-gold/40 to-brand-gold/10"></div>
               )}
             </div>
           ))}
@@ -418,24 +462,22 @@ const Dashboard: React.FC = () => {
           return (
             <motion.div
               key={category.name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 + catIndex * 0.1 }}
-              className="bg-white rounded-2xl shadow-card p-8 border border-gray-100"
+              variants={itemVariants}
+              className="bg-white rounded-xl shadow-card p-8 border border-brand-border-subtle"
             >
-              <div className="flex items-start space-x-4 mb-4">
-                <div className={`p-3 rounded-xl ${colorClasses.bg} flex-shrink-0`}>
-                  <category.icon className={`h-8 w-8 ${colorClasses.text}`} />
+              <div className="flex items-start space-x-4 mb-6">
+                <div className={`p-3 rounded-lg ${colorClasses.bgSolid} flex-shrink-0`}>
+                  <category.icon className={`h-6 w-6 ${colorClasses.text}`} />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-brand-navy">{category.name}</h2>
-                  <p className="text-brand-text">{category.description}</p>
+                  <h2 className="font-serif text-xl font-semibold text-brand-navy">{category.name}</h2>
+                  <p className="text-brand-text text-sm mt-1">{category.description}</p>
                 </div>
               </div>
 
               {/* Category Principle */}
-              <div className={`${colorClasses.bg} rounded-lg p-4 mb-6 border-l-4 ${colorClasses.border.replace('border-', 'border-l-')}`}>
-                <p className="text-sm text-gray-700 italic">{category.principle}</p>
+              <div className="research-callout mb-8">
+                <p className="text-sm text-brand-text italic leading-relaxed">{category.principle}</p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -443,30 +485,28 @@ const Dashboard: React.FC = () => {
                   <Link
                     key={tool.path}
                     to={tool.path}
-                    className={`block p-4 rounded-xl border ${colorClasses.border} ${colorClasses.hover} transition-all group hover:shadow-md`}
+                    className={`block p-5 rounded-lg border border-brand-border-subtle bg-white hover:shadow-md hover:border-brand-border transition-all duration-200 group`}
                   >
-                    <div className="flex items-start space-x-3 mb-2">
-                      <div className={`p-2 rounded-lg ${colorClasses.bg} group-hover:scale-110 transition-transform flex-shrink-0`}>
-                        <tool.icon className={`h-5 w-5 ${colorClasses.text}`} />
+                    <div className="flex items-start space-x-3 mb-3">
+                      <div className={`p-2 rounded-md ${colorClasses.bgSolid} group-hover:scale-105 transition-transform flex-shrink-0`}>
+                        <tool.icon className={`h-4 w-4 ${colorClasses.text}`} />
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center space-x-2 flex-wrap">
-                          <h3 className="font-semibold text-brand-navy">{tool.name}</h3>
+                          <h3 className="font-medium text-brand-navy text-sm">{tool.name}</h3>
                           {tool.badge && (
-                            <span className="px-2 py-0.5 text-xs font-medium bg-brand-gold text-white rounded-full">
+                            <span className="badge-new">
                               {tool.badge}
                             </span>
                           )}
                         </div>
-                        <p className="text-sm text-gray-600 mt-1">{tool.desc}</p>
+                        <p className="text-xs text-brand-text-light mt-0.5">{tool.desc}</p>
                       </div>
                     </div>
-                    {/* Why Use This */}
-                    <p className="text-xs text-gray-500 mt-2 line-clamp-2">{tool.why}</p>
-                    {/* Best For */}
-                    <div className="mt-2 pt-2 border-t border-gray-100">
-                      <p className="text-xs font-medium text-gray-400 uppercase tracking-wide">Best for</p>
-                      <p className="text-xs text-gray-600 mt-0.5">{tool.bestFor}</p>
+                    <p className="text-xs text-brand-text leading-relaxed line-clamp-2">{tool.why}</p>
+                    <div className="mt-3 pt-3 border-t border-brand-border-subtle">
+                      <p className="text-[10px] font-medium text-brand-text-light uppercase tracking-wide">Best for</p>
+                      <p className="text-xs text-brand-text mt-0.5">{tool.bestFor}</p>
                     </div>
                   </Link>
                 ))}
@@ -478,63 +518,60 @@ const Dashboard: React.FC = () => {
 
       {/* What Research Shows */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6 }}
-        className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-8 mb-16 border border-indigo-100"
+        variants={itemVariants}
+        className="bg-gradient-to-br from-brand-gold/5 to-brand-gold/10 rounded-xl p-8 mb-16 border border-brand-gold/20"
       >
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-brand-navy mb-3">
+        <div className="text-center mb-10">
+          <h2 className="font-serif text-2xl font-semibold text-brand-navy mb-3">
             Strategies That Work
           </h2>
           <p className="text-brand-text max-w-2xl mx-auto">
-            These approaches have been tested in hundreds of studies with real students
+            These approaches have been validated in hundreds of studies with real students
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {[
             { name: 'Practice Testing', benefit: 'Quizzes help students remember more than re-reading', simple: 'Test yourself to learn' },
-            { name: 'Spread It Out', benefit: 'Studying over time beats cramming every time', simple: 'Space out your reviews' },
-            { name: 'Explain Why', benefit: 'Asking "why?" helps students understand deeply', simple: 'Connect new to old' },
-            { name: 'Self-Checking', benefit: 'Students who monitor their learning do better', simple: 'Know what you know' },
+            { name: 'Spaced Practice', benefit: 'Studying over time beats cramming every time', simple: 'Space out your reviews' },
+            { name: 'Elaborative Interrogation', benefit: 'Asking "why?" helps students understand deeply', simple: 'Connect new to old' },
+            { name: 'Metacognition', benefit: 'Students who monitor their learning do better', simple: 'Know what you know' },
           ].map((research) => (
-            <div key={research.name} className="bg-white rounded-xl p-4 text-center">
-              <p className="font-semibold text-brand-navy">{research.name}</p>
-              <p className="text-sm text-indigo-600 my-2">{research.benefit}</p>
-              <p className="text-xs text-gray-500 italic">{research.simple}</p>
+            <div key={research.name} className="bg-white rounded-lg p-5 text-center border border-brand-border-subtle">
+              <p className="font-medium text-brand-navy text-sm">{research.name}</p>
+              <p className="text-xs text-brand-gold mt-2 leading-relaxed">{research.benefit}</p>
+              <p className="text-xs text-brand-text-light italic mt-2">{research.simple}</p>
             </div>
           ))}
         </div>
-        <p className="text-xs text-center text-gray-500 mt-6">
-          These approaches consistently help students learn more than traditional studying.
+        <p className="text-xs text-center text-brand-text-light mt-8">
+          These approaches consistently help students learn more effectively than traditional studying methods.
         </p>
       </motion.div>
 
-      {/* Quick Start */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.7 }}
-        className="text-center pb-8"
-      >
-        <h2 className="text-2xl font-bold text-brand-navy mb-4">Ready to Transform Your Teaching?</h2>
-        <p className="text-brand-text mb-6">Start with any tool—they all work together seamlessly.</p>
+      {/* Quick Start - Refined */}
+      <motion.div variants={itemVariants} className="text-center pb-12">
+        <div className="inline-flex items-center space-x-2 mb-4">
+          <AcademicCapIcon className="h-5 w-5 text-brand-gold" />
+          <span className="text-sm font-medium text-brand-gold uppercase tracking-wide">Get Started</span>
+        </div>
+        <h2 className="font-serif text-2xl font-semibold text-brand-navy mb-4">Ready to Enhance Your Teaching?</h2>
+        <p className="text-brand-text mb-8">Start with any tool—they all work together seamlessly.</p>
         <div className="flex flex-wrap justify-center gap-3">
-          <Link to="/syllabus-analyzer" className="px-4 py-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors">
+          <Link to="/syllabus-analyzer" className="px-4 py-2 bg-scholarly-sage/10 text-scholarly-sage rounded-md text-sm font-medium hover:bg-scholarly-sage/20 transition-colors">
             Analyze Syllabus
           </Link>
-          <Link to="/learning-outcomes" className="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors">
+          <Link to="/learning-outcomes" className="px-4 py-2 bg-scholarly-terracotta/10 text-scholarly-terracotta rounded-md text-sm font-medium hover:bg-scholarly-terracotta/20 transition-colors">
             Write Outcomes
           </Link>
-          <Link to="/spaced-repetition" className="px-4 py-2 bg-purple-100 text-purple-700 rounded-lg hover:bg-purple-200 transition-colors">
+          <Link to="/spaced-repetition" className="px-4 py-2 bg-scholarly-slate/10 text-scholarly-slate rounded-md text-sm font-medium hover:bg-scholarly-slate/20 transition-colors">
             Schedule Reviews
           </Link>
-          <Link to="/formative-assessment" className="px-4 py-2 bg-orange-100 text-orange-700 rounded-lg hover:bg-orange-200 transition-colors">
+          <Link to="/formative-assessment" className="px-4 py-2 bg-scholarly-wine/10 text-scholarly-wine rounded-md text-sm font-medium hover:bg-scholarly-wine/20 transition-colors">
             Create Polls
           </Link>
         </div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 
