@@ -118,8 +118,8 @@ const Elaborative: React.FC<Props> = ({ sessionId }) => {
             onClick={() => setActiveTab(tab.id as any)}
             className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-colors ${
               activeTab === tab.id
-                ? 'bg-cyan-600 text-white'
-                : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
+                ? 'bg-brand-navy text-white shadow-sm'
+                : 'bg-white text-brand-text hover:bg-brand-bg/50 border border-brand-border-subtle'
             }`}
           >
             <tab.icon className="h-5 w-5" />
@@ -134,31 +134,31 @@ const Elaborative: React.FC<Props> = ({ sessionId }) => {
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="bg-white rounded-2xl shadow-card p-6 border border-gray-100"
+          className="bg-white rounded-2xl shadow-card p-6 border border-brand-border-subtle"
         >
           {activeTab === 'prompts' && (
             <>
               <h2 className="text-xl font-semibold text-brand-navy mb-4">
                 Generate Elaborative Prompts
               </h2>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-brand-text mb-4">
                 Create "why" and "how" questions that push students beyond surface
                 understanding to deep processing.
               </p>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-brand-navy mb-1">
                     Content/Text
                   </label>
                   <textarea
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                     placeholder="Paste the content students are learning..."
-                    className="w-full h-24 p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-cyan-500 resize-none"
+                    className="w-full h-24 p-3 border border-brand-border-subtle rounded-xl focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold resize-none"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-brand-navy mb-1">
                     Target Concept
                   </label>
                   <input
@@ -166,11 +166,11 @@ const Elaborative: React.FC<Props> = ({ sessionId }) => {
                     value={concept}
                     onChange={(e) => setConcept(e.target.value)}
                     placeholder="e.g., Osmosis"
-                    className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-cyan-500"
+                    className="w-full p-3 border border-brand-border-subtle rounded-xl focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-brand-navy mb-2">
                     Prompt Type
                   </label>
                   <div className="grid grid-cols-3 gap-2">
@@ -187,8 +187,8 @@ const Elaborative: React.FC<Props> = ({ sessionId }) => {
                         onClick={() => setPromptType(type.value)}
                         className={`py-2 px-3 text-sm rounded-lg border transition-colors ${
                           promptType === type.value
-                            ? 'bg-cyan-100 border-cyan-500 text-cyan-700'
-                            : 'border-gray-200 text-gray-600 hover:bg-gray-50'
+                            ? 'bg-scholarly-slate/10 border-scholarly-slate text-scholarly-slate'
+                            : 'border-brand-border-subtle text-brand-text hover:bg-brand-bg/50'
                         }`}
                       >
                         {type.label}
@@ -200,7 +200,7 @@ const Elaborative: React.FC<Props> = ({ sessionId }) => {
               <button
                 onClick={generatePrompts}
                 disabled={loading}
-                className="mt-6 w-full py-3 bg-cyan-600 text-white rounded-xl font-medium hover:bg-cyan-700 transition-colors disabled:opacity-50"
+                className="mt-6 w-full py-3 bg-brand-navy text-white rounded-xl font-medium hover:bg-brand-navy-light transition-colors disabled:opacity-50"
               >
                 {loading ? 'Generating...' : 'Generate Prompts'}
               </button>
@@ -212,13 +212,13 @@ const Elaborative: React.FC<Props> = ({ sessionId }) => {
               <h2 className="text-xl font-semibold text-brand-navy mb-4">
                 Causal Reasoning Scaffold
               </h2>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-brand-text mb-4">
                 Create scaffolds that help students trace cause-and-effect relationships
                 and understand mechanisms behind phenomena.
               </p>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-brand-navy mb-1">
                     Phenomenon to Explain
                   </label>
                   <input
@@ -226,23 +226,23 @@ const Elaborative: React.FC<Props> = ({ sessionId }) => {
                     value={concept}
                     onChange={(e) => setConcept(e.target.value)}
                     placeholder="e.g., Why do leaves change color in fall?"
-                    className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-cyan-500"
+                    className="w-full p-3 border border-brand-border-subtle rounded-xl focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-brand-navy mb-1">
                     Prior Knowledge (one per line)
                   </label>
                   <textarea
                     placeholder="List what students already know..."
-                    className="w-full h-24 p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-cyan-500 resize-none"
+                    className="w-full h-24 p-3 border border-brand-border-subtle rounded-xl focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold resize-none"
                   />
                 </div>
               </div>
               <button
                 onClick={generateCausalScaffold}
                 disabled={loading}
-                className="mt-6 w-full py-3 bg-cyan-600 text-white rounded-xl font-medium hover:bg-cyan-700 transition-colors disabled:opacity-50"
+                className="mt-6 w-full py-3 bg-brand-navy text-white rounded-xl font-medium hover:bg-brand-navy-light transition-colors disabled:opacity-50"
               >
                 {loading ? 'Generating...' : 'Generate Causal Scaffold'}
               </button>
@@ -254,34 +254,34 @@ const Elaborative: React.FC<Props> = ({ sessionId }) => {
               <h2 className="text-xl font-semibold text-brand-navy mb-4">
                 Connection-Making Exercise
               </h2>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-brand-text mb-4">
                 Help students connect new concepts to what they already know,
                 building on existing schemas for meaningful learning.
               </p>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-brand-navy mb-1">
                     New Concept
                   </label>
                   <input
                     type="text"
                     placeholder="e.g., Machine learning"
-                    className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-cyan-500"
+                    className="w-full p-3 border border-brand-border-subtle rounded-xl focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-brand-navy mb-1">
                     Prior Concepts (one per line)
                   </label>
                   <textarea
                     placeholder="Statistics&#10;Pattern recognition&#10;Decision making"
-                    className="w-full h-24 p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-cyan-500 resize-none"
+                    className="w-full h-24 p-3 border border-brand-border-subtle rounded-xl focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold resize-none"
                   />
                 </div>
               </div>
               <button
                 disabled={loading}
-                className="mt-6 w-full py-3 bg-cyan-600 text-white rounded-xl font-medium hover:bg-cyan-700 transition-colors disabled:opacity-50"
+                className="mt-6 w-full py-3 bg-brand-navy text-white rounded-xl font-medium hover:bg-brand-navy-light transition-colors disabled:opacity-50"
               >
                 Generate Connection Exercise
               </button>
@@ -293,7 +293,7 @@ const Elaborative: React.FC<Props> = ({ sessionId }) => {
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="bg-white rounded-2xl shadow-card p-6 border border-gray-100"
+          className="bg-white rounded-2xl shadow-card p-6 border border-brand-border-subtle"
         >
           {results && activeTab === 'prompts' && Array.isArray(results) && (
             <>
@@ -305,41 +305,41 @@ const Elaborative: React.FC<Props> = ({ sessionId }) => {
               </div>
               <div className="space-y-4">
                 {results.map((prompt: any, i: number) => (
-                  <div key={i} className="p-4 bg-cyan-50 rounded-xl">
-                    <span className="inline-block px-2 py-0.5 text-xs font-medium bg-cyan-100 text-cyan-700 rounded mb-2">
+                  <div key={i} className="p-4 bg-scholarly-slate/10 rounded-xl">
+                    <span className="inline-block px-2 py-0.5 text-xs font-medium bg-scholarly-slate/10 text-scholarly-slate rounded mb-2">
                       {prompt.type}
                     </span>
                     <p className="font-medium text-brand-navy mb-3">{prompt.prompt}</p>
 
                     <div className="mt-3 space-y-2">
                       <details>
-                        <summary className="text-sm text-cyan-600 cursor-pointer hover:text-cyan-700 font-medium">
+                        <summary className="text-sm text-scholarly-slate cursor-pointer hover:text-brand-navy font-medium">
                           Scaffolded versions
                         </summary>
                         <div className="mt-2 space-y-2 pl-4">
                           {prompt.scaffoldedVersions?.map((v: any, j: number) => (
-                            <div key={j} className="p-2 bg-white rounded border border-cyan-200">
-                              <span className="text-xs text-gray-500">{v.level}:</span>
-                              <p className="text-sm text-gray-700">{v.prompt}</p>
+                            <div key={j} className="p-2 bg-white rounded border border-scholarly-slate/30">
+                              <span className="text-xs text-brand-text-light">{v.level}:</span>
+                              <p className="text-sm text-brand-navy">{v.prompt}</p>
                             </div>
                           ))}
                         </div>
                       </details>
 
                       <details>
-                        <summary className="text-sm text-cyan-600 cursor-pointer hover:text-cyan-700 font-medium">
+                        <summary className="text-sm text-scholarly-slate cursor-pointer hover:text-brand-navy font-medium">
                           Exemplar response
                         </summary>
-                        <p className="mt-2 text-sm text-gray-600 pl-4 border-l-2 border-cyan-200">
+                        <p className="mt-2 text-sm text-brand-text pl-4 border-l-2 border-cyan-200">
                           {prompt.exemplarResponse}
                         </p>
                       </details>
 
                       <details>
-                        <summary className="text-sm text-cyan-600 cursor-pointer hover:text-cyan-700 font-medium">
+                        <summary className="text-sm text-scholarly-slate cursor-pointer hover:text-brand-navy font-medium">
                           Quality criteria
                         </summary>
-                        <ul className="mt-2 text-sm text-gray-600 pl-4 space-y-1">
+                        <ul className="mt-2 text-sm text-brand-text pl-4 space-y-1">
                           {prompt.responseQualityCriteria?.map((c: string, k: number) => (
                             <li key={k}>• {c}</li>
                           ))}
@@ -363,37 +363,37 @@ const Elaborative: React.FC<Props> = ({ sessionId }) => {
               <div className="space-y-4">
                 {results.causalChain?.map((link: any, i: number) => (
                   <div key={i} className="relative">
-                    <div className="p-4 bg-gray-50 rounded-xl">
+                    <div className="p-4 bg-brand-bg/50 rounded-xl">
                       <div className="grid grid-cols-3 gap-4 text-sm">
                         <div>
-                          <span className="font-medium text-red-700">Cause:</span>
+                          <span className="font-medium text-scholarly-terracotta">Cause:</span>
                           <p className="text-gray-600">{link.cause}</p>
                         </div>
                         <div>
-                          <span className="font-medium text-blue-700">Mechanism:</span>
+                          <span className="font-medium text-scholarly-slate">Mechanism:</span>
                           <p className="text-gray-600">{link.mechanism}</p>
                         </div>
                         <div>
-                          <span className="font-medium text-green-700">Effect:</span>
+                          <span className="font-medium text-scholarly-sage">Effect:</span>
                           <p className="text-gray-600">{link.effect}</p>
                         </div>
                       </div>
-                      <p className="text-xs text-gray-500 mt-2">
+                      <p className="text-xs text-brand-text-light mt-2">
                         Evidence: {link.evidence}
                       </p>
                     </div>
                     {i < results.causalChain.length - 1 && (
                       <div className="flex justify-center py-2">
-                        <div className="w-0.5 h-4 bg-cyan-300"></div>
+                        <div className="w-0.5 h-4 bg-scholarly-slate/50"></div>
                       </div>
                     )}
                   </div>
                 ))}
 
                 {results.discoveryPrompts && (
-                  <div className="p-4 bg-cyan-50 rounded-xl">
-                    <h4 className="font-medium text-cyan-800 mb-2">Discovery Prompts:</h4>
-                    <ul className="space-y-1 text-sm text-gray-700">
+                  <div className="p-4 bg-scholarly-slate/10 rounded-xl">
+                    <h4 className="font-medium text-scholarly-slate mb-2">Discovery Prompts:</h4>
+                    <ul className="space-y-1 text-sm text-brand-navy">
                       {results.discoveryPrompts.map((p: string, i: number) => (
                         <li key={i}>• {p}</li>
                       ))}
@@ -402,14 +402,14 @@ const Elaborative: React.FC<Props> = ({ sessionId }) => {
                 )}
 
                 {results.counterfactuals && (
-                  <div className="p-4 bg-yellow-50 rounded-xl">
-                    <h4 className="font-medium text-yellow-800 mb-2">Counterfactuals:</h4>
+                  <div className="p-4 bg-brand-gold/10 rounded-xl">
+                    <h4 className="font-medium text-brand-gold mb-2">Counterfactuals:</h4>
                     <div className="space-y-2">
                       {results.counterfactuals.map((cf: any, i: number) => (
-                        <p key={i} className="text-sm text-gray-700">
+                        <p key={i} className="text-sm text-brand-navy">
                           <span className="font-medium">If not:</span> {cf.ifNot} →{' '}
                           <span className="font-medium">Then:</span> {cf.then}{' '}
-                          <span className="text-gray-500">({cf.because})</span>
+                          <span className="text-brand-text-light">({cf.because})</span>
                         </p>
                       ))}
                     </div>
@@ -421,13 +421,13 @@ const Elaborative: React.FC<Props> = ({ sessionId }) => {
 
           {!results && (
             <div className="h-full flex flex-col items-center justify-center text-center py-12">
-              <div className="p-4 bg-gray-100 rounded-full mb-4">
-                <DocumentTextIcon className="h-12 w-12 text-gray-400" />
+              <div className="p-4 bg-brand-bg rounded-full mb-4">
+                <DocumentTextIcon className="h-12 w-12 text-brand-text-light" />
               </div>
-              <h3 className="text-lg font-medium text-gray-700 mb-2">
+              <h3 className="text-lg font-medium text-brand-navy mb-2">
                 No content generated yet
               </h3>
-              <p className="text-sm text-gray-500 max-w-sm">
+              <p className="text-sm text-brand-text-light max-w-sm">
                 Create prompts that encourage deep processing and meaningful connections.
               </p>
             </div>
@@ -440,29 +440,29 @@ const Elaborative: React.FC<Props> = ({ sessionId }) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="mt-8 bg-gradient-to-r from-cyan-50 to-teal-50 rounded-2xl p-6 border border-cyan-100"
+        className="mt-8 bg-gradient-to-r from-scholarly-slate/5 to-scholarly-slate/10 rounded-2xl p-6 border border-scholarly-slate/20"
       >
         <h3 className="font-semibold text-brand-navy mb-4">Good Question Starters</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="p-4 bg-white rounded-xl">
-            <h4 className="font-medium text-cyan-700 mb-2">Get Students Thinking</h4>
-            <ul className="text-sm text-gray-600 space-y-1">
+            <h4 className="font-medium text-scholarly-slate mb-2">Get Students Thinking</h4>
+            <ul className="text-sm text-brand-text space-y-1">
               <li>• Why does this make sense?</li>
               <li>• How does this work?</li>
               <li>• What would happen if...?</li>
             </ul>
           </div>
           <div className="p-4 bg-white rounded-xl">
-            <h4 className="font-medium text-cyan-700 mb-2">Comparison</h4>
-            <ul className="text-sm text-gray-600 space-y-1">
+            <h4 className="font-medium text-scholarly-slate mb-2">Comparison</h4>
+            <ul className="text-sm text-brand-text space-y-1">
               <li>• How is X similar to Y?</li>
               <li>• What distinguishes X from Y?</li>
               <li>• What patterns do you see?</li>
             </ul>
           </div>
           <div className="p-4 bg-white rounded-xl">
-            <h4 className="font-medium text-cyan-700 mb-2">Application</h4>
-            <ul className="text-sm text-gray-600 space-y-1">
+            <h4 className="font-medium text-scholarly-slate mb-2">Application</h4>
+            <ul className="text-sm text-brand-text space-y-1">
               <li>• How could X be used to...?</li>
               <li>• Where else might this apply?</li>
               <li>• What's a real-world example?</li>

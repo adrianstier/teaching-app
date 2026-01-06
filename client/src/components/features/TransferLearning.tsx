@@ -16,6 +16,19 @@ interface Props {
   sessionId: string;
 }
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.08 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 12 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+};
+
 const TransferLearning: React.FC<Props> = ({ sessionId }) => {
   const [activeTab, setActiveTab] = useState<'activities' | 'analogies' | 'abstraction'>('activities');
   const [loading, setLoading] = useState(false);
@@ -82,13 +95,14 @@ const TransferLearning: React.FC<Props> = ({ sessionId }) => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto">
+    <motion.div
+      className="max-w-5xl mx-auto"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
       {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="mb-8"
-      >
+      <motion.div variants={itemVariants} className="mb-8">
         <div className="flex items-center space-x-4 mb-4">
           <div className="p-3 bg-scholarly-sage/10 rounded-lg">
             <ArrowsRightLeftIcon className="h-7 w-7 text-scholarly-sage" />
@@ -104,7 +118,7 @@ const TransferLearning: React.FC<Props> = ({ sessionId }) => {
       </motion.div>
 
       {/* Tabs */}
-      <div className="flex space-x-2 mb-6">
+      <motion.div variants={itemVariants} className="flex space-x-2 mb-6">
         {[
           { id: 'activities', name: 'Transfer Activities', icon: ArrowsRightLeftIcon },
           { id: 'analogies', name: 'Analogical Reasoning', icon: PuzzlePieceIcon },
@@ -113,17 +127,17 @@ const TransferLearning: React.FC<Props> = ({ sessionId }) => {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id as any)}
-            className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-colors ${
+            className={`flex items-center space-x-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
               activeTab === tab.id
-                ? 'bg-emerald-600 text-white'
-                : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
+                ? 'bg-brand-navy text-white shadow-sm'
+                : 'bg-white text-brand-text hover:bg-brand-bg border border-brand-border-subtle'
             }`}
           >
-            <tab.icon className="h-5 w-5" />
+            <tab.icon className="h-4 w-4" />
             <span>{tab.name}</span>
           </button>
         ))}
-      </div>
+      </motion.div>
 
       {/* Content */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -131,20 +145,20 @@ const TransferLearning: React.FC<Props> = ({ sessionId }) => {
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="bg-white rounded-2xl shadow-card p-6 border border-gray-100"
+          className="bg-white rounded-2xl shadow-card p-6 border border-brand-border-subtle"
         >
           {activeTab === 'activities' && (
             <>
               <h2 className="text-xl font-semibold text-brand-navy mb-4">
                 Transfer Activities
               </h2>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-brand-text mb-4">
                 Create activities that help students apply concepts learned in one context
                 to new, different contexts—the hallmark of real understanding.
               </p>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-brand-navy mb-1">
                     Source Concept
                   </label>
                   <input
@@ -152,11 +166,11 @@ const TransferLearning: React.FC<Props> = ({ sessionId }) => {
                     value={concept}
                     onChange={(e) => setConcept(e.target.value)}
                     placeholder="e.g., Feedback loops"
-                    className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-emerald-500"
+                    className="w-full p-3 border border-brand-border-subtle rounded-xl focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-brand-navy mb-1">
                     Original Context
                   </label>
                   <input
@@ -164,11 +178,11 @@ const TransferLearning: React.FC<Props> = ({ sessionId }) => {
                     value={context}
                     onChange={(e) => setContext(e.target.value)}
                     placeholder="e.g., Biology (homeostasis)"
-                    className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-emerald-500"
+                    className="w-full p-3 border border-brand-border-subtle rounded-xl focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-brand-navy mb-2">
                     Transfer Type
                   </label>
                   <div className="grid grid-cols-2 gap-2">
@@ -176,12 +190,12 @@ const TransferLearning: React.FC<Props> = ({ sessionId }) => {
                       { value: 'near', label: 'Near Transfer', desc: 'Similar contexts' },
                       { value: 'far', label: 'Far Transfer', desc: 'Different domains' },
                     ].map((type) => (
-                      <label key={type.value} className="flex flex-col p-3 border border-gray-200 rounded-lg hover:bg-emerald-50 cursor-pointer">
+                      <label key={type.value} className="flex flex-col p-3 border border-brand-border-subtle rounded-lg hover:bg-scholarly-sage/5 cursor-pointer">
                         <div className="flex items-center space-x-2">
-                          <input type="radio" name="transferType" defaultChecked={type.value === 'near'} className="text-emerald-600" />
+                          <input type="radio" name="transferType" defaultChecked={type.value === 'near'} className="text-brand-navy focus:ring-brand-gold" />
                           <span className="text-sm font-medium">{type.label}</span>
                         </div>
-                        <span className="text-xs text-gray-500 ml-6">{type.desc}</span>
+                        <span className="text-xs text-brand-text-light ml-6">{type.desc}</span>
                       </label>
                     ))}
                   </div>
@@ -190,7 +204,7 @@ const TransferLearning: React.FC<Props> = ({ sessionId }) => {
               <button
                 onClick={generateActivity}
                 disabled={loading}
-                className="mt-6 w-full py-3 bg-emerald-600 text-white rounded-xl font-medium hover:bg-emerald-700 transition-colors disabled:opacity-50"
+                className="mt-6 w-full py-3 bg-brand-navy text-white rounded-xl font-medium hover:bg-brand-navy-light transition-colors disabled:opacity-50"
               >
                 {loading ? 'Generating...' : 'Generate Transfer Activity'}
               </button>
@@ -202,13 +216,13 @@ const TransferLearning: React.FC<Props> = ({ sessionId }) => {
               <h2 className="text-xl font-semibold text-brand-navy mb-4">
                 Analogical Reasoning
               </h2>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-brand-text mb-4">
                 Create exercises that help students identify structural similarities
                 across domains—the foundation of transfer and creative thinking.
               </p>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-brand-navy mb-1">
                     Core Concept/Structure
                   </label>
                   <input
@@ -216,11 +230,11 @@ const TransferLearning: React.FC<Props> = ({ sessionId }) => {
                     value={concept}
                     onChange={(e) => setConcept(e.target.value)}
                     placeholder="e.g., Competition for limited resources"
-                    className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-emerald-500"
+                    className="w-full p-3 border border-brand-border-subtle rounded-xl focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-brand-navy mb-1">
                     Source Domain (familiar)
                   </label>
                   <input
@@ -228,24 +242,24 @@ const TransferLearning: React.FC<Props> = ({ sessionId }) => {
                     value={context}
                     onChange={(e) => setContext(e.target.value)}
                     placeholder="e.g., Sports competition"
-                    className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-emerald-500"
+                    className="w-full p-3 border border-brand-border-subtle rounded-xl focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-brand-navy mb-1">
                     Target Domain (to learn)
                   </label>
                   <input
                     type="text"
                     placeholder="e.g., Market economics"
-                    className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-emerald-500"
+                    className="w-full p-3 border border-brand-border-subtle rounded-xl focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold"
                   />
                 </div>
               </div>
               <button
                 onClick={generateAnalogy}
                 disabled={loading}
-                className="mt-6 w-full py-3 bg-emerald-600 text-white rounded-xl font-medium hover:bg-emerald-700 transition-colors disabled:opacity-50"
+                className="mt-6 w-full py-3 bg-brand-navy text-white rounded-xl font-medium hover:bg-brand-navy-light transition-colors disabled:opacity-50"
               >
                 {loading ? 'Generating...' : 'Generate Analogy Exercise'}
               </button>
@@ -257,23 +271,23 @@ const TransferLearning: React.FC<Props> = ({ sessionId }) => {
               <h2 className="text-xl font-semibold text-brand-navy mb-4">
                 Abstraction Ladder
               </h2>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-brand-text mb-4">
                 Help students move up and down the abstraction ladder—from concrete
                 examples to abstract principles and back again.
               </p>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-brand-navy mb-1">
                     Concept to Abstract
                   </label>
                   <input
                     type="text"
                     placeholder="e.g., Photosynthesis in plants"
-                    className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-emerald-500"
+                    className="w-full p-3 border border-brand-border-subtle rounded-xl focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-brand-navy mb-2">
                     Starting Point
                   </label>
                   <div className="flex space-x-2">
@@ -282,8 +296,8 @@ const TransferLearning: React.FC<Props> = ({ sessionId }) => {
                         key={point}
                         className={`flex-1 py-2 px-4 rounded-lg border transition-colors ${
                           point === 'Concrete Example'
-                            ? 'bg-emerald-100 border-emerald-500 text-emerald-700'
-                            : 'border-gray-200 text-gray-600 hover:bg-gray-50'
+                            ? 'bg-scholarly-sage/10 border-scholarly-sage text-scholarly-sage'
+                            : 'border-brand-border-subtle text-brand-text hover:bg-brand-bg/50'
                         }`}
                       >
                         {point}
@@ -301,7 +315,7 @@ const TransferLearning: React.FC<Props> = ({ sessionId }) => {
               </div>
               <button
                 disabled={loading}
-                className="mt-6 w-full py-3 bg-emerald-600 text-white rounded-xl font-medium hover:bg-emerald-700 transition-colors disabled:opacity-50"
+                className="mt-6 w-full py-3 bg-brand-navy text-white rounded-xl font-medium hover:bg-brand-navy-light transition-colors disabled:opacity-50"
               >
                 Generate Abstraction Exercise
               </button>
@@ -313,7 +327,7 @@ const TransferLearning: React.FC<Props> = ({ sessionId }) => {
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="bg-white rounded-2xl shadow-card p-6 border border-gray-100"
+          className="bg-white rounded-2xl shadow-card p-6 border border-brand-border-subtle"
         >
           {results && activeTab === 'activities' && (
             <>
@@ -321,9 +335,9 @@ const TransferLearning: React.FC<Props> = ({ sessionId }) => {
                 Transfer Activity
               </h2>
               <div className="space-y-4">
-                <div className="p-4 bg-emerald-50 rounded-xl">
-                  <h3 className="font-medium text-emerald-800 mb-2">Source Context</h3>
-                  <p className="text-sm text-gray-700">{results.sourceExample}</p>
+                <div className="p-4 bg-scholarly-sage/5 rounded-xl">
+                  <h3 className="font-medium text-scholarly-sage mb-2">Source Context</h3>
+                  <p className="text-sm text-brand-navy">{results.sourceExample}</p>
                 </div>
 
                 {results.targetContexts?.map((target: any, i: number) => (
@@ -338,8 +352,8 @@ const TransferLearning: React.FC<Props> = ({ sessionId }) => {
                       </span>
                       <span className="text-sm font-medium text-blue-800">{target.context}</span>
                     </div>
-                    <p className="text-sm text-gray-700">{target.applicationPrompt}</p>
-                    <p className="text-xs text-gray-500 mt-2">
+                    <p className="text-sm text-brand-navy">{target.applicationPrompt}</p>
+                    <p className="text-xs text-brand-text-light mt-2">
                       Mapping: {target.structuralMapping}
                     </p>
                   </div>
@@ -348,7 +362,7 @@ const TransferLearning: React.FC<Props> = ({ sessionId }) => {
                 {results.abstractPrinciple && (
                   <div className="p-4 bg-yellow-50 rounded-xl">
                     <h4 className="font-medium text-yellow-800 mb-2">Underlying Principle:</h4>
-                    <p className="text-sm text-gray-700">{results.abstractPrinciple}</p>
+                    <p className="text-sm text-brand-navy">{results.abstractPrinciple}</p>
                   </div>
                 )}
               </div>
@@ -362,24 +376,24 @@ const TransferLearning: React.FC<Props> = ({ sessionId }) => {
               </h2>
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="p-4 bg-gray-50 rounded-xl">
-                    <h3 className="font-medium text-gray-700 mb-2">Source Domain</h3>
-                    <p className="text-sm text-gray-600">{results.sourceAnalogy}</p>
+                  <div className="p-4 bg-brand-bg/50 rounded-xl">
+                    <h3 className="font-medium text-brand-navy mb-2">Source Domain</h3>
+                    <p className="text-sm text-brand-text">{results.sourceAnalogy}</p>
                   </div>
-                  <div className="p-4 bg-emerald-50 rounded-xl">
-                    <h3 className="font-medium text-emerald-700 mb-2">Target Domain</h3>
-                    <p className="text-sm text-gray-600">{results.targetAnalogy}</p>
+                  <div className="p-4 bg-scholarly-sage/5 rounded-xl">
+                    <h3 className="font-medium text-scholarly-sage mb-2">Target Domain</h3>
+                    <p className="text-sm text-brand-text">{results.targetAnalogy}</p>
                   </div>
                 </div>
 
                 {results.mappings && (
                   <div>
-                    <h3 className="font-medium text-gray-700 mb-2">Structural Mappings:</h3>
+                    <h3 className="font-medium text-brand-navy mb-2">Structural Mappings:</h3>
                     <div className="space-y-2">
                       {results.mappings.map((m: any, i: number) => (
-                        <div key={i} className="p-3 bg-gray-50 rounded-lg flex items-center">
+                        <div key={i} className="p-3 bg-brand-bg/50 rounded-lg flex items-center">
                           <span className="flex-1 text-sm">{m.source}</span>
-                          <ArrowsRightLeftIcon className="h-4 w-4 text-emerald-500 mx-3" />
+                          <ArrowsRightLeftIcon className="h-4 w-4 text-scholarly-sage mx-3" />
                           <span className="flex-1 text-sm">{m.target}</span>
                         </div>
                       ))}
@@ -390,7 +404,7 @@ const TransferLearning: React.FC<Props> = ({ sessionId }) => {
                 {results.limitations && (
                   <div className="p-4 bg-red-50 rounded-xl">
                     <h4 className="font-medium text-red-800 mb-2">Where the Analogy Breaks Down:</h4>
-                    <ul className="text-sm text-gray-700 space-y-1">
+                    <ul className="text-sm text-brand-navy space-y-1">
                       {results.limitations.map((l: string, i: number) => (
                         <li key={i}>• {l}</li>
                       ))}
@@ -403,13 +417,13 @@ const TransferLearning: React.FC<Props> = ({ sessionId }) => {
 
           {!results && (
             <div className="h-full flex flex-col items-center justify-center text-center py-12">
-              <div className="p-4 bg-gray-100 rounded-full mb-4">
-                <DocumentTextIcon className="h-12 w-12 text-gray-400" />
+              <div className="p-4 bg-scholarly-sage/10 rounded-full mb-4">
+                <DocumentTextIcon className="h-12 w-12 text-scholarly-sage" />
               </div>
-              <h3 className="text-lg font-medium text-gray-700 mb-2">
+              <h3 className="text-lg font-medium text-brand-navy mb-2">
                 No content generated yet
               </h3>
-              <p className="text-sm text-gray-500 max-w-sm">
+              <p className="text-sm text-brand-text-light max-w-sm">
                 Create activities that promote transfer of learning to new contexts.
               </p>
             </div>
@@ -422,47 +436,47 @@ const TransferLearning: React.FC<Props> = ({ sessionId }) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="mt-8 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-2xl p-6 border border-emerald-100"
+        className="mt-8 bg-gradient-to-r from-scholarly-sage/5 to-scholarly-sage/10 rounded-2xl p-6 border border-scholarly-sage/20"
       >
         <h3 className="font-semibold text-brand-navy mb-4">Teaching for Transfer</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <h4 className="font-medium text-emerald-700 mb-3">Low Road (Automatic)</h4>
-            <ul className="space-y-2 text-sm text-gray-600">
+            <h4 className="font-medium text-scholarly-sage mb-3">Low Road (Automatic)</h4>
+            <ul className="space-y-2 text-sm text-brand-text">
               <li className="flex items-start space-x-2">
-                <span className="text-emerald-500">•</span>
+                <span className="text-scholarly-sage">•</span>
                 <span>Practice in varied conditions</span>
               </li>
               <li className="flex items-start space-x-2">
-                <span className="text-emerald-500">•</span>
+                <span className="text-scholarly-sage">•</span>
                 <span>Develop automaticity through repetition</span>
               </li>
               <li className="flex items-start space-x-2">
-                <span className="text-emerald-500">•</span>
+                <span className="text-scholarly-sage">•</span>
                 <span>Works for well-defined skills</span>
               </li>
             </ul>
           </div>
           <div>
-            <h4 className="font-medium text-emerald-700 mb-3">High Road (Mindful)</h4>
-            <ul className="space-y-2 text-sm text-gray-600">
+            <h4 className="font-medium text-scholarly-sage mb-3">High Road (Mindful)</h4>
+            <ul className="space-y-2 text-sm text-brand-text">
               <li className="flex items-start space-x-2">
-                <span className="text-emerald-500">•</span>
+                <span className="text-scholarly-sage">•</span>
                 <span>Explicitly abstract principles</span>
               </li>
               <li className="flex items-start space-x-2">
-                <span className="text-emerald-500">•</span>
+                <span className="text-scholarly-sage">•</span>
                 <span>Compare across multiple examples</span>
               </li>
               <li className="flex items-start space-x-2">
-                <span className="text-emerald-500">•</span>
+                <span className="text-scholarly-sage">•</span>
                 <span>Prompt for connections to other domains</span>
               </li>
             </ul>
           </div>
         </div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 

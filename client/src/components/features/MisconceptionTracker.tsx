@@ -115,8 +115,8 @@ const MisconceptionTracker: React.FC<Props> = ({ sessionId }) => {
             onClick={() => setActiveTab(tab.id as any)}
             className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-colors ${
               activeTab === tab.id
-                ? 'bg-red-600 text-white'
-                : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
+                ? 'bg-brand-navy text-white shadow-sm'
+                : 'bg-white text-brand-text hover:bg-brand-bg/50 border border-brand-border-subtle'
             }`}
           >
             <tab.icon className="h-5 w-5" />
@@ -131,20 +131,20 @@ const MisconceptionTracker: React.FC<Props> = ({ sessionId }) => {
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="bg-white rounded-2xl shadow-card p-6 border border-gray-100"
+          className="bg-white rounded-2xl shadow-card p-6 border border-brand-border-subtle"
         >
           {activeTab === 'database' && (
             <>
               <h2 className="text-xl font-semibold text-brand-navy mb-4">
                 Generate Misconception Database
               </h2>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-brand-text mb-4">
                 Identify common misconceptions students hold about a topic,
                 including their sources and why they're compelling.
               </p>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-brand-navy mb-1">
                     Topic/Concept
                   </label>
                   <input
@@ -152,11 +152,11 @@ const MisconceptionTracker: React.FC<Props> = ({ sessionId }) => {
                     value={topic}
                     onChange={(e) => setTopic(e.target.value)}
                     placeholder="e.g., Statistical significance, Constitutional law, Medication dosing"
-                    className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500"
+                    className="w-full p-3 border border-brand-border-subtle rounded-xl focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-brand-navy mb-1">
                     Domain
                   </label>
                   <input
@@ -164,14 +164,14 @@ const MisconceptionTracker: React.FC<Props> = ({ sessionId }) => {
                     value={domain}
                     onChange={(e) => setDomain(e.target.value)}
                     placeholder="e.g., Statistics, Law, Healthcare, Literature"
-                    className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500"
+                    className="w-full p-3 border border-brand-border-subtle rounded-xl focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold"
                   />
                 </div>
               </div>
               <button
                 onClick={generateMisconceptions}
                 disabled={loading}
-                className="mt-6 w-full py-3 bg-red-600 text-white rounded-xl font-medium hover:bg-red-700 transition-colors disabled:opacity-50"
+                className="mt-6 w-full py-3 bg-brand-navy text-white rounded-xl font-medium hover:bg-brand-navy-light transition-colors disabled:opacity-50"
               >
                 {loading ? 'Generating...' : 'Generate Misconception Database'}
               </button>
@@ -183,13 +183,13 @@ const MisconceptionTracker: React.FC<Props> = ({ sessionId }) => {
               <h2 className="text-xl font-semibold text-brand-navy mb-4">
                 Create Diagnostic Questions
               </h2>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-brand-text mb-4">
                 Generate questions designed to reveal whether students hold
                 specific misconceptions, not just whether they know the right answer.
               </p>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-brand-navy mb-1">
                     Concept to Diagnose
                   </label>
                   <input
@@ -197,14 +197,14 @@ const MisconceptionTracker: React.FC<Props> = ({ sessionId }) => {
                     value={topic}
                     onChange={(e) => setTopic(e.target.value)}
                     placeholder="e.g., Market equilibrium, Ethical reasoning, Historical causation"
-                    className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500"
+                    className="w-full p-3 border border-brand-border-subtle rounded-xl focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-brand-navy mb-2">
                     Question Format
                   </label>
-                  <select className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500">
+                  <select className="w-full p-3 border border-brand-border-subtle rounded-xl focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold">
                     <option value="two-tier">Two-Tier (answer + explanation)</option>
                     <option value="three-tier">Three-Tier (answer + explanation + confidence)</option>
                     <option value="open-ended">Open-Ended Prediction</option>
@@ -215,7 +215,7 @@ const MisconceptionTracker: React.FC<Props> = ({ sessionId }) => {
               <button
                 onClick={generateDiagnostic}
                 disabled={loading}
-                className="mt-6 w-full py-3 bg-red-600 text-white rounded-xl font-medium hover:bg-red-700 transition-colors disabled:opacity-50"
+                className="mt-6 w-full py-3 bg-brand-navy text-white rounded-xl font-medium hover:bg-brand-navy-light transition-colors disabled:opacity-50"
               >
                 {loading ? 'Generating...' : 'Generate Diagnostic Questions'}
               </button>
@@ -227,33 +227,33 @@ const MisconceptionTracker: React.FC<Props> = ({ sessionId }) => {
               <h2 className="text-xl font-semibold text-brand-navy mb-4">
                 Design Interventions
               </h2>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-brand-text mb-4">
                 Create conceptual change activities that help students
                 confront and revise their misconceptions.
               </p>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-brand-navy mb-1">
                     Misconception to Address
                   </label>
                   <textarea
                     placeholder="Describe the specific misconception..."
-                    className="w-full h-24 p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 resize-none"
+                    className="w-full h-24 p-3 border border-brand-border-subtle rounded-xl focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold resize-none"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-brand-navy mb-1">
                     Correct Understanding
                   </label>
                   <textarea
                     placeholder="What should students understand instead..."
-                    className="w-full h-24 p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 resize-none"
+                    className="w-full h-24 p-3 border border-brand-border-subtle rounded-xl focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold resize-none"
                   />
                 </div>
               </div>
               <button
                 disabled={loading}
-                className="mt-6 w-full py-3 bg-red-600 text-white rounded-xl font-medium hover:bg-red-700 transition-colors disabled:opacity-50"
+                className="mt-6 w-full py-3 bg-brand-navy text-white rounded-xl font-medium hover:bg-brand-navy-light transition-colors disabled:opacity-50"
               >
                 Generate Intervention Activity
               </button>
@@ -265,7 +265,7 @@ const MisconceptionTracker: React.FC<Props> = ({ sessionId }) => {
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="bg-white rounded-2xl shadow-card p-6 border border-gray-100 max-h-[700px] overflow-y-auto"
+          className="bg-white rounded-2xl shadow-card p-6 border border-brand-border-subtle max-h-[700px] overflow-y-auto"
         >
           {results && activeTab === 'database' && results.misconceptions && (
             <>
@@ -277,21 +277,21 @@ const MisconceptionTracker: React.FC<Props> = ({ sessionId }) => {
               </div>
               <div className="space-y-4">
                 {results.misconceptions.map((m: any, i: number) => (
-                  <div key={i} className="p-4 bg-gray-50 rounded-xl border-l-4 border-red-500">
+                  <div key={i} className="p-4 bg-brand-bg/50 rounded-xl border-l-4 border-scholarly-terracotta">
                     <h3 className="font-medium text-brand-navy mb-2">
                       {m.misconception}
                     </h3>
                     <div className="space-y-2 text-sm">
                       <div>
-                        <span className="font-medium text-gray-700">Source: </span>
+                        <span className="font-medium text-brand-navy">Source: </span>
                         <span className="text-gray-600">{m.source}</span>
                       </div>
                       <div>
-                        <span className="font-medium text-gray-700">Why compelling: </span>
+                        <span className="font-medium text-brand-navy">Why compelling: </span>
                         <span className="text-gray-600">{m.whyCompelling}</span>
                       </div>
                       <div>
-                        <span className="font-medium text-gray-700">Correct understanding: </span>
+                        <span className="font-medium text-brand-navy">Correct understanding: </span>
                         <span className="text-gray-600">{m.correctUnderstanding}</span>
                       </div>
                       <div className="flex items-center space-x-2 mt-2">
@@ -327,7 +327,7 @@ const MisconceptionTracker: React.FC<Props> = ({ sessionId }) => {
               </div>
               <div className="space-y-4">
                 {results.questions.map((q: any, i: number) => (
-                  <div key={i} className="p-4 bg-gray-50 rounded-xl">
+                  <div key={i} className="p-4 bg-brand-bg/50 rounded-xl">
                     <p className="font-medium text-brand-navy mb-3">{q.question}</p>
                     <div className="space-y-2">
                       {q.options?.map((opt: any, j: number) => (
@@ -358,13 +358,13 @@ const MisconceptionTracker: React.FC<Props> = ({ sessionId }) => {
 
           {!results && (
             <div className="h-full flex flex-col items-center justify-center text-center py-12">
-              <div className="p-4 bg-gray-100 rounded-full mb-4">
-                <DocumentTextIcon className="h-12 w-12 text-gray-400" />
+              <div className="p-4 bg-brand-bg rounded-full mb-4">
+                <DocumentTextIcon className="h-12 w-12 text-brand-text-light" />
               </div>
-              <h3 className="text-lg font-medium text-gray-700 mb-2">
+              <h3 className="text-lg font-medium text-brand-navy mb-2">
                 No content generated yet
               </h3>
-              <p className="text-sm text-gray-500 max-w-sm">
+              <p className="text-sm text-brand-text-light max-w-sm">
                 Identify and address misconceptions that may be blocking student learning.
               </p>
             </div>
@@ -377,7 +377,7 @@ const MisconceptionTracker: React.FC<Props> = ({ sessionId }) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="mt-8 bg-gradient-to-r from-red-50 to-orange-50 rounded-2xl p-6 border border-red-100"
+        className="mt-8 bg-gradient-to-r from-scholarly-terracotta/5 to-scholarly-terracotta/10 rounded-2xl p-6 border border-scholarly-terracotta/20"
       >
         <h3 className="font-semibold text-brand-navy mb-4">Conceptual Change Framework</h3>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -388,11 +388,11 @@ const MisconceptionTracker: React.FC<Props> = ({ sessionId }) => {
             { step: 4, title: 'Apply', desc: 'Practice new understanding in varied contexts' },
           ].map((phase) => (
             <div key={phase.step} className="p-4 bg-white rounded-xl">
-              <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center mb-2">
-                <span className="text-red-700 font-bold">{phase.step}</span>
+              <div className="w-8 h-8 bg-scholarly-terracotta/10 rounded-full flex items-center justify-center mb-2">
+                <span className="text-scholarly-terracotta font-bold">{phase.step}</span>
               </div>
               <h4 className="font-medium text-brand-navy">{phase.title}</h4>
-              <p className="text-xs text-gray-600 mt-1">{phase.desc}</p>
+              <p className="text-xs text-brand-text mt-1">{phase.desc}</p>
             </div>
           ))}
         </div>

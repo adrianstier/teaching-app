@@ -570,5 +570,121 @@ export const researchData = {
         finding: 'Conceptual change requires dissatisfaction with current beliefs, plus an alternative that is intelligible, plausible, and fruitful.'
       }
     ]
+  },
+
+  adaptivePathways: {
+    title: 'Adaptive Learning & Personalized Pathways',
+    summary: 'Students learn at different rates and have different prerequisite knowledge. Adaptive learning systems that adjust difficulty and content based on individual performance can improve learning outcomes.',
+    whatItMeans: 'Assess where students are before teaching new material. Provide different pathways for students at different levels. Allow students to move faster through material they already understand and spend more time on areas where they struggle.',
+    citations: [
+      {
+        authors: 'VanLehn, K.',
+        year: '2011',
+        title: 'The relative effectiveness of human tutoring, intelligent tutoring systems, and other tutoring systems',
+        source: 'Educational Psychologist, 46(4), 197-221',
+        finding: 'Meta-analysis found intelligent tutoring systems produce learning gains nearly as large as human tutoring (effect size 0.76 vs 0.79).'
+      },
+      {
+        authors: 'Pane, J. F., Steiner, E. D., Baird, M. D., & Hamilton, L. S.',
+        year: '2017',
+        title: 'Informing progress: Insights on personalized learning implementation and effects',
+        source: 'RAND Corporation Research Report',
+        finding: 'Schools implementing personalized learning showed modest but significant gains in math and reading achievement.'
+      },
+      {
+        authors: 'Bloom, B. S.',
+        year: '1984',
+        title: 'The 2 sigma problem: The search for methods of group instruction as effective as one-to-one tutoring',
+        source: 'Educational Researcher, 13(6), 4-16',
+        finding: 'One-on-one tutoring produces 2 standard deviation improvements; adaptive instruction aims to approach this effect at scale.'
+      }
+    ]
+  },
+
+  learningScience: {
+    title: 'Evidence-Based Learning Science',
+    summary: 'Decades of cognitive science research have identified strategies that reliably improve learning. These principles apply across ages, subjects, and contexts, yet many popular study methods are ineffective.',
+    whatItMeans: 'Rely on research-supported techniques like retrieval practice, spacing, and interleaving rather than intuition. What feels effective (highlighting, rereading) often is not. What feels harder (testing yourself, spacing practice) usually works better.',
+    citations: [
+      {
+        authors: 'Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J., & Willingham, D. T.',
+        year: '2013',
+        title: 'Improving students\' learning with effective learning techniques',
+        source: 'Psychological Science in the Public Interest, 14(1), 4-58',
+        finding: 'Comprehensive review rated 10 common learning techniques; practice testing and distributed practice rated most effective.'
+      },
+      {
+        authors: 'Pashler, H., Bain, P. M., Bottge, B. A., et al.',
+        year: '2007',
+        title: 'Organizing instruction and study to improve student learning',
+        source: 'IES Practice Guide, NCER 2007-2004',
+        finding: 'Identified seven research-based recommendations for organizing instruction to maximize learning.'
+      },
+      {
+        authors: 'Roediger, H. L., & Pyc, M. A.',
+        year: '2012',
+        title: 'Inexpensive techniques to improve education: Applying cognitive psychology to enhance educational practice',
+        source: 'Journal of Applied Research in Memory and Cognition, 1(4), 242-248',
+        finding: 'Simple changes like adding practice tests and spacing study sessions improve learning with minimal cost.'
+      }
+    ]
+  },
+
+  courseAnalytics: {
+    title: 'Learning Analytics',
+    summary: 'Data about student behavior and performance can inform teaching decisions, but only when collected thoughtfully and analyzed with appropriate caution about what the data can and cannot reveal.',
+    whatItMeans: 'Use data to identify students who may be struggling early. Look for patterns in what content students find difficult. Remember that engagement metrics (time on page, clicks) do not necessarily indicate learning.',
+    citations: [
+      {
+        authors: 'Siemens, G., & Baker, R. S.',
+        year: '2012',
+        title: 'Learning analytics and educational data mining: Towards communication and collaboration',
+        source: 'Proceedings of the 2nd International Conference on Learning Analytics and Knowledge',
+        finding: 'Established the field of learning analytics as distinct from but related to educational data mining.'
+      },
+      {
+        authors: 'Arnold, K. E., & Pistilli, M. D.',
+        year: '2012',
+        title: 'Course signals at Purdue: Using learning analytics to increase student success',
+        source: 'Proceedings of the 2nd International Conference on Learning Analytics and Knowledge',
+        finding: 'Early warning system using analytics improved retention and course grades for at-risk students.'
+      },
+      {
+        authors: 'Wise, A. F., & Shaffer, D. W.',
+        year: '2015',
+        title: 'Why theory matters more than ever in the age of big data',
+        source: 'Journal of Learning Analytics, 2(2), 5-13',
+        finding: 'Cautions that learning analytics must be grounded in learning theory to be meaningful and actionable.'
+      }
+    ]
+  },
+
+  studentPerspective: {
+    title: 'Student-Centered Design & Learner Experience',
+    summary: 'Understanding how students experience learning—their cognitive load, motivation, and engagement—helps instructors design more effective courses. Taking the student perspective reveals barriers that may be invisible to experts.',
+    whatItMeans: 'Regularly gather student feedback about what is confusing, overwhelming, or engaging. Consider the student\'s journey through your course, not just the content. What seems obvious to you may be a significant hurdle for learners encountering the material for the first time.',
+    citations: [
+      {
+        authors: 'Ambrose, S. A., Bridges, M. W., DiPietro, M., Lovett, M. C., & Norman, M. K.',
+        year: '2010',
+        title: 'How Learning Works: Seven Research-Based Principles for Smart Teaching',
+        source: 'Jossey-Bass',
+        finding: 'Synthesized research into seven principles, emphasizing that how students perceive and organize knowledge affects their learning.'
+      },
+      {
+        authors: 'Nathan, M. J., & Petrosino, A.',
+        year: '2003',
+        title: 'Expert blind spot among preservice teachers',
+        source: 'American Educational Research Journal, 40(4), 905-928',
+        finding: 'Experts often underestimate the difficulty of material because they cannot easily recall their own learning process.'
+      },
+      {
+        authors: 'Felten, P., & Lambert, L. M.',
+        year: '2020',
+        title: 'Relationship-Rich Education: How Human Connections Drive Success in College',
+        source: 'Johns Hopkins University Press',
+        finding: 'Students\' sense of belonging and connection with instructors significantly impacts persistence and learning outcomes.'
+      }
+    ]
   }
 };

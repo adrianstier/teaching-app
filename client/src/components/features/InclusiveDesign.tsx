@@ -16,6 +16,19 @@ interface Props {
   sessionId: string;
 }
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.08 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 12 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+};
+
 const InclusiveDesign: React.FC<Props> = ({ sessionId }) => {
   const [activeTab, setActiveTab] = useState<'audit' | 'examples' | 'udl'>('audit');
   const [loading, setLoading] = useState(false);
@@ -82,13 +95,14 @@ const InclusiveDesign: React.FC<Props> = ({ sessionId }) => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto">
+    <motion.div
+      className="max-w-6xl mx-auto"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
       {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="mb-8"
-      >
+      <motion.div variants={itemVariants} className="mb-8">
         <div className="flex items-center space-x-4 mb-4">
           <div className="p-3 bg-scholarly-sage/10 rounded-lg">
             <GlobeAltIcon className="h-7 w-7 text-scholarly-sage" />
@@ -104,7 +118,7 @@ const InclusiveDesign: React.FC<Props> = ({ sessionId }) => {
       </motion.div>
 
       {/* Tabs */}
-      <div className="flex space-x-2 mb-6">
+      <motion.div variants={itemVariants} className="flex space-x-2 mb-6">
         {[
           { id: 'audit', name: 'Content Audit', icon: CheckCircleIcon },
           { id: 'examples', name: 'Diverse Examples', icon: UserGroupIcon },
@@ -113,17 +127,17 @@ const InclusiveDesign: React.FC<Props> = ({ sessionId }) => {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id as any)}
-            className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-colors ${
+            className={`flex items-center space-x-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
               activeTab === tab.id
-                ? 'bg-teal-600 text-white'
-                : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
+                ? 'bg-brand-navy text-white shadow-sm'
+                : 'bg-white text-brand-text hover:bg-brand-bg border border-brand-border-subtle'
             }`}
           >
-            <tab.icon className="h-5 w-5" />
+            <tab.icon className="h-4 w-4" />
             <span>{tab.name}</span>
           </button>
         ))}
-      </div>
+      </motion.div>
 
       {/* Content */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -131,31 +145,31 @@ const InclusiveDesign: React.FC<Props> = ({ sessionId }) => {
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="bg-white rounded-2xl shadow-card p-6 border border-gray-100"
+          className="bg-white rounded-2xl shadow-card p-6 border border-brand-border-subtle"
         >
           {activeTab === 'audit' && (
             <>
               <h2 className="text-xl font-semibold text-brand-navy mb-4">
                 Inclusivity Audit
               </h2>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-brand-text mb-4">
                 Check your content for potential barriers, representation gaps,
                 and opportunities to be more inclusive.
               </p>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-brand-navy mb-1">
                     Content to Audit
                   </label>
                   <textarea
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                     placeholder="Paste your lecture content, syllabus section, or assignment description..."
-                    className="w-full h-48 p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-teal-500 resize-none"
+                    className="w-full h-48 p-3 border border-brand-border-subtle rounded-xl focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold resize-none"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-brand-navy mb-2">
                     Check Dimensions
                   </label>
                   <div className="grid grid-cols-2 gap-2">
@@ -165,8 +179,8 @@ const InclusiveDesign: React.FC<Props> = ({ sessionId }) => {
                       { value: 'representation', label: 'Representation' },
                       { value: 'language', label: 'Inclusive Language' },
                     ].map((dim) => (
-                      <label key={dim.value} className="flex items-center space-x-2 p-2 border border-gray-200 rounded-lg hover:bg-teal-50 cursor-pointer">
-                        <input type="checkbox" defaultChecked className="text-teal-600 rounded" />
+                      <label key={dim.value} className="flex items-center space-x-2 p-2 border border-brand-border-subtle rounded-lg hover:bg-scholarly-sage/5 cursor-pointer">
+                        <input type="checkbox" defaultChecked className="text-scholarly-sage rounded" />
                         <span className="text-sm">{dim.label}</span>
                       </label>
                     ))}
@@ -176,7 +190,7 @@ const InclusiveDesign: React.FC<Props> = ({ sessionId }) => {
               <button
                 onClick={runAudit}
                 disabled={loading}
-                className="mt-6 w-full py-3 bg-teal-600 text-white rounded-xl font-medium hover:bg-teal-700 transition-colors disabled:opacity-50"
+                className="mt-6 w-full py-3 bg-brand-navy text-white rounded-xl font-medium hover:bg-brand-navy-light transition-colors disabled:opacity-50"
               >
                 {loading ? 'Analyzing...' : 'Run Inclusivity Audit'}
               </button>
@@ -188,13 +202,13 @@ const InclusiveDesign: React.FC<Props> = ({ sessionId }) => {
               <h2 className="text-xl font-semibold text-brand-navy mb-4">
                 Generate Diverse Examples
               </h2>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-brand-text mb-4">
                 Create examples that reflect diverse cultures, perspectives,
                 and lived experiences to help all students see themselves in the material.
               </p>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-brand-navy mb-1">
                     Concept/Topic
                   </label>
                   <input
@@ -202,17 +216,17 @@ const InclusiveDesign: React.FC<Props> = ({ sessionId }) => {
                     value={topic}
                     onChange={(e) => setTopic(e.target.value)}
                     placeholder="e.g., Supply and demand"
-                    className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-teal-500"
+                    className="w-full p-3 border border-brand-border-subtle rounded-xl focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-brand-navy mb-2">
                     Diversity Dimensions
                   </label>
                   <div className="grid grid-cols-2 gap-2">
                     {['Cultural', 'Geographic', 'Historical', 'Gender', 'Socioeconomic', 'Ability'].map((dim) => (
-                      <label key={dim} className="flex items-center space-x-2 p-2 border border-gray-200 rounded-lg hover:bg-teal-50 cursor-pointer">
-                        <input type="checkbox" defaultChecked className="text-teal-600 rounded" />
+                      <label key={dim} className="flex items-center space-x-2 p-2 border border-brand-border-subtle rounded-lg hover:bg-scholarly-sage/5 cursor-pointer">
+                        <input type="checkbox" defaultChecked className="text-scholarly-sage rounded" />
                         <span className="text-sm">{dim}</span>
                       </label>
                     ))}
@@ -222,7 +236,7 @@ const InclusiveDesign: React.FC<Props> = ({ sessionId }) => {
               <button
                 onClick={generateExamples}
                 disabled={loading}
-                className="mt-6 w-full py-3 bg-teal-600 text-white rounded-xl font-medium hover:bg-teal-700 transition-colors disabled:opacity-50"
+                className="mt-6 w-full py-3 bg-brand-navy text-white rounded-xl font-medium hover:bg-brand-navy-light transition-colors disabled:opacity-50"
               >
                 {loading ? 'Generating...' : 'Generate Diverse Examples'}
               </button>
@@ -234,22 +248,22 @@ const InclusiveDesign: React.FC<Props> = ({ sessionId }) => {
               <h2 className="text-xl font-semibold text-brand-navy mb-4">
                 UDL Guidelines
               </h2>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-brand-text mb-4">
                 Apply Universal Design for Learning principles to create flexible
                 learning experiences that accommodate all learners.
               </p>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-brand-navy mb-1">
                     Current Learning Activity
                   </label>
                   <textarea
                     placeholder="Describe the activity you want to make more inclusive..."
-                    className="w-full h-32 p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-teal-500 resize-none"
+                    className="w-full h-32 p-3 border border-brand-border-subtle rounded-xl focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold resize-none"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-brand-navy mb-2">
                     UDL Principle Focus
                   </label>
                   <div className="space-y-2">
@@ -258,11 +272,11 @@ const InclusiveDesign: React.FC<Props> = ({ sessionId }) => {
                       { value: 'representation', label: 'Representation', desc: 'Multiple ways to present content' },
                       { value: 'expression', label: 'Action & Expression', desc: 'Multiple ways to demonstrate learning' },
                     ].map((principle) => (
-                      <label key={principle.value} className="flex items-start space-x-2 p-3 border border-gray-200 rounded-lg hover:bg-teal-50 cursor-pointer">
-                        <input type="checkbox" defaultChecked className="text-teal-600 rounded mt-1" />
+                      <label key={principle.value} className="flex items-start space-x-2 p-3 border border-brand-border-subtle rounded-lg hover:bg-scholarly-sage/5 cursor-pointer">
+                        <input type="checkbox" defaultChecked className="text-scholarly-sage rounded mt-1" />
                         <div>
                           <span className="text-sm font-medium">{principle.label}</span>
-                          <p className="text-xs text-gray-500">{principle.desc}</p>
+                          <p className="text-xs text-brand-text-light">{principle.desc}</p>
                         </div>
                       </label>
                     ))}
@@ -271,7 +285,7 @@ const InclusiveDesign: React.FC<Props> = ({ sessionId }) => {
               </div>
               <button
                 disabled={loading}
-                className="mt-6 w-full py-3 bg-teal-600 text-white rounded-xl font-medium hover:bg-teal-700 transition-colors disabled:opacity-50"
+                className="mt-6 w-full py-3 bg-brand-navy text-white rounded-xl font-medium hover:bg-brand-navy-light transition-colors disabled:opacity-50"
               >
                 Generate UDL Recommendations
               </button>
@@ -283,16 +297,16 @@ const InclusiveDesign: React.FC<Props> = ({ sessionId }) => {
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="bg-white rounded-2xl shadow-card p-6 border border-gray-100 max-h-[700px] overflow-y-auto"
+          className="bg-white rounded-2xl shadow-card p-6 border border-brand-border-subtle max-h-[700px] overflow-y-auto"
         >
           {results && activeTab === 'audit' && (
             <>
               <h2 className="text-xl font-semibold text-brand-navy mb-4">
                 Audit Results
               </h2>
-              <div className="mb-4 p-4 bg-teal-50 rounded-xl">
+              <div className="mb-4 p-4 bg-scholarly-sage/5 rounded-xl">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-medium text-teal-800">Overall Score</span>
+                  <span className="font-medium text-scholarly-sage">Overall Score</span>
                   <span className={`text-2xl font-bold ${
                     results.overallScore >= 80 ? 'text-green-600' :
                     results.overallScore >= 60 ? 'text-yellow-600' :
@@ -301,7 +315,7 @@ const InclusiveDesign: React.FC<Props> = ({ sessionId }) => {
                     {results.overallScore}/100
                   </span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
+                <div className="w-full bg-brand-border-subtle rounded-full h-2">
                   <div
                     className={`h-2 rounded-full ${
                       results.overallScore >= 80 ? 'bg-green-500' :
@@ -315,7 +329,7 @@ const InclusiveDesign: React.FC<Props> = ({ sessionId }) => {
 
               {results.issues && results.issues.length > 0 && (
                 <div className="mb-4">
-                  <h3 className="font-medium text-gray-700 mb-2">Issues Found:</h3>
+                  <h3 className="font-medium text-brand-navy mb-2">Issues Found:</h3>
                   <div className="space-y-2">
                     {results.issues.map((issue: any, i: number) => (
                       <div key={i} className={`p-3 rounded-lg border-l-4 ${
@@ -323,8 +337,8 @@ const InclusiveDesign: React.FC<Props> = ({ sessionId }) => {
                         issue.severity === 'medium' ? 'bg-yellow-50 border-yellow-500' :
                         'bg-blue-50 border-blue-500'
                       }`}>
-                        <p className="font-medium text-gray-800">{issue.issue}</p>
-                        <p className="text-sm text-gray-600 mt-1">{issue.suggestion}</p>
+                        <p className="font-medium text-brand-navy">{issue.issue}</p>
+                        <p className="text-sm text-brand-text mt-1">{issue.suggestion}</p>
                       </div>
                     ))}
                   </div>
@@ -333,12 +347,12 @@ const InclusiveDesign: React.FC<Props> = ({ sessionId }) => {
 
               {results.strengths && results.strengths.length > 0 && (
                 <div>
-                  <h3 className="font-medium text-gray-700 mb-2">Strengths:</h3>
+                  <h3 className="font-medium text-brand-navy mb-2">Strengths:</h3>
                   <div className="space-y-2">
                     {results.strengths.map((s: string, i: number) => (
                       <div key={i} className="p-3 bg-green-50 rounded-lg flex items-start space-x-2">
                         <CheckCircleIcon className="h-5 w-5 text-green-600 flex-shrink-0" />
-                        <span className="text-sm text-gray-700">{s}</span>
+                        <span className="text-sm text-brand-navy">{s}</span>
                       </div>
                     ))}
                   </div>
@@ -354,15 +368,15 @@ const InclusiveDesign: React.FC<Props> = ({ sessionId }) => {
               </h2>
               <div className="space-y-4">
                 {results.examples.map((ex: any, i: number) => (
-                  <div key={i} className="p-4 bg-gray-50 rounded-xl">
+                  <div key={i} className="p-4 bg-brand-bg/50 rounded-xl">
                     <div className="flex items-center space-x-2 mb-2">
-                      <span className="px-2 py-0.5 text-xs font-medium bg-teal-100 text-teal-700 rounded">
+                      <span className="px-2 py-0.5 text-xs font-medium bg-scholarly-sage/10 text-scholarly-sage rounded">
                         {ex.diversityDimension}
                       </span>
-                      <span className="text-sm text-gray-500">{ex.culturalContext}</span>
+                      <span className="text-sm text-brand-text-light">{ex.culturalContext}</span>
                     </div>
                     <p className="text-brand-navy">{ex.example}</p>
-                    <p className="text-sm text-gray-600 mt-2">{ex.connectionToContent}</p>
+                    <p className="text-sm text-brand-text mt-2">{ex.connectionToContent}</p>
                   </div>
                 ))}
               </div>
@@ -371,13 +385,13 @@ const InclusiveDesign: React.FC<Props> = ({ sessionId }) => {
 
           {!results && (
             <div className="h-full flex flex-col items-center justify-center text-center py-12">
-              <div className="p-4 bg-gray-100 rounded-full mb-4">
-                <DocumentTextIcon className="h-12 w-12 text-gray-400" />
+              <div className="p-4 bg-scholarly-sage/10 rounded-full mb-4">
+                <DocumentTextIcon className="h-12 w-12 text-scholarly-sage" />
               </div>
-              <h3 className="text-lg font-medium text-gray-700 mb-2">
+              <h3 className="text-lg font-medium text-brand-navy mb-2">
                 No content generated yet
               </h3>
-              <p className="text-sm text-gray-500 max-w-sm">
+              <p className="text-sm text-brand-text-light max-w-sm">
                 Create more inclusive materials that work for all your students.
               </p>
             </div>
@@ -390,16 +404,16 @@ const InclusiveDesign: React.FC<Props> = ({ sessionId }) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="mt-8 bg-gradient-to-r from-teal-50 to-cyan-50 rounded-2xl p-6 border border-teal-100"
+        className="mt-8 bg-gradient-to-r from-scholarly-sage/5 to-scholarly-sage/10 rounded-2xl p-6 border border-scholarly-sage/20"
       >
         <h3 className="font-semibold text-brand-navy mb-4">Universal Design for Learning</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="p-4 bg-white rounded-xl">
             <div className="flex items-center space-x-2 mb-2">
-              <HandRaisedIcon className="h-5 w-5 text-teal-600" />
+              <HandRaisedIcon className="h-5 w-5 text-scholarly-sage" />
               <h4 className="font-medium text-brand-navy">Engagement</h4>
             </div>
-            <ul className="text-xs text-gray-600 space-y-1">
+            <ul className="text-xs text-brand-text space-y-1">
               <li>• Offer choices in how to approach tasks</li>
               <li>• Foster collaboration and community</li>
               <li>• Provide mastery-oriented feedback</li>
@@ -407,10 +421,10 @@ const InclusiveDesign: React.FC<Props> = ({ sessionId }) => {
           </div>
           <div className="p-4 bg-white rounded-xl">
             <div className="flex items-center space-x-2 mb-2">
-              <EyeIcon className="h-5 w-5 text-teal-600" />
+              <EyeIcon className="h-5 w-5 text-scholarly-sage" />
               <h4 className="font-medium text-brand-navy">Representation</h4>
             </div>
-            <ul className="text-xs text-gray-600 space-y-1">
+            <ul className="text-xs text-brand-text space-y-1">
               <li>• Offer multiple formats (text, audio, visual)</li>
               <li>• Clarify vocabulary and symbols</li>
               <li>• Highlight patterns and relationships</li>
@@ -418,10 +432,10 @@ const InclusiveDesign: React.FC<Props> = ({ sessionId }) => {
           </div>
           <div className="p-4 bg-white rounded-xl">
             <div className="flex items-center space-x-2 mb-2">
-              <LanguageIcon className="h-5 w-5 text-teal-600" />
+              <LanguageIcon className="h-5 w-5 text-scholarly-sage" />
               <h4 className="font-medium text-brand-navy">Action & Expression</h4>
             </div>
-            <ul className="text-xs text-gray-600 space-y-1">
+            <ul className="text-xs text-brand-text space-y-1">
               <li>• Vary methods for response</li>
               <li>• Provide scaffolds for practice</li>
               <li>• Support planning and strategy</li>
@@ -429,7 +443,7 @@ const InclusiveDesign: React.FC<Props> = ({ sessionId }) => {
           </div>
         </div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 
