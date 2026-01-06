@@ -10,12 +10,13 @@ module.exports = {
           navy: '#0A1A2A',
           'navy-light': '#1a2d3d',
           gold: '#C6A667',
+          'gold-dark': '#8B7355', // Darker gold for text on light backgrounds (WCAG AA compliant)
           'gold-muted': '#D4BC8A',
           'gold-light': 'rgba(198, 166, 103, 0.1)',
           bg: '#F1F3F5',
           'bg-warm': '#F8F7F4',
-          text: '#4B5563',
-          'text-light': '#6B7280',
+          text: '#374151', // Slightly darker for better contrast
+          'text-light': '#4B5563', // Adjusted for better readability
           cream: '#FDFCFA',
           border: '#E5E7EB',
           'border-subtle': '#F0F0EE',

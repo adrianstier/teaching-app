@@ -9,11 +9,12 @@
   --brand-navy: #0A1A2A;
   --brand-navy-light: #1a2d3d;
   --brand-gold: #C6A667;
+  --brand-gold-dark: #8B7355;
   --brand-gold-muted: #D4BC8A;
   --brand-bg: #F1F3F5;
   --brand-bg-warm: #F8F7F4;
-  --brand-text: #4B5563;
-  --brand-text-light: #6B7280;
+  --brand-text: #374151;
+  --brand-text-light: #4B5563;
   --brand-cream: #FDFCFA;
   --brand-border: #E5E7EB;
   --brand-border-subtle: #F0F0EE;
@@ -149,13 +150,25 @@
     background: linear-gradient(to right, transparent, var(--brand-border), transparent);
   }
 
-  /* Badge styling */
+  /* Badge styling - navy background for better contrast */
   .badge-new {
-    background-color: var(--brand-gold);
+    background-color: var(--brand-navy);
     color: white;
-    font-size: 0.6875rem;
+    font-size: 0.625rem;
     font-weight: 600;
-    padding: 0.125rem 0.5rem;
+    padding: 0.1875rem 0.5rem;
+    border-radius: 9999px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Alternative gold badge with dark text */
+  .badge-gold {
+    background-color: rgba(198, 166, 103, 0.15);
+    color: var(--brand-gold-dark);
+    font-size: 0.625rem;
+    font-weight: 600;
+    padding: 0.1875rem 0.5rem;
     border-radius: 9999px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -171,10 +184,16 @@
     background-clip: text;
   }
 
-  /* Smooth focus rings */
+  /* Strong focus rings using navy for visibility */
   .focus-scholarly:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(198, 166, 103, 0.3);
+    box-shadow: 0 0 0 3px rgba(10, 26, 42, 0.2);
+  }
+
+  /* Focus visible for keyboard navigation */
+  .focus-visible-scholarly:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(10, 26, 42, 0.3);
   }
 
   /* Subtle animation for cards */

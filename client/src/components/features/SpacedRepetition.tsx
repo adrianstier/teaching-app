@@ -351,16 +351,19 @@ const SpacedRepetition: React.FC<Props> = ({ sessionId }) => {
             (activeTab === 'practice' && !practice) ||
             activeTab === 'activation') && (
             <div className="h-full flex flex-col items-center justify-center text-center py-16">
-              <div className="p-4 bg-brand-bg rounded-full mb-4">
-                <DocumentTextIcon className="h-10 w-10 text-brand-text-light" />
+              <div className="p-4 bg-scholarly-sage/10 rounded-full mb-4">
+                <ArrowPathIcon className="h-10 w-10 text-scholarly-sage" />
               </div>
               <h3 className="font-medium text-brand-navy mb-2">
-                No content generated yet
+                Ready to Create Your Schedule
               </h3>
-              <p className="text-sm text-brand-text-light max-w-xs">
-                Fill in the form on the left and click generate to create
-                your spaced repetition content.
+              <p className="text-sm text-brand-text-light max-w-sm mb-4">
+                Enter your course topic and concepts on the left, then click generate to create an optimized review schedule based on spacing effect research.
               </p>
+              <div className="flex items-center space-x-2 text-xs text-scholarly-sage">
+                <span className="w-2 h-2 bg-scholarly-sage rounded-full animate-pulse"></span>
+                <span>Powered by cognitive science research</span>
+              </div>
             </div>
           )}
         </motion.div>

@@ -25,232 +25,65 @@ import {
   RocketLaunchIcon,
   EyeIcon,
   SparklesIcon,
-  XMarkIcon,
-  CheckIcon,
-  ArrowTrendingUpIcon,
   AcademicCapIcon,
+  ArrowRightIcon,
+  BookmarkIcon,
+  CheckCircleIcon,
 } from '@heroicons/react/24/outline';
 
 const Dashboard: React.FC = () => {
   const categories = [
     {
       name: 'Course Planning',
-      description: 'Set up your course for success before the semester starts',
-      principle: 'Good course design makes teaching easier all semester. These tools help you organize your course so students can follow along and remember what they learn.',
+      description: 'Design your course for student success',
       icon: CalendarIcon,
       color: 'sage' as const,
       tools: [
-        {
-          path: '/syllabus-analyzer',
-          name: 'Syllabus Analyzer',
-          icon: DocumentMagnifyingGlassIcon,
-          desc: 'Analyze course structure',
-          why: 'Identify gaps, redundancies, and misalignments in your course design before the semester starts.',
-          bestFor: 'Course redesign, accreditation prep, new course development'
-        },
-        {
-          path: '/learning-outcomes',
-          name: 'Learning Outcomes',
-          icon: LightBulbIcon,
-          desc: 'Write clear goals for your course',
-          why: 'Clear goals help you decide what to teach, how to test, and what students should focus on.',
-          bestFor: 'Writing course objectives, making sure tests match what you taught'
-        },
-        {
-          path: '/adaptive-pathways',
-          name: 'Flexible Paths',
-          icon: AdjustmentsHorizontalIcon,
-          desc: 'Different routes for different students',
-          badge: 'New',
-          why: 'Students come in with different backgrounds. This helps you offer catch-up material or advanced options.',
-          bestFor: 'Mixed-level classes, helping struggling students, challenging advanced students'
-        },
-        {
-          path: '/spaced-repetition',
-          name: 'Review Scheduling',
-          icon: ArrowPathIcon,
-          desc: 'Plan when to revisit material',
-          badge: 'New',
-          why: 'Cramming doesn\'t work. Spreading review sessions over time helps students remember much longer.',
-          bestFor: 'Courses with lots of terms to memorize, cumulative material, exam prep'
-        },
-        {
-          path: '/cognitive-load',
-          name: 'Complexity Checker',
-          icon: CpuChipIcon,
-          desc: 'Is this too much at once?',
-          badge: 'New',
-          why: 'Students can only process so much at a time. This helps you break down complex material into digestible pieces.',
-          bestFor: 'Difficult topics, improving slides, explaining hard concepts step-by-step'
-        },
-        {
-          path: '/inclusive-design',
-          name: 'Inclusive Design',
-          icon: GlobeAltIcon,
-          desc: 'Make materials work for everyone',
-          badge: 'New',
-          why: 'Materials that work for students with different needs actually help all students learn better.',
-          bestFor: 'Checking accessibility, reaching more students, offering multiple ways to engage'
-        },
+        { path: '/syllabus-analyzer', name: 'Syllabus Analyzer', icon: DocumentMagnifyingGlassIcon, desc: 'Analyze course structure and alignment' },
+        { path: '/learning-outcomes', name: 'Learning Outcomes', icon: LightBulbIcon, desc: 'Write clear, measurable objectives' },
+        { path: '/adaptive-pathways', name: 'Adaptive Pathways', icon: AdjustmentsHorizontalIcon, desc: 'Personalized learning routes', badge: 'New' },
+        { path: '/spaced-repetition', name: 'Spaced Repetition', icon: ArrowPathIcon, desc: 'Optimize review schedules', badge: 'New' },
+        { path: '/cognitive-load', name: 'Cognitive Load', icon: CpuChipIcon, desc: 'Manage information density', badge: 'New' },
+        { path: '/inclusive-design', name: 'Inclusive Design', icon: GlobeAltIcon, desc: 'Universal design principles', badge: 'New' },
       ],
     },
     {
-      name: 'In the Classroom',
-      description: 'Make class time more engaging and effective',
-      principle: 'Students learn more when they\'re actively doing something, not just listening. These tools help you get students participating and thinking.',
+      name: 'Teaching Delivery',
+      description: 'Engage students in active learning',
       icon: PresentationChartLineIcon,
       color: 'terracotta' as const,
       tools: [
-        {
-          path: '/create',
-          name: 'Lecture Builder',
-          icon: PlusCircleIcon,
-          desc: 'Create complete lecture materials',
-          why: 'Turn your knowledge into organized slides, notes, and activities in minutes instead of hours.',
-          bestFor: 'Preparing new topics, updating old lectures, creating consistent materials'
-        },
-        {
-          path: '/active-learning',
-          name: 'Activity Generator',
-          icon: UserGroupIcon,
-          desc: 'Quick activities to break up lectures',
-          why: 'Students remember more when they discuss or practice, not just listen. Even 2-minute activities help.',
-          bestFor: 'Making lectures interactive, getting students talking, checking if they understand'
-        },
-        {
-          path: '/case-based',
-          name: 'Case Studies',
-          icon: BookOpenIcon,
-          desc: 'Real-world scenarios for your topic',
-          badge: 'New',
-          why: 'Real examples help students see why concepts matter and how to apply them.',
-          bestFor: 'Professional courses, showing real-world applications, making abstract ideas concrete'
-        },
-        {
-          path: '/collaborative',
-          name: 'Group Work',
-          icon: UsersIcon,
-          desc: 'Structure effective team activities',
-          badge: 'New',
-          why: 'Group work helps students learn from each other—when it\'s set up well.',
-          bestFor: 'Projects, discussions, getting different viewpoints'
-        },
-        {
-          path: '/elaborative',
-          name: '"Why?" Questions',
-          icon: BeakerIcon,
-          desc: 'Questions that deepen understanding',
-          badge: 'New',
-          why: 'Asking students to explain "why" or "how" helps them connect new ideas to what they already know.',
-          bestFor: 'Building real understanding, science classes, connecting ideas'
-        },
-        {
-          path: '/desirable-difficulties',
-          name: 'Productive Challenge',
-          icon: FireIcon,
-          desc: 'Make learning stick through effort',
-          badge: 'New',
-          why: 'When learning feels too easy, students often forget quickly. A little struggle helps memory.',
-          bestFor: 'Mixing up practice, having students generate answers before showing them'
-        },
+        { path: '/create', name: 'Lecture Builder', icon: PlusCircleIcon, desc: 'Create complete lecture materials' },
+        { path: '/active-learning', name: 'Activity Generator', icon: UserGroupIcon, desc: 'Interactive exercises and discussions' },
+        { path: '/case-based', name: 'Case Studies', icon: BookOpenIcon, desc: 'Real-world scenario development', badge: 'New' },
+        { path: '/collaborative', name: 'Group Work', icon: UsersIcon, desc: 'Structured team activities', badge: 'New' },
+        { path: '/elaborative', name: 'Deep Processing', icon: BeakerIcon, desc: 'Elaborative interrogation prompts', badge: 'New' },
+        { path: '/desirable-difficulties', name: 'Productive Struggle', icon: FireIcon, desc: 'Challenge-based learning', badge: 'New' },
       ],
     },
     {
-      name: 'Quizzes & Feedback',
-      description: 'Check understanding and help students improve',
-      principle: 'Tests aren\'t just for grades—they actually help students learn. Quick checks during class let you see what\'s working and what needs more time.',
+      name: 'Assessment',
+      description: 'Measure understanding and provide feedback',
       icon: ClipboardDocumentCheckIcon,
       color: 'slate' as const,
       tools: [
-        {
-          path: '/exercise-generator',
-          name: 'Question Generator',
-          icon: ClipboardDocumentCheckIcon,
-          desc: 'Create quizzes and practice problems',
-          why: 'Mix up your question types to test different skills and keep students engaged.',
-          bestFor: 'Making quizzes, practice problems, exam questions'
-        },
-        {
-          path: '/formative-assessment',
-          name: 'Quick Polls',
-          icon: ChatBubbleLeftRightIcon,
-          desc: 'Check understanding in real-time',
-          badge: 'New',
-          why: 'A quick poll shows you if students get it—so you can adjust before moving on.',
-          bestFor: 'During class, spotting confusion early, deciding when to slow down'
-        },
-        {
-          path: '/misconceptions',
-          name: 'Common Mistakes',
-          icon: ExclamationTriangleIcon,
-          desc: 'Find and fix misunderstandings',
-          badge: 'New',
-          why: 'Students often have wrong ideas that block new learning. Finding these early saves time later.',
-          bestFor: 'Diagnosing problems, fixing wrong assumptions, prereq gaps'
-        },
-        {
-          path: '/metacognition',
-          name: 'Study Skills',
-          icon: QuestionMarkCircleIcon,
-          desc: 'Help students learn how to learn',
-          badge: 'New',
-          why: 'Students who can judge their own understanding and adjust their studying do better.',
-          bestFor: 'Teaching study strategies, helping students self-assess, building independence'
-        },
-        {
-          path: '/transfer',
-          name: 'Apply to New Situations',
-          icon: ArrowsRightLeftIcon,
-          desc: 'Practice using knowledge in new contexts',
-          badge: 'New',
-          why: 'Students often struggle to use what they learned in new situations. These activities build that skill.',
-          bestFor: 'Application problems, connecting to other fields, real-world use'
-        },
+        { path: '/exercise-generator', name: 'Question Generator', icon: ClipboardDocumentCheckIcon, desc: 'Create varied assessments' },
+        { path: '/formative-assessment', name: 'Quick Polls', icon: ChatBubbleLeftRightIcon, desc: 'Real-time comprehension checks', badge: 'New' },
+        { path: '/misconceptions', name: 'Misconception Tracker', icon: ExclamationTriangleIcon, desc: 'Identify and address gaps', badge: 'New' },
+        { path: '/metacognition', name: 'Study Skills', icon: QuestionMarkCircleIcon, desc: 'Self-regulation tools', badge: 'New' },
+        { path: '/transfer', name: 'Transfer Learning', icon: ArrowsRightLeftIcon, desc: 'Apply knowledge to new contexts', badge: 'New' },
       ],
     },
     {
-      name: 'Improve Your Teaching',
-      description: 'See what\'s working and get better over time',
-      principle: 'Great teachers keep improving. These tools help you see patterns in how students are doing and find ways to help them succeed.',
+      name: 'Analytics',
+      description: 'Continuously improve your teaching',
       icon: ChartBarIcon,
       color: 'wine' as const,
       tools: [
-        {
-          path: '/growth-mindset',
-          name: 'Encouraging Feedback',
-          icon: RocketLaunchIcon,
-          desc: 'Help students persist through challenges',
-          badge: 'New',
-          why: 'How you talk about struggle matters. The right words help students keep trying instead of giving up.',
-          bestFor: 'Writing feedback, encouraging struggling students, building resilience'
-        },
-        {
-          path: '/student-perspective',
-          name: 'Beginner\'s View',
-          icon: EyeIcon,
-          desc: 'See your course as students see it',
-          badge: 'New',
-          why: 'Experts forget what it\'s like to be confused. This helps you spot where students might get lost.',
-          bestFor: 'Finding confusing parts, simplifying explanations, catching jargon'
-        },
-        {
-          path: '/learning-science',
-          name: 'Teaching Tips',
-          icon: SparklesIcon,
-          desc: 'What research says works',
-          badge: 'New',
-          why: 'Get practical suggestions based on what research shows helps students learn.',
-          bestFor: 'Trying new approaches, getting ideas, professional growth'
-        },
-        {
-          path: '/course-analytics',
-          name: 'Course Dashboard',
-          icon: ChartBarIcon,
-          desc: 'See how students are doing overall',
-          badge: 'New',
-          why: 'Spot patterns in where students struggle so you can address problems early.',
-          bestFor: 'Finding trouble spots, tracking progress, making mid-course adjustments'
-        },
+        { path: '/growth-mindset', name: 'Growth Mindset', icon: RocketLaunchIcon, desc: 'Encouraging feedback language', badge: 'New' },
+        { path: '/student-perspective', name: 'Student Lens', icon: EyeIcon, desc: 'See content as beginners do', badge: 'New' },
+        { path: '/learning-science', name: 'Research Tips', icon: SparklesIcon, desc: 'Evidence-based recommendations', badge: 'New' },
+        { path: '/course-analytics', name: 'Course Dashboard', icon: ChartBarIcon, desc: 'Track student progress', badge: 'New' },
       ],
     },
   ];
@@ -258,316 +91,240 @@ const Dashboard: React.FC = () => {
   const getColorClasses = (color: 'sage' | 'terracotta' | 'slate' | 'wine') => {
     const colors = {
       sage: {
-        bg: 'bg-scholarly-sage/5',
-        bgSolid: 'bg-scholarly-sage/10',
+        bg: 'bg-scholarly-sage/8',
+        bgSolid: 'bg-scholarly-sage/15',
         text: 'text-scholarly-sage',
-        border: 'border-scholarly-sage/20',
-        hover: 'hover:bg-scholarly-sage/10',
-        gradient: 'from-scholarly-sage/5 to-scholarly-sage/10',
+        border: 'border-scholarly-sage/25',
+        borderLeft: 'border-l-scholarly-sage',
+        hover: 'hover:border-scholarly-sage/40',
       },
       terracotta: {
-        bg: 'bg-scholarly-terracotta/5',
-        bgSolid: 'bg-scholarly-terracotta/10',
+        bg: 'bg-scholarly-terracotta/8',
+        bgSolid: 'bg-scholarly-terracotta/15',
         text: 'text-scholarly-terracotta',
-        border: 'border-scholarly-terracotta/20',
-        hover: 'hover:bg-scholarly-terracotta/10',
-        gradient: 'from-scholarly-terracotta/5 to-scholarly-terracotta/10',
+        border: 'border-scholarly-terracotta/25',
+        borderLeft: 'border-l-scholarly-terracotta',
+        hover: 'hover:border-scholarly-terracotta/40',
       },
       slate: {
-        bg: 'bg-scholarly-slate/5',
-        bgSolid: 'bg-scholarly-slate/10',
+        bg: 'bg-scholarly-slate/8',
+        bgSolid: 'bg-scholarly-slate/15',
         text: 'text-scholarly-slate',
-        border: 'border-scholarly-slate/20',
-        hover: 'hover:bg-scholarly-slate/10',
-        gradient: 'from-scholarly-slate/5 to-scholarly-slate/10',
+        border: 'border-scholarly-slate/25',
+        borderLeft: 'border-l-scholarly-slate',
+        hover: 'hover:border-scholarly-slate/40',
       },
       wine: {
-        bg: 'bg-scholarly-wine/5',
-        bgSolid: 'bg-scholarly-wine/10',
+        bg: 'bg-scholarly-wine/8',
+        bgSolid: 'bg-scholarly-wine/15',
         text: 'text-scholarly-wine',
-        border: 'border-scholarly-wine/20',
-        hover: 'hover:bg-scholarly-wine/10',
-        gradient: 'from-scholarly-wine/5 to-scholarly-wine/10',
+        border: 'border-scholarly-wine/25',
+        borderLeft: 'border-l-scholarly-wine',
+        hover: 'hover:border-scholarly-wine/40',
       },
     };
     return colors[color];
   };
 
-  const workflowSteps = [
-    { step: 1, name: 'Plan', desc: 'Analyze syllabus & design outcomes', timing: 'Start of term' },
-    { step: 2, name: 'Design', desc: 'Create lectures, activities & assessments', timing: 'Weekly prep' },
-    { step: 3, name: 'Teach', desc: 'Deliver with real-time feedback tools', timing: 'During class' },
-    { step: 4, name: 'Improve', desc: 'Review analytics & refine approach', timing: 'Ongoing' },
-  ];
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.08,
-      },
+      transition: { staggerChildren: 0.06 },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 16 },
-    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: 12 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
   };
 
   return (
     <motion.div
-      className="max-w-6xl mx-auto"
+      className="max-w-6xl mx-auto px-4"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
-      {/* Hero Section */}
-      <motion.div variants={itemVariants} className="text-center mb-20 pt-8">
-        <p className="text-sm font-medium text-brand-gold tracking-wide uppercase mb-4">
-          Evidence-Based Course Design
-        </p>
-        <h1 className="font-serif text-5xl md:text-6xl font-semibold text-brand-navy mb-6 leading-tight tracking-tight">
-          Teaching, Elevated.
-        </h1>
-        <p className="text-lg text-brand-text mb-4 max-w-2xl mx-auto leading-relaxed">
-          Practical tools grounded in learning science that help your students learn more effectively and remember longer.
-        </p>
-        <p className="text-sm text-brand-text-light mb-10 max-w-xl mx-auto">
-          Research demonstrates that small, intentional changes to course design can significantly improve student outcomes.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Link
-            to="/create"
-            className="inline-flex items-center px-6 py-3 bg-brand-navy text-white font-medium rounded-lg shadow-sm hover:bg-brand-navy-light transition-all duration-200"
-          >
-            <PlusCircleIcon className="h-5 w-5 mr-2" />
-            Create Lecture Package
-          </Link>
-          <Link
-            to="/syllabus-analyzer"
-            className="inline-flex items-center px-6 py-3 bg-white text-brand-navy font-medium rounded-lg border border-brand-border hover:border-brand-navy hover:bg-brand-bg transition-all duration-200"
-          >
-            <DocumentMagnifyingGlassIcon className="h-5 w-5 mr-2" />
-            Analyze Your Syllabus
-          </Link>
-        </div>
-      </motion.div>
+      {/* Hero Section - Specific Value Proposition */}
+      <motion.div variants={itemVariants} className="pt-8 pb-16 md:pt-12 md:pb-20">
+        <div className="max-w-3xl">
+          {/* Credibility badge */}
+          <div className="inline-flex items-center space-x-2 px-3 py-1.5 bg-brand-navy/5 rounded-full mb-6">
+            <BookmarkIcon className="h-4 w-4 text-brand-navy" />
+            <span className="text-xs font-medium text-brand-navy">Grounded in 50+ research studies</span>
+          </div>
 
-      {/* Why These Tools Work - Refined without emojis */}
-      <motion.div
-        variants={itemVariants}
-        className="bg-white rounded-xl shadow-card p-8 mb-16 border border-brand-border-subtle"
-      >
-        <div className="text-center mb-10">
-          <h2 className="font-serif text-2xl font-semibold text-brand-navy mb-3">
-            Why These Tools Work
-          </h2>
-          <p className="text-brand-text max-w-2xl mx-auto">
-            Common intuitions about learning are often misleading. Here is what decades of research actually shows.
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-semibold text-brand-navy mb-6 leading-[1.1] tracking-tight">
+            Help Students Learn More{' '}
+            <span className="text-brand-gold-dark">in Less Time</span>
+          </h1>
+
+          <p className="text-lg md:text-xl text-brand-text mb-8 max-w-2xl leading-relaxed">
+            Design courses using strategies that cognitive science proves work. Create lectures, assessments, and activities that actually improve retention.
           </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="text-center">
-            <div className="w-12 h-12 rounded-lg bg-scholarly-wine/10 flex items-center justify-center mx-auto mb-4">
-              <XMarkIcon className="h-6 w-6 text-scholarly-wine" />
+
+          {/* Key benefits */}
+          <div className="flex flex-wrap gap-4 mb-10 text-sm text-brand-text">
+            <div className="flex items-center space-x-2">
+              <CheckCircleIcon className="h-5 w-5 text-scholarly-sage" />
+              <span>Evidence-based tools</span>
             </div>
-            <h3 className="font-medium text-brand-navy mb-2">What Feels Productive</h3>
-            <p className="text-sm text-brand-text leading-relaxed">
-              Re-reading notes, highlighting, and cramming before exams feel like studying—but students forget most of it within weeks.
-            </p>
+            <div className="flex items-center space-x-2">
+              <CheckCircleIcon className="h-5 w-5 text-scholarly-sage" />
+              <span>Save hours of prep time</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <CheckCircleIcon className="h-5 w-5 text-scholarly-sage" />
+              <span>Free for educators</span>
+            </div>
           </div>
-          <div className="text-center">
-            <div className="w-12 h-12 rounded-lg bg-scholarly-sage/10 flex items-center justify-center mx-auto mb-4">
-              <CheckIcon className="h-6 w-6 text-scholarly-sage" />
-            </div>
-            <h3 className="font-medium text-brand-navy mb-2">What Actually Sticks</h3>
-            <p className="text-sm text-brand-text leading-relaxed">
-              Testing yourself, spacing study over time, and mixing up practice feel harder—but students remember more, and for longer.
-            </p>
-          </div>
-          <div className="text-center">
-            <div className="w-12 h-12 rounded-lg bg-brand-gold/10 flex items-center justify-center mx-auto mb-4">
-              <ArrowTrendingUpIcon className="h-6 w-6 text-brand-gold" />
-            </div>
-            <h3 className="font-medium text-brand-navy mb-2">Small Changes, Real Results</h3>
-            <p className="text-sm text-brand-text leading-relaxed">
-              You do not need to overhaul your course. Strategic adjustments to how you present and assess material make a measurable difference.
-            </p>
+
+          {/* CTAs with clear hierarchy */}
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Link
+              to="/create"
+              className="inline-flex items-center justify-center px-6 py-3.5 bg-brand-navy text-white font-medium rounded-lg shadow-md hover:bg-brand-navy-light hover:shadow-lg transition-all duration-200 group"
+            >
+              <PlusCircleIcon className="h-5 w-5 mr-2" />
+              Start Building a Lecture
+              <ArrowRightIcon className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link
+              to="/syllabus-analyzer"
+              className="inline-flex items-center justify-center px-6 py-3.5 bg-white text-brand-navy font-medium rounded-lg border-2 border-brand-navy/20 hover:border-brand-navy/40 hover:bg-brand-bg transition-all duration-200"
+            >
+              <DocumentMagnifyingGlassIcon className="h-5 w-5 mr-2" />
+              Analyze Your Syllabus
+            </Link>
           </div>
         </div>
       </motion.div>
 
-      {/* Stats Bar - More refined */}
+      {/* Stats Bar */}
       <motion.div
         variants={itemVariants}
-        className="bg-brand-navy rounded-xl p-8 mb-16"
+        className="bg-brand-navy rounded-xl p-6 md:p-8 mb-12"
       >
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
           <div>
-            <p className="text-3xl font-serif font-semibold text-white">21</p>
-            <p className="text-sm text-white/70 mt-1">Evidence-Based Tools</p>
+            <p className="text-2xl md:text-3xl font-serif font-semibold text-white">21</p>
+            <p className="text-xs md:text-sm text-white/70 mt-1">Teaching Tools</p>
           </div>
           <div>
-            <p className="text-3xl font-serif font-semibold text-white">15</p>
-            <p className="text-sm text-white/70 mt-1">New Teaching Features</p>
+            <p className="text-2xl md:text-3xl font-serif font-semibold text-white">4</p>
+            <p className="text-xs md:text-sm text-white/70 mt-1">Workflow Categories</p>
           </div>
           <div>
-            <p className="text-3xl font-serif font-semibold text-white">50+</p>
-            <p className="text-sm text-white/70 mt-1">Research Citations</p>
+            <p className="text-2xl md:text-3xl font-serif font-semibold text-white">50+</p>
+            <p className="text-xs md:text-sm text-white/70 mt-1">Research Citations</p>
           </div>
           <div>
-            <p className="text-3xl font-serif font-semibold text-white">4</p>
-            <p className="text-sm text-white/70 mt-1">Integrated Workflows</p>
+            <p className="text-2xl md:text-3xl font-serif font-semibold text-white">Free</p>
+            <p className="text-xs md:text-sm text-white/70 mt-1">For All Educators</p>
           </div>
         </div>
       </motion.div>
 
-      {/* Teaching Workflow */}
-      <motion.div
-        variants={itemVariants}
-        className="bg-white rounded-xl shadow-card p-8 mb-16 border border-brand-border-subtle"
-      >
-        <div className="text-center mb-10">
-          <h2 className="font-serif text-2xl font-semibold text-brand-navy mb-3">
-            Your Teaching Workflow
-          </h2>
-          <p className="text-brand-text">
-            Tools organized around how you actually teach
-          </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {workflowSteps.map((step, index) => (
-            <div key={step.step} className="relative text-center">
-              <div className="w-14 h-14 rounded-full border-2 border-brand-gold bg-brand-gold/5 flex items-center justify-center mx-auto mb-4">
-                <span className="text-xl font-serif font-semibold text-brand-gold">{step.step}</span>
-              </div>
-              <h3 className="text-lg font-medium text-brand-navy mb-2">{step.name}</h3>
-              <p className="text-sm text-brand-text mb-2">{step.desc}</p>
-              <span className="text-xs font-medium text-brand-gold uppercase tracking-wider">
-                {step.timing}
-              </span>
-              {index < workflowSteps.length - 1 && (
-                <div className="hidden md:block absolute top-7 left-[calc(50%+2rem)] w-[calc(100%-4rem)] h-px bg-gradient-to-r from-brand-gold/40 to-brand-gold/10"></div>
-              )}
-            </div>
-          ))}
-        </div>
-      </motion.div>
-
-      {/* Tool Categories */}
-      <div className="space-y-12 mb-16">
-        {categories.map((category, catIndex) => {
+      {/* Tool Categories - Improved Cards */}
+      <div className="space-y-10 mb-16">
+        {categories.map((category) => {
           const colorClasses = getColorClasses(category.color);
           return (
             <motion.div
               key={category.name}
               variants={itemVariants}
-              className="bg-white rounded-xl shadow-card p-8 border border-brand-border-subtle"
+              className="bg-white rounded-xl shadow-card border border-brand-border-subtle overflow-hidden"
             >
-              <div className="flex items-start space-x-4 mb-6">
-                <div className={`p-3 rounded-lg ${colorClasses.bgSolid} flex-shrink-0`}>
-                  <category.icon className={`h-6 w-6 ${colorClasses.text}`} />
-                </div>
-                <div>
-                  <h2 className="font-serif text-xl font-semibold text-brand-navy">{category.name}</h2>
-                  <p className="text-brand-text text-sm mt-1">{category.description}</p>
+              {/* Category Header */}
+              <div className={`px-6 py-5 border-b border-brand-border-subtle ${colorClasses.bg}`}>
+                <div className="flex items-center space-x-3">
+                  <div className={`p-2.5 rounded-lg ${colorClasses.bgSolid}`}>
+                    <category.icon className={`h-5 w-5 ${colorClasses.text}`} />
+                  </div>
+                  <div>
+                    <h2 className="font-serif text-lg font-semibold text-brand-navy">{category.name}</h2>
+                    <p className="text-sm text-brand-text-light">{category.description}</p>
+                  </div>
                 </div>
               </div>
 
-              {/* Category Principle */}
-              <div className="research-callout mb-8">
-                <p className="text-sm text-brand-text italic leading-relaxed">{category.principle}</p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {category.tools.map((tool) => (
-                  <Link
-                    key={tool.path}
-                    to={tool.path}
-                    className={`block p-5 rounded-lg border border-brand-border-subtle bg-white hover:shadow-md hover:border-brand-border transition-all duration-200 group`}
-                  >
-                    <div className="flex items-start space-x-3 mb-3">
-                      <div className={`p-2 rounded-md ${colorClasses.bgSolid} group-hover:scale-105 transition-transform flex-shrink-0`}>
-                        <tool.icon className={`h-4 w-4 ${colorClasses.text}`} />
+              {/* Tools Grid */}
+              <div className="p-4 md:p-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+                  {category.tools.map((tool) => (
+                    <Link
+                      key={tool.path}
+                      to={tool.path}
+                      className={`group flex items-start space-x-3 p-4 rounded-lg border-l-3 ${colorClasses.borderLeft} border border-brand-border-subtle bg-white hover:shadow-md hover:bg-brand-bg/30 transition-all duration-200`}
+                    >
+                      <div className={`p-2 rounded-md ${colorClasses.bgSolid} group-hover:scale-110 transition-transform flex-shrink-0`}>
+                        <tool.icon className={`h-5 w-5 ${colorClasses.text}`} />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-center space-x-2 flex-wrap">
-                          <h3 className="font-medium text-brand-navy text-sm">{tool.name}</h3>
+                        <div className="flex items-center space-x-2">
+                          <h3 className="font-medium text-brand-navy text-sm group-hover:text-brand-navy-light transition-colors">{tool.name}</h3>
                           {tool.badge && (
-                            <span className="badge-new">
-                              {tool.badge}
-                            </span>
+                            <span className="badge-new">{tool.badge}</span>
                           )}
                         </div>
-                        <p className="text-xs text-brand-text-light mt-0.5">{tool.desc}</p>
+                        <p className="text-xs text-brand-text-light mt-1 line-clamp-2">{tool.desc}</p>
                       </div>
-                    </div>
-                    <p className="text-xs text-brand-text leading-relaxed line-clamp-2">{tool.why}</p>
-                    <div className="mt-3 pt-3 border-t border-brand-border-subtle">
-                      <p className="text-[10px] font-medium text-brand-text-light uppercase tracking-wide">Best for</p>
-                      <p className="text-xs text-brand-text mt-0.5">{tool.bestFor}</p>
-                    </div>
-                  </Link>
-                ))}
+                    </Link>
+                  ))}
+                </div>
               </div>
             </motion.div>
           );
         })}
       </div>
 
-      {/* What Research Shows */}
+      {/* Research Foundation - Consolidated */}
       <motion.div
         variants={itemVariants}
-        className="bg-gradient-to-br from-brand-gold/5 to-brand-gold/10 rounded-xl p-8 mb-16 border border-brand-gold/20"
+        className="bg-gradient-to-br from-brand-bg-warm to-brand-bg rounded-xl p-6 md:p-8 mb-12 border border-brand-border"
       >
-        <div className="text-center mb-10">
-          <h2 className="font-serif text-2xl font-semibold text-brand-navy mb-3">
-            Strategies That Work
-          </h2>
-          <p className="text-brand-text max-w-2xl mx-auto">
-            These approaches have been validated in hundreds of studies with real students
-          </p>
+        <div className="flex items-start space-x-4 mb-6">
+          <div className="p-3 bg-brand-gold/10 rounded-lg flex-shrink-0">
+            <AcademicCapIcon className="h-6 w-6 text-brand-gold-dark" />
+          </div>
+          <div>
+            <h2 className="font-serif text-xl font-semibold text-brand-navy mb-1">Built on Learning Science</h2>
+            <p className="text-brand-text text-sm">Every tool applies research-backed strategies that improve student outcomes.</p>
+          </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
-            { name: 'Practice Testing', benefit: 'Quizzes help students remember more than re-reading', simple: 'Test yourself to learn' },
-            { name: 'Spaced Practice', benefit: 'Studying over time beats cramming every time', simple: 'Space out your reviews' },
-            { name: 'Elaborative Interrogation', benefit: 'Asking "why?" helps students understand deeply', simple: 'Connect new to old' },
-            { name: 'Metacognition', benefit: 'Students who monitor their learning do better', simple: 'Know what you know' },
-          ].map((research) => (
-            <div key={research.name} className="bg-white rounded-lg p-5 text-center border border-brand-border-subtle">
-              <p className="font-medium text-brand-navy text-sm">{research.name}</p>
-              <p className="text-xs text-brand-gold mt-2 leading-relaxed">{research.benefit}</p>
-              <p className="text-xs text-brand-text-light italic mt-2">{research.simple}</p>
+            { name: 'Retrieval Practice', desc: 'Testing improves memory more than re-studying' },
+            { name: 'Spaced Learning', desc: 'Distributed practice beats cramming' },
+            { name: 'Active Recall', desc: 'Generation strengthens retention' },
+            { name: 'Metacognition', desc: 'Self-monitoring improves performance' },
+          ].map((principle) => (
+            <div key={principle.name} className="bg-white rounded-lg p-4 border border-brand-border-subtle">
+              <p className="font-medium text-brand-navy text-sm mb-1">{principle.name}</p>
+              <p className="text-xs text-brand-text-light">{principle.desc}</p>
             </div>
           ))}
         </div>
-        <p className="text-xs text-center text-brand-text-light mt-8">
-          These approaches consistently help students learn more effectively than traditional studying methods.
-        </p>
       </motion.div>
 
-      {/* Quick Start - Refined */}
-      <motion.div variants={itemVariants} className="text-center pb-12">
-        <div className="inline-flex items-center space-x-2 mb-4">
-          <AcademicCapIcon className="h-5 w-5 text-brand-gold" />
-          <span className="text-sm font-medium text-brand-gold uppercase tracking-wide">Get Started</span>
-        </div>
-        <h2 className="font-serif text-2xl font-semibold text-brand-navy mb-4">Ready to Enhance Your Teaching?</h2>
-        <p className="text-brand-text mb-8">Start with any tool—they all work together seamlessly.</p>
+      {/* CTA Section */}
+      <motion.div variants={itemVariants} className="text-center pb-16">
+        <h2 className="font-serif text-2xl font-semibold text-brand-navy mb-3">Ready to get started?</h2>
+        <p className="text-brand-text mb-6 max-w-md mx-auto">Choose any tool to begin. They work independently or together as part of your workflow.</p>
         <div className="flex flex-wrap justify-center gap-3">
-          <Link to="/syllabus-analyzer" className="px-4 py-2 bg-scholarly-sage/10 text-scholarly-sage rounded-md text-sm font-medium hover:bg-scholarly-sage/20 transition-colors">
+          <Link to="/create" className="px-5 py-2.5 bg-brand-navy text-white rounded-lg text-sm font-medium hover:bg-brand-navy-light transition-colors">
+            Build a Lecture
+          </Link>
+          <Link to="/syllabus-analyzer" className="px-5 py-2.5 bg-scholarly-sage/10 text-scholarly-sage rounded-lg text-sm font-medium hover:bg-scholarly-sage/20 transition-colors">
             Analyze Syllabus
           </Link>
-          <Link to="/learning-outcomes" className="px-4 py-2 bg-scholarly-terracotta/10 text-scholarly-terracotta rounded-md text-sm font-medium hover:bg-scholarly-terracotta/20 transition-colors">
-            Write Outcomes
+          <Link to="/exercise-generator" className="px-5 py-2.5 bg-scholarly-slate/10 text-scholarly-slate rounded-lg text-sm font-medium hover:bg-scholarly-slate/20 transition-colors">
+            Create Questions
           </Link>
-          <Link to="/spaced-repetition" className="px-4 py-2 bg-scholarly-slate/10 text-scholarly-slate rounded-md text-sm font-medium hover:bg-scholarly-slate/20 transition-colors">
-            Schedule Reviews
-          </Link>
-          <Link to="/formative-assessment" className="px-4 py-2 bg-scholarly-wine/10 text-scholarly-wine rounded-md text-sm font-medium hover:bg-scholarly-wine/20 transition-colors">
-            Create Polls
+          <Link to="/spaced-repetition" className="px-5 py-2.5 bg-scholarly-terracotta/10 text-scholarly-terracotta rounded-lg text-sm font-medium hover:bg-scholarly-terracotta/20 transition-colors">
+            Plan Reviews
           </Link>
         </div>
       </motion.div>

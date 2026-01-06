@@ -57,31 +57,31 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* Research Foundation */}
           <div>
             <h3 className="text-sm font-semibold text-brand-navy mb-4 uppercase tracking-wide">
-              Resources
+              Learning Science
             </h3>
             <ul className="space-y-2">
               <li>
-                <a href="#research" className="text-sm text-brand-text hover:text-brand-navy transition-colors">
+                <Link to="/learning-science" className="text-sm text-brand-text hover:text-brand-navy transition-colors">
                   Research Foundation
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#getting-started" className="text-sm text-brand-text hover:text-brand-navy transition-colors">
-                  Getting Started Guide
-                </a>
+                <Link to="/create" className="text-sm text-brand-text hover:text-brand-navy transition-colors">
+                  Getting Started
+                </Link>
               </li>
               <li>
-                <a href="#faq" className="text-sm text-brand-text hover:text-brand-navy transition-colors">
-                  FAQ
-                </a>
+                <Link to="/metacognition" className="text-sm text-brand-text hover:text-brand-navy transition-colors">
+                  Study Strategies
+                </Link>
               </li>
               <li>
-                <a href="#support" className="text-sm text-brand-text hover:text-brand-navy transition-colors">
-                  Support
-                </a>
+                <Link to="/growth-mindset" className="text-sm text-brand-text hover:text-brand-navy transition-colors">
+                  Growth Mindset
+                </Link>
               </li>
             </ul>
           </div>
@@ -89,26 +89,26 @@ const Footer: React.FC = () => {
           {/* Legal & Compliance */}
           <div>
             <h3 className="text-sm font-semibold text-brand-navy mb-4 uppercase tracking-wide">
-              Legal & Compliance
+              Information
             </h3>
             <ul className="space-y-2">
               <li>
-                <a href="#privacy" className="flex items-center space-x-2 text-sm text-brand-text hover:text-brand-navy transition-colors">
+                <span className="flex items-center space-x-2 text-sm text-brand-text">
                   <ShieldCheckIcon className="h-4 w-4" />
                   <span>Privacy Policy</span>
-                </a>
+                </span>
               </li>
               <li>
-                <a href="#terms" className="flex items-center space-x-2 text-sm text-brand-text hover:text-brand-navy transition-colors">
+                <span className="flex items-center space-x-2 text-sm text-brand-text">
                   <DocumentTextIcon className="h-4 w-4" />
                   <span>Terms of Service</span>
-                </a>
+                </span>
               </li>
               <li>
-                <a href="#accessibility" className="flex items-center space-x-2 text-sm text-brand-text hover:text-brand-navy transition-colors">
+                <span className="flex items-center space-x-2 text-sm text-brand-text">
                   <QuestionMarkCircleIcon className="h-4 w-4" />
-                  <span>Accessibility Statement</span>
-                </a>
+                  <span>Accessibility</span>
+                </span>
               </li>
             </ul>
           </div>
