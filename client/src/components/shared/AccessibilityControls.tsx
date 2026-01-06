@@ -64,12 +64,12 @@ const AccessibilityControls: React.FC = () => {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center space-x-1 px-2 py-1.5 rounded-md text-brand-text-light hover:text-brand-navy hover:bg-brand-bg transition-colors"
+        className="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-md text-brand-text-light hover:text-brand-navy hover:bg-brand-bg transition-colors"
         aria-label="Accessibility settings"
         title="Accessibility settings"
       >
         <EyeIcon className="h-4 w-4" />
-        <span className="text-xs hidden sm:inline">Accessibility</span>
+        <span className="text-xs hidden lg:inline">Accessibility</span>
       </button>
 
       <AnimatePresence>

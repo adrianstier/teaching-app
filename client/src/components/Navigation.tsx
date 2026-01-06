@@ -282,20 +282,20 @@ const Navigation: React.FC = () => {
             })}
 
             {/* Divider */}
-            <div className="h-6 w-px bg-brand-border mx-2" />
+            <div className="h-6 w-px bg-brand-border mx-1" />
 
             {/* Accessibility Controls */}
             <AccessibilityControls />
 
             {/* Pricing Badge */}
-            <div className="hidden md:flex items-center px-2 py-1 bg-scholarly-sage/10 text-scholarly-sage rounded-md text-xs font-medium">
+            <div className="hidden lg:flex items-center px-2.5 py-1 bg-scholarly-sage/10 text-scholarly-sage rounded-md text-xs font-medium whitespace-nowrap ml-1">
               Free for Educators
             </div>
 
             {/* Quick Create Button */}
             <Link
               to="/create"
-              className="flex items-center space-x-2 px-4 py-2 bg-brand-navy text-white rounded-md text-sm font-medium hover:bg-brand-navy-light transition-colors shadow-sm"
+              className="flex items-center space-x-2 px-4 py-2 bg-brand-navy text-white rounded-md text-sm font-medium hover:bg-brand-navy-light transition-colors shadow-sm ml-2"
             >
               <PlusCircleIcon className="h-4 w-4" />
               <span className="hidden sm:inline">Create</span>
