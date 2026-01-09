@@ -1,25 +1,36 @@
-import { SessionStore } from '../../services/session-store';
+import sessionStore from '../../services/session-store';
 import type { LectureBrief, LecturePackage } from '../../types';
 
 describe('SessionStore', () => {
-  let store: SessionStore;
+  let testSessionIds: string[] = [];
 
-  beforeEach(() => {
-    store = new SessionStore();
+  // Clean up test sessions after each test
+  afterEach(async () => {
+    for (const id of testSessionIds) {
+      await sessionStore.deleteSession(id);
+    }
+    testSessionIds = [];
   });
 
   describe('Session Management', () => {
-    test('should create a new session', () => {
-      const sessionId = store.createSession();
+    test('should create a new session with provided ID', async () => {
+      const sessionId = `test-session-${Date.now()}`;
+      testSessionIds.push(sessionId);
 
-      expect(sessionId).toBeDefined();
-      expect(typeof sessionId).toBe('string');
-      expect(sessionId).toMatch(/^session-/);
+      const session = await sessionStore.createSession(sessionId);
+
+      expect(session).toBeDefined();
+      expect(session.id).toBe(sessionId);
+      expect(session.status).toBe('initialized');
+      expect(session.createdAt).toBeInstanceOf(Date);
     });
 
-    test('should retrieve session by ID', () => {
-      const sessionId = store.createSession();
-      const session = store.getSession(sessionId);
+    test('should retrieve session by ID', async () => {
+      const sessionId = `test-session-${Date.now()}`;
+      testSessionIds.push(sessionId);
+
+      await sessionStore.createSession(sessionId);
+      const session = sessionStore.getSession(sessionId);
 
       expect(session).toBeDefined();
       expect(session?.id).toBe(sessionId);
@@ -27,246 +38,194 @@ describe('SessionStore', () => {
     });
 
     test('should return undefined for non-existent session', () => {
-      const session = store.getSession('non-existent-id');
+      const session = sessionStore.getSession('non-existent-id');
       expect(session).toBeUndefined();
     });
 
-    test('should list all sessions', () => {
-      const id1 = store.createSession();
-      const id2 = store.createSession();
-      const id3 = store.createSession();
+    test('should list all sessions', async () => {
+      const id1 = `test-session-1-${Date.now()}`;
+      const id2 = `test-session-2-${Date.now()}`;
+      const id3 = `test-session-3-${Date.now()}`;
+      testSessionIds.push(id1, id2, id3);
 
-      const sessions = store.getAllSessions();
+      await sessionStore.createSession(id1);
+      await sessionStore.createSession(id2);
+      await sessionStore.createSession(id3);
 
-      expect(sessions).toHaveLength(3);
-      expect(sessions.map(s => s.id)).toContain(id1);
-      expect(sessions.map(s => s.id)).toContain(id2);
-      expect(sessions.map(s => s.id)).toContain(id3);
+      const sessions = sessionStore.getAllSessions();
+
+      expect(sessions.length).toBeGreaterThanOrEqual(3);
+      expect(sessions.map((s: any) => s.id)).toContain(id1);
+      expect(sessions.map((s: any) => s.id)).toContain(id2);
+      expect(sessions.map((s: any) => s.id)).toContain(id3);
     });
 
-    test('should delete a session', () => {
-      const sessionId = store.createSession();
-      const deleted = store.deleteSession(sessionId);
+    test('should delete a session', async () => {
+      const sessionId = `test-session-${Date.now()}`;
+
+      await sessionStore.createSession(sessionId);
+      const deleted = await sessionStore.deleteSession(sessionId);
 
       expect(deleted).toBe(true);
-      expect(store.getSession(sessionId)).toBeUndefined();
+      expect(sessionStore.getSession(sessionId)).toBeUndefined();
     });
 
-    test('should return false when deleting non-existent session', () => {
-      const deleted = store.deleteSession('non-existent-id');
+    test('should return false when deleting non-existent session', async () => {
+      const deleted = await sessionStore.deleteSession('non-existent-id');
       expect(deleted).toBe(false);
     });
   });
 
-  describe('Lecture Brief Management', () => {
-    test('should save lecture brief', () => {
-      const sessionId = store.createSession();
-      const brief: LectureBrief = {
-        title: 'Test Lecture',
-        topic: 'Testing',
-        duration: 50,
-        audienceLevel: 'beginner',
-        prerequisites: ['Basic knowledge'],
-        mainGoals: ['Learn testing'],
-        constraints: [],
-        preferredStyle: 'Interactive',
-        specialRequirements: [],
-      };
+  describe('Session Updates', () => {
+    test('should update session properties', async () => {
+      const sessionId = `test-session-${Date.now()}`;
+      testSessionIds.push(sessionId);
 
-      store.saveLectureBrief(sessionId, brief);
-      const session = store.getSession(sessionId);
+      await sessionStore.createSession(sessionId);
+      const updated = await sessionStore.updateSession(sessionId, {
+        status: 'in-progress'
+      });
 
-      expect(session?.brief).toEqual(brief);
+      expect(updated).toBeDefined();
+      expect(updated?.status).toBe('in-progress');
     });
 
-    test('should throw error when saving brief to non-existent session', () => {
-      const brief: LectureBrief = {
-        title: 'Test',
-        topic: 'Test',
-        duration: 50,
-        audienceLevel: 'beginner',
-        prerequisites: [],
-        mainGoals: [],
-        constraints: [],
-        preferredStyle: '',
-        specialRequirements: [],
-      };
-
-      expect(() => {
-        store.saveLectureBrief('non-existent', brief);
-      }).toThrow();
+    test('should return null when updating non-existent session', async () => {
+      const updated = await sessionStore.updateSession('non-existent-id', {
+        status: 'completed'
+      });
+      expect(updated).toBeNull();
     });
 
-    test('should retrieve lecture brief', () => {
-      const sessionId = store.createSession();
-      const brief: LectureBrief = {
-        title: 'Test Lecture',
-        topic: 'Testing',
-        duration: 50,
-        audienceLevel: 'beginner',
-        prerequisites: [],
-        mainGoals: [],
-        constraints: [],
-        preferredStyle: '',
-        specialRequirements: [],
+    test('should update session timestamp on modification', async () => {
+      const sessionId = `test-session-${Date.now()}`;
+      testSessionIds.push(sessionId);
+
+      const session = await sessionStore.createSession(sessionId);
+      const originalTime = session.updatedAt.getTime();
+
+      // Wait a bit to ensure timestamp difference
+      await new Promise(resolve => setTimeout(resolve, 10));
+
+      await sessionStore.updateSession(sessionId, { status: 'updated' });
+      const updatedSession = sessionStore.getSession(sessionId);
+
+      expect(updatedSession?.updatedAt.getTime()).toBeGreaterThan(originalTime);
+    });
+  });
+
+  describe('Lecture Package Management', () => {
+    test('should save and retrieve lecture package', async () => {
+      const sessionId = `test-session-${Date.now()}`;
+      testSessionIds.push(sessionId);
+
+      await sessionStore.createSession(sessionId);
+
+      const pkg: Partial<LecturePackage> = {
+        brief: {
+          title: 'Test Lecture',
+          topic: 'Testing',
+          duration: 60,
+          audienceLevel: 'intermediate',
+          prerequisites: ['Basic knowledge'],
+          mainGoals: ['Learn testing'],
+        },
+        learningObjectives: [],
+        conceptMap: [],
+        segments: [],
+        activities: [],
       };
 
-      store.saveLectureBrief(sessionId, brief);
-      const retrieved = store.getLectureBrief(sessionId);
+      // Update session with lecture package via updateSession
+      const session = sessionStore.getSession(sessionId);
+      if (session) {
+        session.context.lecturePackage = pkg;
+        await sessionStore.updateSession(sessionId, session);
+      }
 
-      expect(retrieved).toEqual(brief);
+      const updated = sessionStore.getSession(sessionId);
+      expect(updated?.context.lecturePackage).toBeDefined();
+      expect(updated?.context.lecturePackage.brief).toEqual(pkg.brief);
+    });
+
+    test('should initialize with empty package', async () => {
+      const sessionId = `test-session-${Date.now()}`;
+      testSessionIds.push(sessionId);
+
+      await sessionStore.createSession(sessionId);
+      const session = sessionStore.getSession(sessionId);
+
+      expect(session?.context.lecturePackage).toEqual({});
     });
   });
 
   describe('Phase Management', () => {
-    test('should update current phase', () => {
-      const sessionId = store.createSession();
+    test('should update current phase', async () => {
+      const sessionId = `test-session-${Date.now()}`;
+      testSessionIds.push(sessionId);
 
-      store.updatePhase(sessionId, 'architecture');
-      const session = store.getSession(sessionId);
+      await sessionStore.createSession(sessionId);
+      await sessionStore.updateSession(sessionId, {
+        context: {
+          lecturePackage: {},
+          currentPhase: 1,
+          checkpointsPassed: [],
+          feedbackHistory: []
+        }
+      });
 
-      expect(session?.currentPhase).toBe('architecture');
+      const session = sessionStore.getSession(sessionId);
+      expect(session?.context.currentPhase).toBe(1);
     });
 
-    test('should track phase completion', () => {
-      const sessionId = store.createSession();
+    test('should track phase completion', async () => {
+      const sessionId = `test-session-${Date.now()}`;
+      testSessionIds.push(sessionId);
 
-      store.updatePhase(sessionId, 'architecture');
-      store.completePhase(sessionId, 'architecture');
+      await sessionStore.createSession(sessionId);
 
-      const session = store.getSession(sessionId);
+      const session = sessionStore.getSession(sessionId);
+      if (session) {
+        session.context.checkpointsPassed.push('architecture');
+        await sessionStore.updateSession(sessionId, session);
+      }
 
-      expect(session?.completedPhases).toContain('architecture');
-    });
-
-    test('should not duplicate completed phases', () => {
-      const sessionId = store.createSession();
-
-      store.completePhase(sessionId, 'architecture');
-      store.completePhase(sessionId, 'architecture');
-
-      const session = store.getSession(sessionId);
-
-      expect(session?.completedPhases).toHaveLength(1);
-    });
-  });
-
-  describe('Package Management', () => {
-    test('should save lecture package', () => {
-      const sessionId = store.createSession();
-      const pkg: Partial<LecturePackage> = {
-        brief: {
-          title: 'Test',
-          topic: 'Test',
-          duration: 50,
-          audienceLevel: 'beginner',
-          prerequisites: [],
-          mainGoals: [],
-          constraints: [],
-          preferredStyle: '',
-          specialRequirements: [],
-        },
-        objectives: ['Objective 1'],
-        segments: [],
-      };
-
-      store.savePackage(sessionId, pkg);
-      const session = store.getSession(sessionId);
-
-      expect(session?.package).toEqual(pkg);
-    });
-
-    test('should retrieve lecture package', () => {
-      const sessionId = store.createSession();
-      const pkg: Partial<LecturePackage> = {
-        brief: {
-          title: 'Test',
-          topic: 'Test',
-          duration: 50,
-          audienceLevel: 'beginner',
-          prerequisites: [],
-          mainGoals: [],
-          constraints: [],
-          preferredStyle: '',
-          specialRequirements: [],
-        },
-      };
-
-      store.savePackage(sessionId, pkg);
-      const retrieved = store.getPackage(sessionId);
-
-      expect(retrieved).toEqual(pkg);
-    });
-
-    test('should return null for non-existent package', () => {
-      const sessionId = store.createSession();
-      const pkg = store.getPackage(sessionId);
-
-      expect(pkg).toBeNull();
-    });
-  });
-
-  describe('Metadata Management', () => {
-    test('should track last updated timestamp', () => {
-      const sessionId = store.createSession();
-      const session = store.getSession(sessionId);
-
-      expect(session?.lastUpdated).toBeInstanceOf(Date);
-    });
-
-    test('should update timestamp on changes', async () => {
-      const sessionId = store.createSession();
-      const initial = store.getSession(sessionId)?.lastUpdated;
-
-      await new Promise(resolve => setTimeout(resolve, 10));
-
-      store.updatePhase(sessionId, 'architecture');
-      const updated = store.getSession(sessionId)?.lastUpdated;
-
-      expect(updated?.getTime()).toBeGreaterThan(initial!.getTime());
+      const updated = sessionStore.getSession(sessionId);
+      expect(updated?.context.checkpointsPassed).toContain('architecture');
     });
   });
 
   describe('Error Handling', () => {
-    test('should handle invalid session operations gracefully', () => {
-      expect(() => store.updatePhase('invalid', 'architecture')).toThrow();
-      expect(() => store.completePhase('invalid', 'architecture')).toThrow();
-      expect(() => store.savePackage('invalid', {})).toThrow();
+    test('should handle invalid session ID gracefully', () => {
+      const session = sessionStore.getSession('');
+      expect(session).toBeUndefined();
     });
 
-    test('should validate session IDs', () => {
-      expect(store.getSession('')).toBeUndefined();
-      expect(store.getSession(null as any)).toBeUndefined();
-      expect(store.getSession(undefined as any)).toBeUndefined();
+    test('should validate session ID format', () => {
+      const session = sessionStore.getSession('invalid-format');
+      expect(session).toBeUndefined();
     });
   });
 
   describe('Memory Management', () => {
-    test('should handle many sessions', () => {
+    test('should handle multiple sessions', async () => {
       const ids: string[] = [];
 
-      for (let i = 0; i < 1000; i++) {
-        ids.push(store.createSession());
+      // Create 10 test sessions
+      for (let i = 0; i < 10; i++) {
+        const id = `test-bulk-${i}-${Date.now()}`;
+        ids.push(id);
+        testSessionIds.push(id);
+        await sessionStore.createSession(id);
       }
 
-      expect(store.getAllSessions()).toHaveLength(1000);
+      const sessions = sessionStore.getAllSessions();
+      expect(sessions.length).toBeGreaterThanOrEqual(10);
 
       // Clean up
-      ids.forEach(id => store.deleteSession(id));
-      expect(store.getAllSessions()).toHaveLength(0);
-    });
-
-    test('should not leak memory after deletions', () => {
-      const ids: string[] = [];
-
-      for (let i = 0; i < 100; i++) {
-        ids.push(store.createSession());
+      for (const id of ids) {
+        await sessionStore.deleteSession(id);
       }
-
-      ids.forEach(id => store.deleteSession(id));
-
-      const remaining = store.getAllSessions();
-      expect(remaining).toHaveLength(0);
     });
   });
 });

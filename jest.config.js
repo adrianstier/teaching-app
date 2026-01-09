@@ -4,6 +4,10 @@ module.exports = {
   testEnvironment: 'node',
   roots: ['<rootDir>/src'],
   testMatch: ['**/__tests__/**/*.ts', '**/?(*.)+(spec|test).ts'],
+  testPathIgnorePatterns: ['/node_modules/', '<rootDir>/src/__tests__/setup.ts'],
+  transformIgnorePatterns: [
+    'node_modules/(?!(uuid)/)',
+  ],
   transform: {
     '^.+\\.ts$': 'ts-jest',
   },
@@ -25,6 +29,7 @@ module.exports = {
   },
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
+    '^uuid$': '<rootDir>/node_modules/uuid/dist/index.js',
   },
   setupFilesAfterEnv: ['<rootDir>/src/__tests__/setup.ts'],
   testTimeout: 10000,

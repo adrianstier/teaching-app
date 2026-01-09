@@ -95,7 +95,12 @@ export const LecturePackageSchema = z.object({
     version: z.string(),
     lastModified: z.date(),
     approvalStatus: z.enum(['draft', 'review', 'approved', 'final'])
-  })
+  }),
+  // Phase-specific data (added dynamically during workflow)
+  architecture: z.any().optional(),
+  development: z.any().optional(),
+  visual: z.any().optional(),
+  integration: z.any().optional()
 });
 
 // Types

@@ -85,7 +85,7 @@ class SessionStore {
     return value;
   }
 
-  async createSession(id: string): Session {
+  async createSession(id: string): Promise<Session> {
     const session: Session = {
       id,
       status: 'initialized',

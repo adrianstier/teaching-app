@@ -7,6 +7,24 @@ process.env.ANTHROPIC_API_KEY = 'test-key';
 process.env.OPENAI_API_KEY = 'test-key';
 process.env.PORT = '5001';
 
+// Mock chalk to avoid ESM issues
+jest.mock('chalk', () => ({
+  default: {
+    red: (str: string) => str,
+    yellow: (str: string) => str,
+    green: (str: string) => str,
+    blue: (str: string) => str,
+    gray: (str: string) => str,
+    bold: (str: string) => str,
+  },
+  red: (str: string) => str,
+  yellow: (str: string) => str,
+  green: (str: string) => str,
+  blue: (str: string) => str,
+  gray: (str: string) => str,
+  bold: (str: string) => str,
+}));
+
 // Extend Jest matchers
 expect.extend({
   toBeValidSessionId(received: string) {

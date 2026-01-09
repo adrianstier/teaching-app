@@ -75,9 +75,9 @@ class Logger {
 
   error(message: string, error?: Error | any) {
     const errorData = error instanceof Error ? {
+      ...error,
       message: error.message,
-      stack: error.stack,
-      ...error
+      stack: error.stack
     } : error;
     this.consoleLog(LogLevel.ERROR, 'ERROR', message, errorData);
   }
