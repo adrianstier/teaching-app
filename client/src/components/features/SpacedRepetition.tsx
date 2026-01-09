@@ -5,11 +5,12 @@ import {
   ArrowPathIcon,
   CalendarIcon,
   PlayIcon,
-  DocumentTextIcon,
   AcademicCapIcon,
   BookOpenIcon,
+  ChevronRightIcon,
 } from '@heroicons/react/24/outline';
-import ResearchBasis, { researchData } from '../shared/ResearchBasis';
+import ConceptExplainer, { conceptData } from '../shared/ConceptExplainer';
+import ConceptDiagram from '../shared/ConceptDiagram';
 import ExportButton from '../shared/ExportButton';
 
 interface Props {
@@ -36,7 +37,7 @@ interface RetrievalPractice {
 }
 
 const SpacedRepetition: React.FC<Props> = ({ sessionId }) => {
-  const [activeTab, setActiveTab] = useState<'schedule' | 'practice' | 'activation'>('schedule');
+  const [activeTab, setActiveTab] = useState<'learn' | 'schedule' | 'practice' | 'activation'>('learn');
   const [loading, setLoading] = useState(false);
   const [concepts, setConcepts] = useState('');
   const [courseTopic, setCourseTopic] = useState('');
@@ -120,32 +121,55 @@ const SpacedRepetition: React.FC<Props> = ({ sessionId }) => {
     visible: { opacity: 1, y: 0 },
   };
 
+  // Research citations for the concept explainer
+  const citations = [
+    {
+      authors: 'Ebbinghaus, H.',
+      year: '1885',
+      title: 'Memory: A Contribution to Experimental Psychology',
+      source: 'Originally published in German; translated 1913',
+      finding: 'First documented the forgetting curve showing memory decays exponentially, but strategic review resets this curve.'
+    },
+    {
+      authors: 'Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T., & Rohrer, D.',
+      year: '2006',
+      title: 'Distributed practice in verbal recall tasks: A review and quantitative synthesis',
+      source: 'Psychological Bulletin, 132(3), 354-380',
+      finding: 'Meta-analysis of 254 studies confirmed spacing effects across different materials, populations, and time intervals.'
+    },
+    {
+      authors: 'Wozniak, P. & Gorzelanczyk, E.',
+      year: '1994',
+      title: 'Optimization of repetition spacing in the practice of learning',
+      source: 'Acta Neurobiologiae Experimentalis, 54, 59-62',
+      finding: 'Developed the SM-2 algorithm that calculates optimal review intervals based on how easily material was recalled.'
+    }
+  ];
+
   return (
     <motion.div
-      className="max-w-5xl mx-auto"
+      className="max-w-6xl mx-auto"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
       {/* Header */}
       <motion.div variants={itemVariants} className="mb-8">
-        <div className="flex items-center space-x-4 mb-4">
-          <div className="p-3 bg-scholarly-sage/10 rounded-lg">
-            <ArrowPathIcon className="h-7 w-7 text-scholarly-sage" />
+        <div className="flex items-center space-x-4 mb-2">
+          <div className="p-3 bg-scholarly-sage/10 rounded-xl">
+            <ArrowPathIcon className="h-8 w-8 text-scholarly-sage" />
           </div>
           <div>
             <h1 className="font-serif text-3xl font-semibold text-brand-navy">Spaced Repetition</h1>
             <p className="text-brand-text mt-1">Optimize memory retention with scientifically-backed scheduling</p>
           </div>
         </div>
-
-        {/* Research Basis */}
-        <ResearchBasis {...researchData.spacedRepetition} color="sage" />
       </motion.div>
 
       {/* Tabs */}
-      <motion.div variants={itemVariants} className="flex space-x-2 mb-6">
+      <motion.div variants={itemVariants} className="flex space-x-2 mb-6 overflow-x-auto pb-2">
         {[
+          { id: 'learn', name: 'Understand the Science', icon: BookOpenIcon },
           { id: 'schedule', name: 'Review Schedule', icon: CalendarIcon },
           { id: 'practice', name: 'Retrieval Practice', icon: AcademicCapIcon },
           { id: 'activation', name: 'Pre-Class Activation', icon: PlayIcon },
@@ -153,7 +177,7 @@ const SpacedRepetition: React.FC<Props> = ({ sessionId }) => {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id as any)}
-            className={`flex items-center space-x-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
+            className={`flex items-center space-x-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap ${
               activeTab === tab.id
                 ? 'bg-brand-navy text-white shadow-sm'
                 : 'bg-white text-brand-text hover:bg-brand-bg border border-brand-border-subtle'
@@ -165,209 +189,317 @@ const SpacedRepetition: React.FC<Props> = ({ sessionId }) => {
         ))}
       </motion.div>
 
-      {/* Content */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Input Section */}
-        <motion.div
-          variants={itemVariants}
-          className="bg-white rounded-xl shadow-card p-6 border border-brand-border-subtle"
-        >
-          {activeTab === 'schedule' && (
-            <>
-              <h2 className="font-serif text-lg font-semibold text-brand-navy mb-3">
-                Generate Review Schedule
-              </h2>
-              <p className="text-sm text-brand-text mb-4">
-                Enter the key concepts from your course (one per line) to generate
-                an optimal review schedule based on the SM-2 algorithm.
-              </p>
-              <textarea
-                value={concepts}
-                onChange={(e) => setConcepts(e.target.value)}
-                placeholder="Enter concepts (one per line):&#10;Supply and demand equilibrium&#10;Kantian categorical imperative&#10;Gram staining procedure&#10;Narrative point of view"
-                className="w-full h-48 p-4 text-sm border border-brand-border rounded-lg focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold transition-all resize-none bg-brand-bg/50"
-              />
-              <button
-                onClick={generateSchedule}
-                disabled={loading}
-                className="mt-4 w-full py-3 bg-brand-navy text-white rounded-lg font-medium hover:bg-brand-navy-light transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {loading ? 'Generating...' : 'Generate Schedule'}
-              </button>
-            </>
-          )}
-
-          {activeTab === 'practice' && (
-            <>
-              <h2 className="font-serif text-lg font-semibold text-brand-navy mb-3">
-                Generate Retrieval Practice
-              </h2>
-              <p className="text-sm text-brand-text mb-4">
-                Create retrieval practice questions that promote active recall
-                rather than passive review.
-              </p>
-              <input
-                type="text"
-                value={courseTopic}
-                onChange={(e) => setCourseTopic(e.target.value)}
-                placeholder="Enter a topic (e.g., Constitutional amendments, Supply chain management)"
-                className="w-full p-4 text-sm border border-brand-border rounded-lg focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold transition-all mb-4 bg-brand-bg/50"
-              />
-              <div className="space-y-3 mb-4">
-                <p className="text-xs font-medium text-brand-text-light uppercase tracking-wide">Retrieval Type</p>
-                <label className="flex items-center space-x-3 text-sm text-brand-text cursor-pointer group">
-                  <input type="radio" name="type" defaultChecked className="text-brand-navy focus:ring-brand-gold" />
-                  <span className="group-hover:text-brand-navy transition-colors">Free Recall (most effective)</span>
-                </label>
-                <label className="flex items-center space-x-3 text-sm text-brand-text cursor-pointer group">
-                  <input type="radio" name="type" className="text-brand-navy focus:ring-brand-gold" />
-                  <span className="group-hover:text-brand-navy transition-colors">Cued Recall</span>
-                </label>
-                <label className="flex items-center space-x-3 text-sm text-brand-text cursor-pointer group">
-                  <input type="radio" name="type" className="text-brand-navy focus:ring-brand-gold" />
-                  <span className="group-hover:text-brand-navy transition-colors">Recognition</span>
-                </label>
+      {/* Learn Tab - Enhanced Concept Presentation */}
+      {activeTab === 'learn' && (
+        <motion.div variants={itemVariants} className="space-y-8">
+          {/* Visual Diagram */}
+          <div className="bg-white rounded-2xl shadow-card p-6 border border-brand-border-subtle">
+            <h2 className="font-serif text-xl font-semibold text-brand-navy mb-4">
+              The Forgetting Curve & Spacing Effect
+            </h2>
+            <p className="text-sm text-brand-text mb-6">
+              Without review, we forget most new information within days. But reviewing at strategic intervals
+              resets the forgetting curve and dramatically extends retention.
+            </p>
+            <div className="max-w-2xl mx-auto">
+              <ConceptDiagram type="forgettingCurve" animated={true} />
+            </div>
+            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="p-4 bg-red-50 rounded-xl border border-red-100">
+                <h4 className="text-sm font-semibold text-red-800 mb-2">Without Spaced Review</h4>
+                <p className="text-sm text-red-700">
+                  Memory decays rapidly after initial learning. Within a week, most information is forgotten
+                  unless deliberately reviewed.
+                </p>
               </div>
-              <button
-                onClick={generatePractice}
-                disabled={loading}
-                className="w-full py-3 bg-brand-navy text-white rounded-lg font-medium hover:bg-brand-navy-light transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {loading ? 'Generating...' : 'Generate Practice Questions'}
-              </button>
-            </>
-          )}
-
-          {activeTab === 'activation' && (
-            <>
-              <h2 className="font-serif text-lg font-semibold text-brand-navy mb-3">
-                Pre-Class Knowledge Activation
-              </h2>
-              <p className="text-sm text-brand-text mb-4">
-                Generate activities to activate prior knowledge before introducing
-                new material, improving encoding of new information.
-              </p>
-              <input
-                type="text"
-                placeholder="Upcoming topic"
-                className="w-full p-4 text-sm border border-brand-border rounded-lg focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold transition-all mb-3 bg-brand-bg/50"
-              />
-              <textarea
-                placeholder="Related prior knowledge students should have"
-                className="w-full h-32 p-4 text-sm border border-brand-border rounded-lg focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold transition-all resize-none mb-4 bg-brand-bg/50"
-              />
-              <button
-                disabled={loading}
-                className="w-full py-3 bg-brand-navy text-white rounded-lg font-medium hover:bg-brand-navy-light transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                Generate Activation Activity
-              </button>
-            </>
-          )}
-        </motion.div>
-
-        {/* Output Section */}
-        <motion.div
-          variants={itemVariants}
-          className="bg-white rounded-xl shadow-card p-6 border border-brand-border-subtle"
-        >
-          {activeTab === 'schedule' && schedule.length > 0 && (
-            <>
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="font-serif text-lg font-semibold text-brand-navy">
-                  Review Schedule
-                </h2>
-                <ExportButton
-                  data={schedule}
-                  filename="spaced-repetition-schedule"
-                  title="Export"
-                />
-              </div>
-              <div className="space-y-3">
-                {schedule.map((item, index) => (
-                  <div
-                    key={index}
-                    className="p-4 bg-brand-bg/50 rounded-lg border border-brand-border-subtle"
-                  >
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <h3 className="font-medium text-brand-navy text-sm">{item.conceptName}</h3>
-                        <p className="text-xs text-brand-text-light mt-1">
-                          Next review: {new Date(item.nextReview).toLocaleDateString()}
-                        </p>
-                      </div>
-                      <div className="text-right">
-                        <span className="text-sm font-medium text-scholarly-sage">
-                          {item.interval} days
-                        </span>
-                        <p className="text-xs text-brand-text-light mt-0.5">
-                          Ease: {(item.easeFactor * 100).toFixed(0)}%
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </>
-          )}
-
-          {activeTab === 'practice' && practice && (
-            <>
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="font-serif text-lg font-semibold text-brand-navy">
-                  Practice Questions: {practice.concept}
-                </h2>
-                <ExportButton
-                  data={practice}
-                  filename="retrieval-practice"
-                  title="Export"
-                />
-              </div>
-              <div className="space-y-4">
-                {practice.questions.map((q, index) => (
-                  <div
-                    key={index}
-                    className="p-4 bg-brand-bg/50 rounded-lg border border-brand-border-subtle"
-                  >
-                    <span className="inline-block px-2 py-0.5 text-xs font-medium bg-scholarly-sage/10 text-scholarly-sage rounded mb-2">
-                      {q.type}
-                    </span>
-                    <p className="font-medium text-brand-navy text-sm mb-2">{q.question}</p>
-                    <details className="mt-2">
-                      <summary className="text-xs text-brand-gold cursor-pointer hover:text-brand-gold/80 font-medium">
-                        Show expected response
-                      </summary>
-                      <p className="mt-2 text-xs text-brand-text pl-4 border-l-2 border-brand-gold/30 leading-relaxed">
-                        {q.expectedResponse}
-                      </p>
-                    </details>
-                  </div>
-                ))}
-              </div>
-            </>
-          )}
-
-          {((activeTab === 'schedule' && schedule.length === 0) ||
-            (activeTab === 'practice' && !practice) ||
-            activeTab === 'activation') && (
-            <div className="h-full flex flex-col items-center justify-center text-center py-16">
-              <div className="p-4 bg-scholarly-sage/10 rounded-full mb-4">
-                <ArrowPathIcon className="h-10 w-10 text-scholarly-sage" />
-              </div>
-              <h3 className="font-medium text-brand-navy mb-2">
-                Ready to Create Your Schedule
-              </h3>
-              <p className="text-sm text-brand-text-light max-w-sm mb-4">
-                Enter your course topic and concepts on the left, then click generate to create an optimized review schedule based on spacing effect research.
-              </p>
-              <div className="flex items-center space-x-2 text-xs text-scholarly-sage">
-                <span className="w-2 h-2 bg-scholarly-sage rounded-full animate-pulse"></span>
-                <span>Powered by cognitive science research</span>
+              <div className="p-4 bg-green-50 rounded-xl border border-green-100">
+                <h4 className="text-sm font-semibold text-green-800 mb-2">With Spaced Review</h4>
+                <p className="text-sm text-green-700">
+                  Each well-timed review strengthens memory and extends the retention period. The same study
+                  time produces far better results when distributed.
+                </p>
               </div>
             </div>
-          )}
+          </div>
+
+          {/* Massed vs Spaced Comparison */}
+          <div className="bg-white rounded-2xl shadow-card p-6 border border-brand-border-subtle">
+            <h2 className="font-serif text-xl font-semibold text-brand-navy mb-4">
+              Cramming vs. Distributed Practice
+            </h2>
+            <div className="max-w-2xl mx-auto">
+              <ConceptDiagram type="spacingEffect" animated={true} />
+            </div>
+          </div>
+
+          {/* Detailed Concept Explainer */}
+          <ConceptExplainer
+            {...conceptData.spacedRepetition}
+            citations={citations}
+            color="sage"
+            icon={<ArrowPathIcon className="h-6 w-6 text-scholarly-sage" />}
+          />
+
+          {/* Quick Start CTA */}
+          <div className="bg-gradient-to-r from-scholarly-sage/10 to-scholarly-sage/5 rounded-2xl p-6 border border-scholarly-sage/20">
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="font-serif text-lg font-semibold text-brand-navy mb-2">
+                  Ready to apply this?
+                </h3>
+                <p className="text-sm text-brand-text">
+                  Generate a spaced review schedule for your course concepts or create retrieval practice questions.
+                </p>
+              </div>
+              <button
+                onClick={() => setActiveTab('schedule')}
+                className="flex items-center space-x-2 px-6 py-3 bg-scholarly-sage text-white rounded-xl font-medium hover:bg-scholarly-sage/90 transition-colors"
+              >
+                <span>Create Schedule</span>
+                <ChevronRightIcon className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
         </motion.div>
-      </div>
+      )}
+
+      {/* Schedule Tab */}
+      {activeTab === 'schedule' && (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <motion.div
+            variants={itemVariants}
+            className="bg-white rounded-xl shadow-card p-6 border border-brand-border-subtle"
+          >
+            <h2 className="font-serif text-lg font-semibold text-brand-navy mb-3">
+              Generate Review Schedule
+            </h2>
+            <p className="text-sm text-brand-text mb-4">
+              Enter the key concepts from your course (one per line) to generate
+              an optimal review schedule based on the SM-2 algorithm.
+            </p>
+            <textarea
+              value={concepts}
+              onChange={(e) => setConcepts(e.target.value)}
+              placeholder="Enter concepts (one per line):&#10;Supply and demand equilibrium&#10;Kantian categorical imperative&#10;Gram staining procedure&#10;Narrative point of view"
+              className="w-full h-48 p-4 text-sm border border-brand-border rounded-lg focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold transition-all resize-none bg-brand-bg/50"
+            />
+            <button
+              onClick={generateSchedule}
+              disabled={loading}
+              className="mt-4 w-full py-3 bg-brand-navy text-white rounded-lg font-medium hover:bg-brand-navy-light transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {loading ? 'Generating...' : 'Generate Schedule'}
+            </button>
+          </motion.div>
+
+          <motion.div
+            variants={itemVariants}
+            className="bg-white rounded-xl shadow-card p-6 border border-brand-border-subtle"
+          >
+            {schedule.length > 0 ? (
+              <>
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="font-serif text-lg font-semibold text-brand-navy">
+                    Review Schedule
+                  </h2>
+                  <ExportButton
+                    data={schedule}
+                    filename="spaced-repetition-schedule"
+                    title="Export"
+                  />
+                </div>
+                <div className="space-y-3">
+                  {schedule.map((item, index) => (
+                    <div
+                      key={index}
+                      className="p-4 bg-brand-bg/50 rounded-lg border border-brand-border-subtle"
+                    >
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <h3 className="font-medium text-brand-navy text-sm">{item.conceptName}</h3>
+                          <p className="text-xs text-brand-text-light mt-1">
+                            Next review: {new Date(item.nextReview).toLocaleDateString()}
+                          </p>
+                        </div>
+                        <div className="text-right">
+                          <span className="text-sm font-medium text-scholarly-sage">
+                            {item.interval} days
+                          </span>
+                          <p className="text-xs text-brand-text-light mt-0.5">
+                            Ease: {(item.easeFactor * 100).toFixed(0)}%
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <div className="h-full flex flex-col items-center justify-center text-center py-16">
+                <div className="p-4 bg-scholarly-sage/10 rounded-full mb-4">
+                  <ArrowPathIcon className="h-10 w-10 text-scholarly-sage" />
+                </div>
+                <h3 className="font-medium text-brand-navy mb-2">
+                  Ready to Create Your Schedule
+                </h3>
+                <p className="text-sm text-brand-text-light max-w-sm mb-4">
+                  Enter your course concepts on the left to generate an optimized review schedule.
+                </p>
+              </div>
+            )}
+          </motion.div>
+        </div>
+      )}
+
+      {/* Practice Tab */}
+      {activeTab === 'practice' && (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <motion.div
+            variants={itemVariants}
+            className="bg-white rounded-xl shadow-card p-6 border border-brand-border-subtle"
+          >
+            <h2 className="font-serif text-lg font-semibold text-brand-navy mb-3">
+              Generate Retrieval Practice
+            </h2>
+            <p className="text-sm text-brand-text mb-4">
+              Create retrieval practice questions that promote active recall
+              rather than passive review.
+            </p>
+            <input
+              type="text"
+              value={courseTopic}
+              onChange={(e) => setCourseTopic(e.target.value)}
+              placeholder="Enter a topic (e.g., Constitutional amendments, Supply chain management)"
+              className="w-full p-4 text-sm border border-brand-border rounded-lg focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold transition-all mb-4 bg-brand-bg/50"
+            />
+            <div className="space-y-3 mb-4">
+              <p className="text-xs font-medium text-brand-text-light uppercase tracking-wide">Retrieval Type</p>
+              <label className="flex items-center space-x-3 text-sm text-brand-text cursor-pointer group">
+                <input type="radio" name="type" defaultChecked className="text-brand-navy focus:ring-brand-gold" />
+                <span className="group-hover:text-brand-navy transition-colors">Free Recall (most effective)</span>
+              </label>
+              <label className="flex items-center space-x-3 text-sm text-brand-text cursor-pointer group">
+                <input type="radio" name="type" className="text-brand-navy focus:ring-brand-gold" />
+                <span className="group-hover:text-brand-navy transition-colors">Cued Recall</span>
+              </label>
+              <label className="flex items-center space-x-3 text-sm text-brand-text cursor-pointer group">
+                <input type="radio" name="type" className="text-brand-navy focus:ring-brand-gold" />
+                <span className="group-hover:text-brand-navy transition-colors">Recognition</span>
+              </label>
+            </div>
+            <button
+              onClick={generatePractice}
+              disabled={loading}
+              className="w-full py-3 bg-brand-navy text-white rounded-lg font-medium hover:bg-brand-navy-light transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {loading ? 'Generating...' : 'Generate Practice Questions'}
+            </button>
+          </motion.div>
+
+          <motion.div
+            variants={itemVariants}
+            className="bg-white rounded-xl shadow-card p-6 border border-brand-border-subtle"
+          >
+            {practice ? (
+              <>
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="font-serif text-lg font-semibold text-brand-navy">
+                    Practice Questions: {practice.concept}
+                  </h2>
+                  <ExportButton
+                    data={practice}
+                    filename="retrieval-practice"
+                    title="Export"
+                  />
+                </div>
+                <div className="space-y-4">
+                  {practice.questions.map((q, index) => (
+                    <div
+                      key={index}
+                      className="p-4 bg-brand-bg/50 rounded-lg border border-brand-border-subtle"
+                    >
+                      <span className="inline-block px-2 py-0.5 text-xs font-medium bg-scholarly-sage/10 text-scholarly-sage rounded mb-2">
+                        {q.type}
+                      </span>
+                      <p className="font-medium text-brand-navy text-sm mb-2">{q.question}</p>
+                      <details className="mt-2">
+                        <summary className="text-xs text-brand-gold cursor-pointer hover:text-brand-gold/80 font-medium">
+                          Show expected response
+                        </summary>
+                        <p className="mt-2 text-xs text-brand-text pl-4 border-l-2 border-brand-gold/30 leading-relaxed">
+                          {q.expectedResponse}
+                        </p>
+                      </details>
+                    </div>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <div className="h-full flex flex-col items-center justify-center text-center py-16">
+                <div className="p-4 bg-scholarly-sage/10 rounded-full mb-4">
+                  <AcademicCapIcon className="h-10 w-10 text-scholarly-sage" />
+                </div>
+                <h3 className="font-medium text-brand-navy mb-2">
+                  Generate Retrieval Practice
+                </h3>
+                <p className="text-sm text-brand-text-light max-w-sm">
+                  Create practice questions that strengthen memory through active recall.
+                </p>
+              </div>
+            )}
+          </motion.div>
+        </div>
+      )}
+
+      {/* Activation Tab */}
+      {activeTab === 'activation' && (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <motion.div
+            variants={itemVariants}
+            className="bg-white rounded-xl shadow-card p-6 border border-brand-border-subtle"
+          >
+            <h2 className="font-serif text-lg font-semibold text-brand-navy mb-3">
+              Pre-Class Knowledge Activation
+            </h2>
+            <p className="text-sm text-brand-text mb-4">
+              Generate activities to activate prior knowledge before introducing
+              new material, improving encoding of new information.
+            </p>
+            <input
+              type="text"
+              placeholder="Upcoming topic"
+              className="w-full p-4 text-sm border border-brand-border rounded-lg focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold transition-all mb-3 bg-brand-bg/50"
+            />
+            <textarea
+              placeholder="Related prior knowledge students should have"
+              className="w-full h-32 p-4 text-sm border border-brand-border rounded-lg focus:ring-2 focus:ring-brand-gold/30 focus:border-brand-gold transition-all resize-none mb-4 bg-brand-bg/50"
+            />
+            <button
+              disabled={loading}
+              className="w-full py-3 bg-brand-navy text-white rounded-lg font-medium hover:bg-brand-navy-light transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Generate Activation Activity
+            </button>
+          </motion.div>
+
+          <motion.div
+            variants={itemVariants}
+            className="bg-white rounded-xl shadow-card p-6 border border-brand-border-subtle"
+          >
+            <div className="h-full flex flex-col items-center justify-center text-center py-16">
+              <div className="p-4 bg-scholarly-sage/10 rounded-full mb-4">
+                <PlayIcon className="h-10 w-10 text-scholarly-sage" />
+              </div>
+              <h3 className="font-medium text-brand-navy mb-2">
+                Activate Prior Knowledge
+              </h3>
+              <p className="text-sm text-brand-text-light max-w-sm">
+                Generate activities that help students connect new material to what they already know.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      )}
 
       {/* Tips Section */}
       <motion.div

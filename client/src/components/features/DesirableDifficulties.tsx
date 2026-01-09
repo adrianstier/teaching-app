@@ -9,8 +9,11 @@ import {
   AcademicCapIcon,
   SparklesIcon,
   BookOpenIcon,
+  ChevronRightIcon,
+  PuzzlePieceIcon,
+  ClockIcon,
 } from '@heroicons/react/24/outline';
-import ResearchBasis, { researchData } from '../shared/ResearchBasis';
+import ConceptExplainer, { conceptData } from '../shared/ConceptExplainer';
 
 interface Props {
   sessionId: string;
@@ -30,7 +33,7 @@ const itemVariants = {
 };
 
 const DesirableDifficulties: React.FC<Props> = ({ sessionId }) => {
-  const [activeTab, setActiveTab] = useState<'generation' | 'interleaving' | 'pretesting'>('generation');
+  const [activeTab, setActiveTab] = useState<'learn' | 'generation' | 'interleaving' | 'pretesting'>('learn');
   const [loading, setLoading] = useState(false);
   const [topic, setTopic] = useState('');
   const [concepts, setConcepts] = useState('');
@@ -102,23 +105,21 @@ const DesirableDifficulties: React.FC<Props> = ({ sessionId }) => {
     >
       {/* Header */}
       <motion.div variants={itemVariants} className="mb-8">
-        <div className="flex items-center space-x-4 mb-4">
-          <div className="p-3 bg-scholarly-terracotta/10 rounded-lg">
-            <FireIcon className="h-7 w-7 text-scholarly-terracotta" />
+        <div className="flex items-center space-x-4 mb-2">
+          <div className="p-3 bg-scholarly-terracotta/10 rounded-xl">
+            <FireIcon className="h-8 w-8 text-scholarly-terracotta" />
           </div>
           <div>
             <h1 className="font-serif text-3xl font-semibold text-brand-navy">Desirable Difficulties</h1>
             <p className="text-brand-text mt-1">Create productive struggle that enhances long-term learning</p>
           </div>
         </div>
-
-        {/* Research Basis */}
-        <ResearchBasis {...researchData.desirableDifficulties} color="terracotta" />
       </motion.div>
 
       {/* Tabs */}
-      <motion.div variants={itemVariants} className="flex space-x-2 mb-6">
+      <motion.div variants={itemVariants} className="flex space-x-2 mb-6 overflow-x-auto pb-2">
         {[
+          { id: 'learn', name: 'Understand the Science', icon: BookOpenIcon },
           { id: 'generation', name: 'Generation Effect', icon: SparklesIcon },
           { id: 'interleaving', name: 'Interleaved Practice', icon: ArrowsRightLeftIcon },
           { id: 'pretesting', name: 'Pretesting', icon: QuestionMarkCircleIcon },
@@ -126,7 +127,7 @@ const DesirableDifficulties: React.FC<Props> = ({ sessionId }) => {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id as any)}
-            className={`flex items-center space-x-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
+            className={`flex items-center space-x-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap ${
               activeTab === tab.id
                 ? 'bg-brand-navy text-white shadow-sm'
                 : 'bg-white text-brand-text hover:bg-brand-bg border border-brand-border-subtle'
@@ -138,7 +139,118 @@ const DesirableDifficulties: React.FC<Props> = ({ sessionId }) => {
         ))}
       </motion.div>
 
+      {/* Learn Tab - Enhanced Concept Presentation */}
+      {activeTab === 'learn' && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="space-y-8"
+        >
+          {/* Visual Overview */}
+          <div className="bg-white rounded-2xl shadow-card p-6 border border-brand-border-subtle">
+            <h2 className="font-serif text-xl font-semibold text-brand-navy mb-4">
+              The Paradox of Desirable Difficulties
+            </h2>
+            <p className="text-sm text-brand-text mb-6">
+              Making learning harder in the short term can dramatically improve long-term retention and transfer.
+              The key is introducing difficulties that engage deeper processing—not just busy work.
+            </p>
+
+            {/* Difficulty Types Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                { title: 'Generation', effect: '+25%', desc: 'Produce vs recognize', icon: SparklesIcon, color: 'terracotta' },
+                { title: 'Interleaving', effect: '+43%', desc: 'Mix problem types', icon: ArrowsRightLeftIcon, color: 'sage' },
+                { title: 'Spacing', effect: '+200%', desc: 'Distribute practice', icon: ClockIcon, color: 'wine' },
+                { title: 'Variation', effect: '+30%', desc: 'Vary conditions', icon: PuzzlePieceIcon, color: 'slate' },
+              ].map((item) => (
+                <div key={item.title} className={`p-4 rounded-xl border border-scholarly-${item.color}/30 bg-scholarly-${item.color}/5 text-center`}>
+                  <item.icon className={`h-8 w-8 text-scholarly-${item.color} mx-auto mb-2`} />
+                  <h4 className="font-semibold text-brand-navy">{item.title}</h4>
+                  <p className="text-xs text-brand-text mb-2">{item.desc}</p>
+                  <span className="text-sm font-bold text-scholarly-sage">{item.effect} retention</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Key Techniques Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="p-5 bg-white rounded-xl border border-scholarly-terracotta/30 shadow-sm">
+              <div className="w-10 h-10 rounded-lg bg-scholarly-terracotta/10 flex items-center justify-center mb-3">
+                <SparklesIcon className="h-5 w-5 text-scholarly-terracotta" />
+              </div>
+              <h3 className="font-semibold text-brand-navy mb-2">Generation Effect</h3>
+              <p className="text-sm text-brand-text mb-3">
+                Having students generate answers rather than read them strengthens memory traces
+                through effortful retrieval and encoding.
+              </p>
+              <p className="text-xs text-brand-text-light italic">
+                Try: Fill-in-blank notes instead of complete slides.
+              </p>
+            </div>
+
+            <div className="p-5 bg-white rounded-xl border border-scholarly-sage/30 shadow-sm">
+              <div className="w-10 h-10 rounded-lg bg-scholarly-sage/10 flex items-center justify-center mb-3">
+                <ArrowsRightLeftIcon className="h-5 w-5 text-scholarly-sage" />
+              </div>
+              <h3 className="font-semibold text-brand-navy mb-2">Interleaving</h3>
+              <p className="text-sm text-brand-text mb-3">
+                Mixing different problem types during practice forces discrimination and prevents
+                "autopilot" practicing on similar problems.
+              </p>
+              <p className="text-xs text-brand-text-light italic">
+                Try: Mix topics in homework instead of blocking by chapter.
+              </p>
+            </div>
+
+            <div className="p-5 bg-white rounded-xl border border-scholarly-wine/30 shadow-sm">
+              <div className="w-10 h-10 rounded-lg bg-scholarly-wine/10 flex items-center justify-center mb-3">
+                <QuestionMarkCircleIcon className="h-5 w-5 text-scholarly-wine" />
+              </div>
+              <h3 className="font-semibold text-brand-navy mb-2">Pretesting</h3>
+              <p className="text-sm text-brand-text mb-3">
+                Testing before learning primes the brain for incoming information. Even wrong
+                answers enhance subsequent learning.
+              </p>
+              <p className="text-xs text-brand-text-light italic">
+                Try: Quiz on upcoming content before teaching it.
+              </p>
+            </div>
+          </div>
+
+          {/* Detailed Concept Explainer */}
+          <ConceptExplainer
+            {...conceptData.desirableDifficulties}
+            color="terracotta"
+            icon={<FireIcon className="h-6 w-6 text-scholarly-terracotta" />}
+          />
+
+          {/* Quick Start CTA */}
+          <div className="bg-gradient-to-r from-scholarly-terracotta/10 to-scholarly-terracotta/5 rounded-2xl p-6 border border-scholarly-terracotta/20">
+            <div className="flex items-center justify-between flex-wrap gap-4">
+              <div>
+                <h3 className="font-serif text-lg font-semibold text-brand-navy mb-2">
+                  Ready to apply this?
+                </h3>
+                <p className="text-sm text-brand-text">
+                  Create generation activities, interleaved practice sets, or pretests for your specific content.
+                </p>
+              </div>
+              <button
+                onClick={() => setActiveTab('generation')}
+                className="flex items-center space-x-2 px-6 py-3 bg-scholarly-terracotta text-white rounded-xl font-medium hover:bg-scholarly-terracotta/90 transition-colors"
+              >
+                <span>Create Generation Activity</span>
+                <ChevronRightIcon className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
+        </motion.div>
+      )}
+
       {/* Content */}
+      {activeTab !== 'learn' && (
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Input Section */}
         <motion.div
@@ -367,8 +479,10 @@ const DesirableDifficulties: React.FC<Props> = ({ sessionId }) => {
           )}
         </motion.div>
       </div>
+      )}
 
-      {/* Desirable Difficulties Overview */}
+      {/* Desirable Difficulties Overview - only show on non-learn tabs */}
+      {activeTab !== 'learn' && (
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -394,6 +508,7 @@ const DesirableDifficulties: React.FC<Props> = ({ sessionId }) => {
           Note: Difficulties must be desirable—they need to enhance learning, not just add work.
         </p>
       </motion.div>
+      )}
     </motion.div>
   );
 };

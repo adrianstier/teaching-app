@@ -9,8 +9,11 @@ import {
   DocumentTextIcon,
   ClipboardDocumentCheckIcon,
   BookOpenIcon,
+  ChevronRightIcon,
+  ArrowPathIcon,
+  EyeIcon,
 } from '@heroicons/react/24/outline';
-import ResearchBasis, { researchData } from '../shared/ResearchBasis';
+import ConceptExplainer, { conceptData } from '../shared/ConceptExplainer';
 import ExportButton from '../shared/ExportButton';
 
 interface Props {
@@ -31,7 +34,7 @@ const itemVariants = {
 };
 
 const Metacognition: React.FC<Props> = ({ sessionId }) => {
-  const [activeTab, setActiveTab] = useState<'strategies' | 'prompts' | 'calibration'>('strategies');
+  const [activeTab, setActiveTab] = useState<'learn' | 'strategies' | 'prompts' | 'calibration'>('learn');
   const [loading, setLoading] = useState(false);
   const [topic, setTopic] = useState('');
   const [context, setContext] = useState('');
@@ -103,23 +106,21 @@ const Metacognition: React.FC<Props> = ({ sessionId }) => {
     >
       {/* Header */}
       <motion.div variants={itemVariants} className="mb-8">
-        <div className="flex items-center space-x-4 mb-4">
-          <div className="p-3 bg-scholarly-slate/10 rounded-lg">
-            <QuestionMarkCircleIcon className="h-7 w-7 text-scholarly-slate" />
+        <div className="flex items-center space-x-4 mb-2">
+          <div className="p-3 bg-scholarly-slate/10 rounded-xl">
+            <QuestionMarkCircleIcon className="h-8 w-8 text-scholarly-slate" />
           </div>
           <div>
             <h1 className="font-serif text-3xl font-semibold text-brand-navy">Study Skills</h1>
             <p className="text-brand-text mt-1">Help students learn how to learn effectively</p>
           </div>
         </div>
-
-        {/* Research Basis */}
-        <ResearchBasis {...researchData.metacognition} color="slate" />
       </motion.div>
 
       {/* Tabs */}
-      <motion.div variants={itemVariants} className="flex space-x-2 mb-6 overflow-x-auto">
+      <motion.div variants={itemVariants} className="flex space-x-2 mb-6 overflow-x-auto pb-2">
         {[
+          { id: 'learn', name: 'Understand the Science', icon: BookOpenIcon },
           { id: 'strategies', name: 'Study Strategies', icon: AcademicCapIcon },
           { id: 'prompts', name: 'Self-Explanation', icon: LightBulbIcon },
           { id: 'calibration', name: 'Calibration', icon: ChartBarIcon },
@@ -139,7 +140,141 @@ const Metacognition: React.FC<Props> = ({ sessionId }) => {
         ))}
       </motion.div>
 
+      {/* Learn Tab - Enhanced Concept Presentation */}
+      {activeTab === 'learn' && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="space-y-8"
+        >
+          {/* Visual Diagram - Self-Regulated Learning Cycle */}
+          <div className="bg-white rounded-2xl shadow-card p-6 border border-brand-border-subtle">
+            <h2 className="font-serif text-xl font-semibold text-brand-navy mb-4">
+              The Self-Regulated Learning Cycle
+            </h2>
+            <p className="text-sm text-brand-text mb-6">
+              Metacognition is "thinking about thinking." Students who can plan, monitor, and evaluate their own learning
+              dramatically outperform those who can't—regardless of raw ability.
+            </p>
+
+            {/* Cycle Visualization */}
+            <div className="flex justify-center mb-6">
+              <div className="relative w-80 h-80">
+                {/* Central Question */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-scholarly-slate/10 rounded-full flex items-center justify-center">
+                  <QuestionMarkCircleIcon className="h-10 w-10 text-scholarly-slate" />
+                </div>
+
+                {/* Plan */}
+                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 p-4 bg-scholarly-sage/10 rounded-xl border border-scholarly-sage/30 w-40 text-center">
+                  <span className="font-semibold text-scholarly-sage">Plan</span>
+                  <p className="text-xs text-brand-text mt-1">"What will I do?"</p>
+                </div>
+
+                {/* Monitor */}
+                <div className="absolute top-1/2 right-0 transform -translate-y-1/2 p-4 bg-scholarly-terracotta/10 rounded-xl border border-scholarly-terracotta/30 w-40 text-center">
+                  <span className="font-semibold text-scholarly-terracotta">Monitor</span>
+                  <p className="text-xs text-brand-text mt-1">"How am I doing?"</p>
+                </div>
+
+                {/* Evaluate */}
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 p-4 bg-scholarly-wine/10 rounded-xl border border-scholarly-wine/30 w-40 text-center">
+                  <span className="font-semibold text-scholarly-wine">Evaluate</span>
+                  <p className="text-xs text-brand-text mt-1">"What did I learn?"</p>
+                </div>
+
+                {/* Arrows */}
+                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 320 320">
+                  <path d="M160 60 Q 240 100 240 160" fill="none" stroke="#6B7280" strokeWidth="2" strokeDasharray="5,5" markerEnd="url(#arrowhead)" />
+                  <path d="M240 160 Q 200 240 160 260" fill="none" stroke="#6B7280" strokeWidth="2" strokeDasharray="5,5" markerEnd="url(#arrowhead)" />
+                  <path d="M160 260 Q 80 200 80 160 Q 80 120 160 60" fill="none" stroke="#6B7280" strokeWidth="2" strokeDasharray="5,5" markerEnd="url(#arrowhead)" />
+                  <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                      <polygon points="0 0, 10 3.5, 0 7" fill="#6B7280" />
+                    </marker>
+                  </defs>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          {/* Key Techniques Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="p-5 bg-white rounded-xl border border-scholarly-sage/30 shadow-sm">
+              <div className="w-10 h-10 rounded-lg bg-scholarly-sage/10 flex items-center justify-center mb-3">
+                <AcademicCapIcon className="h-5 w-5 text-scholarly-sage" />
+              </div>
+              <h3 className="font-semibold text-brand-navy mb-2">Effective Study Strategies</h3>
+              <p className="text-sm text-brand-text mb-3">
+                Students often use ineffective strategies like re-reading. Teach them retrieval practice,
+                spaced practice, and elaboration instead.
+              </p>
+              <p className="text-xs text-brand-text-light italic">
+                Research: Re-reading creates fluency illusion, not learning.
+              </p>
+            </div>
+
+            <div className="p-5 bg-white rounded-xl border border-scholarly-terracotta/30 shadow-sm">
+              <div className="w-10 h-10 rounded-lg bg-scholarly-terracotta/10 flex items-center justify-center mb-3">
+                <LightBulbIcon className="h-5 w-5 text-scholarly-terracotta" />
+              </div>
+              <h3 className="font-semibold text-brand-navy mb-2">Self-Explanation</h3>
+              <p className="text-sm text-brand-text mb-3">
+                Prompting students to explain material to themselves as they learn improves comprehension
+                by 40-100% compared to passive reading.
+              </p>
+              <p className="text-xs text-brand-text-light italic">
+                Try: "Explain this in your own words" during lectures.
+              </p>
+            </div>
+
+            <div className="p-5 bg-white rounded-xl border border-scholarly-wine/30 shadow-sm">
+              <div className="w-10 h-10 rounded-lg bg-scholarly-wine/10 flex items-center justify-center mb-3">
+                <EyeIcon className="h-5 w-5 text-scholarly-wine" />
+              </div>
+              <h3 className="font-semibold text-brand-navy mb-2">Calibration</h3>
+              <p className="text-sm text-brand-text mb-3">
+                Most students are overconfident about what they know. Help them accurately assess their
+                understanding before it's too late.
+              </p>
+              <p className="text-xs text-brand-text-light italic">
+                Try: "How confident are you?" before revealing answers.
+              </p>
+            </div>
+          </div>
+
+          {/* Detailed Concept Explainer */}
+          <ConceptExplainer
+            {...conceptData.metacognition}
+            color="slate"
+            icon={<QuestionMarkCircleIcon className="h-6 w-6 text-scholarly-slate" />}
+          />
+
+          {/* Quick Start CTA */}
+          <div className="bg-gradient-to-r from-scholarly-slate/10 to-scholarly-slate/5 rounded-2xl p-6 border border-scholarly-slate/20">
+            <div className="flex items-center justify-between flex-wrap gap-4">
+              <div>
+                <h3 className="font-serif text-lg font-semibold text-brand-navy mb-2">
+                  Ready to apply this?
+                </h3>
+                <p className="text-sm text-brand-text">
+                  Generate study strategy guides or self-explanation prompts for your specific content.
+                </p>
+              </div>
+              <button
+                onClick={() => setActiveTab('strategies')}
+                className="flex items-center space-x-2 px-6 py-3 bg-scholarly-slate text-white rounded-xl font-medium hover:bg-scholarly-slate/90 transition-colors"
+              >
+                <span>Generate Study Guide</span>
+                <ChevronRightIcon className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
+        </motion.div>
+      )}
+
       {/* Content */}
+      {activeTab !== 'learn' && (
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Input Section */}
         <motion.div
@@ -357,8 +492,10 @@ const Metacognition: React.FC<Props> = ({ sessionId }) => {
           )}
         </motion.div>
       </div>
+      )}
 
-      {/* Metacognitive Framework */}
+      {/* Metacognitive Framework - only show on non-learn tabs */}
+      {activeTab !== 'learn' && (
       <motion.div
         variants={itemVariants}
         className="mt-8 bg-gradient-to-r from-scholarly-slate/5 to-scholarly-slate/10 rounded-xl p-6 border border-scholarly-slate/20"
@@ -397,6 +534,7 @@ const Metacognition: React.FC<Props> = ({ sessionId }) => {
           </div>
         </div>
       </motion.div>
+      )}
     </motion.div>
   );
 };

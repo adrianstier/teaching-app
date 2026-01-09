@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import OnboardingModal from './shared/OnboardingModal';
 import {
   DocumentMagnifyingGlassIcon,
   UserGroupIcon,
@@ -32,6 +33,16 @@ import {
 } from '@heroicons/react/24/outline';
 
 const Dashboard: React.FC = () => {
+  const [showOnboarding, setShowOnboarding] = useState(false);
+
+  useEffect(() => {
+    // Check if user has seen onboarding before
+    const hasSeenOnboarding = localStorage.getItem('teaching-app-onboarding-complete');
+    if (!hasSeenOnboarding) {
+      setShowOnboarding(true);
+    }
+  }, []);
+
   const categories = [
     {
       name: 'Course Planning',
@@ -140,12 +151,15 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <motion.div
-      className="max-w-6xl mx-auto px-4"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-    >
+    <>
+      <OnboardingModal isOpen={showOnboarding} onClose={() => setShowOnboarding(false)} />
+
+      <motion.div
+        className="max-w-6xl mx-auto px-4"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
       {/* Hero Section - Specific Value Proposition */}
       <motion.div variants={itemVariants} className="pt-8 pb-16 md:pt-12 md:pb-20">
         <div className="max-w-3xl">
@@ -328,7 +342,8 @@ const Dashboard: React.FC = () => {
           </Link>
         </div>
       </motion.div>
-    </motion.div>
+      </motion.div>
+    </>
   );
 };
 

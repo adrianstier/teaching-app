@@ -9,8 +9,11 @@ import {
   DocumentTextIcon,
   LightBulbIcon,
   BookOpenIcon,
+  ChevronRightIcon,
+  ArrowPathIcon,
 } from '@heroicons/react/24/outline';
-import ResearchBasis, { researchData } from '../shared/ResearchBasis';
+import ConceptExplainer, { conceptData } from '../shared/ConceptExplainer';
+import ConceptDiagram from '../shared/ConceptDiagram';
 import ExportButton from '../shared/ExportButton';
 
 interface Props {
@@ -41,7 +44,7 @@ interface ExitTicket {
 }
 
 const FormativeAssessment: React.FC<Props> = ({ sessionId }) => {
-  const [activeTab, setActiveTab] = useState<'polls' | 'tickets' | 'analysis'>('polls');
+  const [activeTab, setActiveTab] = useState<'learn' | 'polls' | 'tickets' | 'analysis'>('learn');
   const [loading, setLoading] = useState(false);
   const [topic, setTopic] = useState('');
   const [learningObjective, setLearningObjective] = useState('');
@@ -115,23 +118,21 @@ const FormativeAssessment: React.FC<Props> = ({ sessionId }) => {
         animate={{ opacity: 1, y: 0 }}
         className="mb-8"
       >
-        <div className="flex items-center space-x-4 mb-4">
-          <div className="p-3 bg-scholarly-wine/10 rounded-lg">
-            <ChatBubbleLeftRightIcon className="h-7 w-7 text-scholarly-wine" />
+        <div className="flex items-center space-x-4 mb-2">
+          <div className="p-3 bg-scholarly-wine/10 rounded-xl">
+            <ChatBubbleLeftRightIcon className="h-8 w-8 text-scholarly-wine" />
           </div>
           <div>
             <h1 className="font-serif text-3xl font-semibold text-brand-navy">Quick Polls & Check-ins</h1>
             <p className="text-brand-text mt-1">Find out if students understand before moving on</p>
           </div>
         </div>
-
-        {/* Research Basis */}
-        <ResearchBasis {...researchData.formativeAssessment} color="wine" />
       </motion.div>
 
       {/* Tabs */}
-      <div className="flex space-x-2 mb-6">
+      <div className="flex space-x-2 mb-6 overflow-x-auto pb-2">
         {[
+          { id: 'learn', name: 'Understand the Science', icon: BookOpenIcon },
           { id: 'polls', name: 'Live Polls', icon: ChartPieIcon },
           { id: 'tickets', name: 'Exit Tickets', icon: ClipboardDocumentListIcon },
           { id: 'analysis', name: 'Response Analysis', icon: LightBulbIcon },
@@ -139,7 +140,7 @@ const FormativeAssessment: React.FC<Props> = ({ sessionId }) => {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id as any)}
-            className={`flex items-center space-x-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
+            className={`flex items-center space-x-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap ${
               activeTab === tab.id
                 ? 'bg-brand-navy text-white shadow-sm'
                 : 'bg-white text-brand-text hover:bg-brand-bg border border-brand-border-subtle'
@@ -151,7 +152,104 @@ const FormativeAssessment: React.FC<Props> = ({ sessionId }) => {
         ))}
       </div>
 
+      {/* Learn Tab - Enhanced Concept Presentation */}
+      {activeTab === 'learn' && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="space-y-8"
+        >
+          {/* Visual Diagram */}
+          <div className="bg-white rounded-2xl shadow-card p-6 border border-brand-border-subtle">
+            <h2 className="font-serif text-xl font-semibold text-brand-navy mb-4">
+              The Formative Assessment Loop
+            </h2>
+            <p className="text-sm text-brand-text mb-6">
+              Formative assessment is about gathering real-time information on student understanding
+              so you can adjust instruction before it's too late. It creates a continuous feedback loop.
+            </p>
+            <div className="max-w-2xl mx-auto">
+              <ConceptDiagram type="feedbackLoop" animated={true} />
+            </div>
+          </div>
+
+          {/* Key Techniques Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="p-5 bg-white rounded-xl border border-scholarly-wine/30 shadow-sm">
+              <div className="w-10 h-10 rounded-lg bg-scholarly-wine/10 flex items-center justify-center mb-3">
+                <ChartPieIcon className="h-5 w-5 text-scholarly-wine" />
+              </div>
+              <h3 className="font-semibold text-brand-navy mb-2">Live Polling</h3>
+              <p className="text-sm text-brand-text mb-3">
+                Quick conceptual questions during class reveal whether students grasp key ideas.
+                If most get it wrong, you know to re-teach before moving on.
+              </p>
+              <p className="text-xs text-brand-text-light italic">
+                Try: Poll every 15-20 minutes during lecture.
+              </p>
+            </div>
+
+            <div className="p-5 bg-white rounded-xl border border-scholarly-sage/30 shadow-sm">
+              <div className="w-10 h-10 rounded-lg bg-scholarly-sage/10 flex items-center justify-center mb-3">
+                <ClipboardDocumentListIcon className="h-5 w-5 text-scholarly-sage" />
+              </div>
+              <h3 className="font-semibold text-brand-navy mb-2">Exit Tickets</h3>
+              <p className="text-sm text-brand-text mb-3">
+                Brief end-of-class reflections that tell you what students learned and what
+                remains unclear. Review before your next session.
+              </p>
+              <p className="text-xs text-brand-text-light italic">
+                Try: "What's still confusing?" before students leave.
+              </p>
+            </div>
+
+            <div className="p-5 bg-white rounded-xl border border-scholarly-terracotta/30 shadow-sm">
+              <div className="w-10 h-10 rounded-lg bg-scholarly-terracotta/10 flex items-center justify-center mb-3">
+                <ArrowPathIcon className="h-5 w-5 text-scholarly-terracotta" />
+              </div>
+              <h3 className="font-semibold text-brand-navy mb-2">Think-Pair-Share</h3>
+              <p className="text-sm text-brand-text mb-3">
+                Students think individually, discuss with a neighbor, then share with the class.
+                This surfaces misconceptions and builds confidence.
+              </p>
+              <p className="text-xs text-brand-text-light italic">
+                Try: After polling, let pairs discuss, then re-poll.
+              </p>
+            </div>
+          </div>
+
+          {/* Detailed Concept Explainer */}
+          <ConceptExplainer
+            {...conceptData.formativeAssessment}
+            color="wine"
+            icon={<ChatBubbleLeftRightIcon className="h-6 w-6 text-scholarly-wine" />}
+          />
+
+          {/* Quick Start CTA */}
+          <div className="bg-gradient-to-r from-scholarly-wine/10 to-scholarly-wine/5 rounded-2xl p-6 border border-scholarly-wine/20">
+            <div className="flex items-center justify-between flex-wrap gap-4">
+              <div>
+                <h3 className="font-serif text-lg font-semibold text-brand-navy mb-2">
+                  Ready to apply this?
+                </h3>
+                <p className="text-sm text-brand-text">
+                  Generate polling questions that reveal student thinking or create exit tickets for end-of-class reflection.
+                </p>
+              </div>
+              <button
+                onClick={() => setActiveTab('polls')}
+                className="flex items-center space-x-2 px-6 py-3 bg-scholarly-wine text-white rounded-xl font-medium hover:bg-scholarly-wine/90 transition-colors"
+              >
+                <span>Create Live Poll</span>
+                <ChevronRightIcon className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
+        </motion.div>
+      )}
+
       {/* Content */}
+      {activeTab !== 'learn' && (
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Input Section */}
         <motion.div
@@ -401,8 +499,10 @@ const FormativeAssessment: React.FC<Props> = ({ sessionId }) => {
           )}
         </motion.div>
       </div>
+      )}
 
-      {/* Best Practices */}
+      {/* Best Practices - only show on non-learn tabs */}
+      {activeTab !== 'learn' && (
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -432,6 +532,7 @@ const FormativeAssessment: React.FC<Props> = ({ sessionId }) => {
           </div>
         </div>
       </motion.div>
+      )}
     </div>
   );
 };
