@@ -1,3 +1,5 @@
+> **Local security boundary (2026-10-21):** The backend binds only to `127.0.0.1`. Sessions, exports and sockets share a single local user context. Do not proxy this service to public/shared users until authentication and session ownership are implemented.
+
 # 🎓 Automated Lecture Development System
 
 A sophisticated multi-agent system that automates the creation of comprehensive lecture packages through collaborative AI agents, each specializing in different aspects of educational content development.
