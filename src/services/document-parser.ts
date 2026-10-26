@@ -1,6 +1,6 @@
 import * as fs from 'fs/promises';
 import * as path from 'path';
-import pdf from 'pdf-parse';
+import { PDFParse } from 'pdf-parse';
 import mammoth from 'mammoth';
 import logger from '../utils/logger';
 
@@ -51,22 +51,27 @@ export class DocumentParser {
 
   private async parsePDF(filePath: string, fileName: string): Promise<ParsedDocument> {
     const dataBuffer = await fs.readFile(filePath);
-    const data = await pdf(dataBuffer);
+    const parser = new PDFParse({ data: dataBuffer });
+    try {
+      const data = await parser.getText();
 
-    // Try to extract slides from PDF structure
-    const slides = this.extractSlidesFromText(data.text);
+      // Try to extract slides from PDF structure
+      const slides = this.extractSlidesFromText(data.text);
 
-    return {
-      text: data.text,
-      metadata: {
-        fileName,
-        fileType: 'pdf',
-        pageCount: data.numpages,
-        wordCount: this.countWords(data.text),
-        extractedAt: new Date()
-      },
-      slides: slides.length > 0 ? slides : undefined
-    };
+      return {
+        text: data.text,
+        metadata: {
+          fileName,
+          fileType: 'pdf',
+          pageCount: data.total,
+          wordCount: this.countWords(data.text),
+          extractedAt: new Date()
+        },
+        slides: slides.length > 0 ? slides : undefined
+      };
+    } finally {
+      await parser.destroy();
+    }
   }
 
   private async parseDocx(filePath: string, fileName: string): Promise<ParsedDocument> {

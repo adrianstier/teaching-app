@@ -42,7 +42,7 @@ export function sanitizeInput(input: any): any {
   if (input && typeof input === 'object') {
     const sanitized: any = {};
     for (const key in input) {
-      if (input.hasOwnProperty(key)) {
+      if (Object.prototype.hasOwnProperty.call(input, key)) {
         sanitized[key] = sanitizeInput(input[key]);
       }
     }
@@ -65,7 +65,7 @@ export function validateBody(schema: z.ZodType<any>) {
       next();
     } catch (error) {
       if (error instanceof ZodError) {
-        const errors = error.errors.map(err => ({
+        const errors = error.issues.map(err => ({
           field: err.path.join('.'),
           message: err.message
         }));

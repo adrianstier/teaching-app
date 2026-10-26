@@ -24,7 +24,8 @@
     "test:client:coverage": "cd client && npm test -- --coverage --watchAll=false",
     "test:all": "npm run test:jest && npm run test:client:coverage",
     "test:server": "USE_MOCK_AI=true npm run server",
-    "test:full": "USE_MOCK_AI=true concurrently \"npm run server\" \"sleep 3 && npm test\""
+    "test:full": "USE_MOCK_AI=true concurrently \"npm run server\" \"sleep 3 && npm test\"",
+    "test:audit-repairs": "tsx scripts/test-audit-repairs.ts"
   },
   "keywords": [
     "education",
